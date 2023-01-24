@@ -1,4 +1,4 @@
-package java.com.org.ita.kata;
+package com.org.ita.kata;
 
 public interface Eight {
     int Liters(double time);

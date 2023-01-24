@@ -1,6 +1,6 @@
-package java.com.org.ita.kata.implementation.savaxn04;
+package com.org.ita.kata.implementation.savaxn04;
 
-import java.com.org.ita.kata.Seven;
+import com.org.ita.kata.Seven;
 
 public class SevenImpl implements Seven {
     @Override

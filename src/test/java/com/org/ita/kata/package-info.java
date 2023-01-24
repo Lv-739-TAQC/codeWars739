@@ -1,1 +1,1 @@
-package java.com.org.ita.kata;
+package com.org.ita.kata;

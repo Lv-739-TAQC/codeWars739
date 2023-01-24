@@ -1,6 +1,6 @@
-package java.com.org.ita.kata.implementation.TetianaFilatova;
+package com.org.ita.kata.implementation.TetianaFilatova;
 
-import java.com.org.ita.kata.Seven;
+import com.org.ita.kata.Seven;
 
 public class SevenImpl implements Seven {
     @Override

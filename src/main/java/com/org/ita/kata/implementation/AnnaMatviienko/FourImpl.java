@@ -1,6 +1,6 @@
-package java.com.org.ita.kata.implementation.AnnaMatviienko;
+package com.org.ita.kata.implementation.AnnaMatviienko;
 
-import java.com.org.ita.kata.Four;
+import com.org.ita.kata.Four;
 
 public class FourImpl implements Four {
 }

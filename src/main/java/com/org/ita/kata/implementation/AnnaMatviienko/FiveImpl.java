@@ -1,6 +1,7 @@
-package java.com.org.ita.kata.implementation.AnnaMatviienko;
+package com.org.ita.kata.implementation.AnnaMatviienko;
 
-import java.com.org.ita.kata.Five;
+import com.org.ita.kata.Five;
+
 import java.math.BigInteger;
 
 public class FiveImpl implements Five {

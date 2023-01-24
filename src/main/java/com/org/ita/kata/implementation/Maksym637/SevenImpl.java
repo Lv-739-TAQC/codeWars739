@@ -1,6 +1,6 @@
-package java.com.org.ita.kata.implementation.Maksym637;
+package com.org.ita.kata.implementation.Maksym637;
 
-import java.com.org.ita.kata.Seven;
+import com.org.ita.kata.Seven;
 
 public class SevenImpl implements Seven {
     @Override

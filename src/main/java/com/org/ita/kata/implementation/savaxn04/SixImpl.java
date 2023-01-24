@@ -1,6 +1,6 @@
-package java.com.org.ita.kata.implementation.savaxn04;
+package com.org.ita.kata.implementation.savaxn04;
 
-import java.com.org.ita.kata.Six;
+import com.org.ita.kata.Six;
 
 public class SixImpl implements Six {
     @Override

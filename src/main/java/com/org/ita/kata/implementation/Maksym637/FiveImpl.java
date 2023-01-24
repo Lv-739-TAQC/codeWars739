@@ -1,6 +1,7 @@
-package java.com.org.ita.kata.implementation.Maksym637;
+package com.org.ita.kata.implementation.Maksym637;
 
-import java.com.org.ita.kata.Five;
+import com.org.ita.kata.Five;
+
 import java.math.BigInteger;
 
 public class FiveImpl implements Five {

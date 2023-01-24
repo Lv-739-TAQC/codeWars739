@@ -1,4 +1,4 @@
-package java.com.org.ita.kata;
+package com.org.ita.kata;
 
 public interface Seven {
     long newAvg(double[] arr, double navg);
