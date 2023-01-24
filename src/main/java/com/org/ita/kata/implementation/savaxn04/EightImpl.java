@@ -7,7 +7,7 @@ import java.util.Arrays;
 public class EightImpl implements Eight {
     @Override
     public int Liters(double time) {
-        return (int)(time / 2);
+        return (int)(time/2);
     }
 
     @Override
@@ -36,14 +36,15 @@ public class EightImpl implements Eight {
     @Override
     public int[] countPositivesSumNegatives(int[] input) {
         if(input == null || input.length == 0){
-            return new int[0];
+            int[] nullArray = new int[0];
+            return nullArray;
         }
         int[] resultArray = new int[2];
-        for (int j : input) {
-            if (j > 0) {
+        for(int i = 0; i < input.length; i++){
+            if(input[i] > 0){
                 resultArray[0]++;
-            } else {
-                resultArray[1] += j;
+            } else{
+                resultArray[1] += input[i];
             }
         }
         return resultArray;
