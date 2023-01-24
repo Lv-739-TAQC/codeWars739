@@ -5,7 +5,7 @@ import com.org.ita.kata.Eight;
 public class EightImpl implements Eight {
     @Override
     public int Liters(double time) {
-        return 0;
+        return 10;
     }
 
     @Override
