@@ -5,7 +5,22 @@ import com.org.ita.kata.Six;
 public class SixImpl implements Six {
     @Override
     public long findNb(long m) {
-        return 0;
+            long i = 1;
+            long sum = 0;
+            long n = 0;
+
+            do{
+                sum += (long)Math.pow(i, 3);
+                i++;
+            } while (sum < m);
+
+            if (sum == m){
+                n = i - 1;
+            } else if (sum > m){
+                n = -1;
+            }
+
+            return n;
     }
 
     @Override
