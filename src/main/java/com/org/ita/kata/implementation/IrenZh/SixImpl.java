@@ -4,16 +4,13 @@ import com.org.ita.kata.Six;
 
 public class SixImpl implements Six {
     @Override
-    public long findNb(long m) {
-        long mm = 0, n = 0;
+    public long findNb(long m) { long mm = 0, n = 0;
         while (mm < m) mm += ++n * n * n;
         return mm == m ? n : -1;
     }
 
-
     @Override
-    public String balance(String book) {
-        String t = book.replaceAll("([^\\n. \\da-zA-Z])", "");
+    public String balance(String book) { String t = book.replaceAll("([^\\n. \\da-zA-Z])", "");
         String[] arr = t.split("[\\n]+");
         double current = Double.parseDouble(arr[0]);
         double total = 0;
@@ -31,7 +28,6 @@ public class SixImpl implements Six {
         result.append(String.format("\\r\\nTotal expense  %.2f\\r\\nAverage expense  %.2f", total, total / count));
         return result.toString();
     }
-
 
     @Override
     public double f(double x) {
