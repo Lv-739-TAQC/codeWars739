@@ -86,7 +86,49 @@ public class SixImpl implements Six {
 
     @Override
     public String nbaCup(String resultSheet, String toFind) {
-        return "Sorry, this task is not done yet.";
+        if (toFind == "") return "";
+        if (!resultSheet.contains(toFind + " ")) return toFind + ":This team didn't play!";
+        String res = toFind + ":";
+        int wons = 0;
+        int draws = 0;
+        int lost = 0;
+        int scored = 0;
+        int conceded = 0;
+        int points = 0;
+
+        String[] teams = resultSheet.split(",");
+        int score = 0;
+        int concede = 0;
+        for (int i = 0; i < teams.length; i++) {
+            if (teams[i].contains(toFind)) {
+                int j = teams[i].indexOf(toFind);
+                try {
+                    String[] splitTeams = teams[i].split(" ");
+                    if (j == 0) {
+                        score = Integer.parseInt(splitTeams[toFind.split(" ").length]);
+                        concede = Integer.parseInt(splitTeams[splitTeams.length - 1]);
+                    } else {
+                        concede = Integer.parseInt(splitTeams[splitTeams.length - toFind.split(" ").length - 2]);
+                        score = Integer.parseInt(splitTeams[splitTeams.length - 1]);
+                    }
+                } catch (NumberFormatException e) {
+                    return "Error(float number):" + teams[i];
+                }
+                scored += score;
+                conceded += concede;
+                if (score > concede) {
+                    wons++;
+                    points += 3;
+                } else if (score == concede) {
+                    draws++;
+                    points++;
+                } else {
+                    lost++;
+                }
+            }
+        }
+        String finalResult = res + "W=" + wons + ";D=" + draws + ";L=" + lost + ";Scored=" + scored + ";Conceded=" + conceded + ";Points=" + points;
+        return finalResult;
     }
 
     @Override
