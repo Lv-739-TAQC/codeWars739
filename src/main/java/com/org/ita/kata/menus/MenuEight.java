@@ -28,7 +28,7 @@ public class MenuEight implements MenuNumber {
     public void getFirstTask() {
         System.out.println("Enter time number : ");
         double time = SystemInput.inputDoubleNumber();
-        System.out.println("V = " + getStudentEightKataRealisation().Liters(time));
+        System.out.println("Liters = " + getStudentEightKataRealisation().Liters(time));
     }
 
     public void getSecondTask() {
