@@ -19,23 +19,23 @@ public class MenuNumberFactory {
         while (true) {
             System.out.println("[ALL KATAS]\n" + katas + "\n");
             System.out.println("Please enter number of kata : ");
-            int kata = SystemInput.input.nextInt();
+            String kata = SystemInput.input.nextLine();
             switch (kata) {
-                case 1:
+                case "1":
                     (new MenuEight(studentRealisationFactory)).getAllTasks();
                     break;
-                case 2:
+                case "2":
                     (new MenuSeven(studentRealisationFactory)).getAllTasks();
                     break;
-                case 3:
+                case "3":
                     (new MenuSix(studentRealisationFactory)).getAllTasks();
                     break;
-                case 4:
+                case "4":
                     (new MenuFive(studentRealisationFactory)).getAllTasks();
                     break;
-                case 5:
+                case "5":
                     (new MenuFour(studentRealisationFactory)).getAllTasks();
-                case 6:
+                case "6":
                     System.out.println("Exit");
                     return;
                 default:

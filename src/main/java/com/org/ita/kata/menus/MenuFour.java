@@ -34,12 +34,12 @@ public class MenuFour implements MenuNumber {
         while (true) {
             System.out.println("[ALL TASKS]\n" + allTasks + "\n");
             System.out.println("Enter number of task : ");
-            int taskNumber = SystemInput.input.nextInt();
+            String taskNumber = SystemInput.input.nextLine();
             switch (taskNumber) {
-                case 1:
+                case "1":
                     getFirstTask();
                     break;
-                case 2:
+                case "2":
                     return;
                 default:
                     System.out.println("[Incorrect input]");

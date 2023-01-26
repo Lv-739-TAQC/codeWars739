@@ -26,16 +26,18 @@ public class MenuEight implements MenuNumber {
     }
 
     public void getFirstTask() {
-
+        System.out.println("Enter time number : ");
+        double time = SystemInput.inputDoubleNumber();
+        System.out.println("V = " + getStudentEightKataRealisation().Liters(time));
     }
 
     public void getSecondTask() {
         System.out.println("Enter length number : ");
-        double length = SystemInput.input.nextDouble();
+        double length = SystemInput.inputDoubleNumber();
         System.out.println("Enter width number : ");
-        double width = SystemInput.input.nextDouble();
+        double width = SystemInput.inputDoubleNumber();
         System.out.println("Enter height number : ");
-        double height = SystemInput.input.nextDouble();
+        double height = SystemInput.inputDoubleNumber();
         System.out.println("V = " + getStudentEightKataRealisation().getVolumeOfCuboid(length, width, height));
     }
 
@@ -69,33 +71,33 @@ public class MenuEight implements MenuNumber {
         while (true) {
             System.out.println("[ALL TASKS]\n" + allTasks + "\n");
             System.out.println("Enter number of task : ");
-            int taskNumber = SystemInput.input.nextInt();
+            String taskNumber = SystemInput.input.nextLine();
             switch (taskNumber) {
-                case 1:
+                case "1":
                     getFirstTask();
                     break;
-                case 2:
+                case "2":
                     getSecondTask();
                     break;
-                case 3:
+                case "3":
                     getThirdTask();
                     break;
-                case 4:
+                case "4":
                     getFourthTask();
                     return;
-                case 5:
+                case "5":
                     getFifthTask();
                     break;
-                case 6:
+                case "6":
                     getSixthTask();
                     break;
-                case 7:
+                case "7":
                     getSeventhTask();
                     break;
-                case 8:
+                case "8":
                     getEighthTask();
                     break;
-                case 9:
+                case "9":
                     return;
                 default:
                     System.out.println("[Incorrect input]");
