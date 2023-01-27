@@ -6,6 +6,10 @@ import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import static com.org.ita.kata.utils.Constant.ErrorMessages.INCORRECT_DOUBLE_INPUT;
+import static com.org.ita.kata.utils.Constant.ErrorMessages.INCORRECT_INT_INPUT;
+import static com.org.ita.kata.utils.Constant.ErrorMessages.FILE_NOT_FOUND;
+
 public class SystemInput {
     public static final Scanner input = new Scanner(System.in);
 
@@ -16,7 +20,7 @@ public class SystemInput {
                 value = Integer.parseInt(input.nextLine());
                 break;
             } catch (InputMismatchException | NumberFormatException e) {
-                System.out.println("Input int value");
+                System.out.println(INCORRECT_INT_INPUT);
                 return inputIntNumber();
             }
         }
@@ -30,7 +34,7 @@ public class SystemInput {
                 value = Double.parseDouble(input.nextLine());
                 break;
             } catch (InputMismatchException | NumberFormatException e) {
-                System.out.println("Input double value");
+                System.out.println(INCORRECT_DOUBLE_INPUT);
                 return inputDoubleNumber();
             }
         }
@@ -41,7 +45,7 @@ public class SystemInput {
         System.out.println("Enter array length: ");
         int arrayLength = inputIntNumber();
         int[] array = new int[arrayLength];
-        for(int i = 0; i < arrayLength; i++){
+        for (int i = 0; i < arrayLength; i++) {
             System.out.print(i + ": ");
             array[i] = inputIntNumber();
         }
@@ -52,7 +56,7 @@ public class SystemInput {
         System.out.println("Enter array length: ");
         int arrayLength = inputIntNumber();
         double[] array = new double[arrayLength];
-        for(int i = 0; i < arrayLength; i++){
+        for (int i = 0; i < arrayLength; i++) {
             System.out.print(i + ": ");
             array[i] = inputDoubleNumber();
         }
@@ -65,7 +69,6 @@ public class SystemInput {
             try (BufferedReader br = new BufferedReader(new FileReader(input.nextLine()));) {
                 StringBuilder sb = new StringBuilder();
                 String line = br.readLine();
-
                 while (line != null) {
                     sb.append(line);
                     sb.append(System.lineSeparator());
@@ -73,7 +76,7 @@ public class SystemInput {
                 }
                 return sb.toString();
             } catch (IOException e) {
-                System.out.println("File not found!");
+                System.out.println(FILE_NOT_FOUND);
             }
         }
     }

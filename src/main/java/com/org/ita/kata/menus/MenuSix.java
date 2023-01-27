@@ -6,6 +6,9 @@ import com.org.ita.kata.factory.delegator.StudentRealisationFactory;
 
 import com.org.ita.kata.utils.SystemInput;
 
+import static com.org.ita.kata.utils.Constant.ErrorMessages.INCORRECT_INPUT;
+import static com.org.ita.kata.utils.Constant.MenuSteps.GO_BACK;
+
 public class MenuSix implements MenuNumber {
 
     private StudentRealisationFactory studentRealisationFactory;
@@ -52,7 +55,7 @@ public class MenuSix implements MenuNumber {
     public void getAllTasks() {
         System.out.println("\n[IMPLEMENTED BY : " + whoImplemented() + "]\n");
         while (true) {
-            System.out.println("[ALL TASKS]\n" + allTasks + "\n");
+            System.out.println("[ALL TASKS]\n" + allTasks);
             System.out.println("Enter number of task : ");
             String taskNumber = SystemInput.input.nextLine();
             switch (taskNumber) {
@@ -75,9 +78,10 @@ public class MenuSix implements MenuNumber {
                     getSixthTask();
                     break;
                 case "7":
+                    System.out.println(GO_BACK);
                     return;
                 default:
-                    System.out.println("[Incorrect input]");
+                    System.out.println(INCORRECT_INPUT);
                     break;
             }
         }

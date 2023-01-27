@@ -5,6 +5,9 @@ import com.org.ita.kata.menus.*;
 
 import com.org.ita.kata.utils.SystemInput;
 
+import static com.org.ita.kata.utils.Constant.ErrorMessages.INCORRECT_INPUT;
+import static com.org.ita.kata.utils.Constant.MenuSteps.EXIT_PROGRAM;
+
 public class MenuNumberFactory {
 
     private String katas = "1.) Kata 8\n" + "2.) Kata 7\n" + "3.) Kata 6\n" + "4.) Kata 5\n" + "5.) Kata 4\n";
@@ -17,7 +20,7 @@ public class MenuNumberFactory {
 
     public void runMenu() {
         while (true) {
-            System.out.println("[ALL KATAS]\n" + katas + "\n");
+            System.out.println("[ALL KATAS]\n" + katas);
             System.out.println("Please enter number of kata : ");
             String kata = SystemInput.input.nextLine();
             switch (kata) {
@@ -36,10 +39,10 @@ public class MenuNumberFactory {
                 case "5":
                     (new MenuFour(studentRealisationFactory)).getAllTasks();
                 case "6":
-                    System.out.println("Exit");
+                    System.out.println(EXIT_PROGRAM);
                     return;
                 default:
-                    System.out.println("[Incorrect input]");
+                    System.out.println(INCORRECT_INPUT);
                     break;
             }
         }
