@@ -136,6 +136,9 @@ public class View {
 			case "int":
 				parametrsObject[i] = Integer.parseInt(next);
 				break;
+			case "long":
+				parametrsObject[i] = Long.parseLong(next);
+				break;
 			case "float":
 				parametrsObject[i] = Float.parseFloat(next);
 				break;
@@ -150,6 +153,9 @@ public class View {
 				break;
 			}
 		}
+		
+		System.out.println(method.getReturnType());
+		
 		System.out.println(method.invoke(ourClass, parametrsObject));
 	}
 
