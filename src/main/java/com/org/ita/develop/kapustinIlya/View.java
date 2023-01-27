@@ -154,9 +154,29 @@ public class View {
 			}
 		}
 		
-		System.out.println(method.getReturnType());
-		
-		System.out.println(method.invoke(ourClass, parametrsObject));
+		String typeReturnType = method.getReturnType().getSimpleName();
+		if (typeReturnType.contains("[]")) {
+			switch (typeReturnType.substring(0,typeReturnType.indexOf("[]"))) {
+			case "int":
+				System.out.println(Arrays.toString((int[]) method.invoke(ourClass, parametrsObject)));
+				break;
+			case "long":
+				System.out.println(Arrays.toString((long[]) method.invoke(ourClass, parametrsObject)));
+				break;
+			case "float":
+				System.out.println(Arrays.toString((float[]) method.invoke(ourClass, parametrsObject)));
+				break;
+			case "double":
+				System.out.println(Arrays.toString((double[]) method.invoke(ourClass, parametrsObject)));
+				break;
+			case "String":
+				System.out.println(Arrays.toString((String[]) method.invoke(ourClass, parametrsObject)));
+				break;
+			}
+		} else {
+			System.out.println(method.invoke(ourClass, parametrsObject));
+		}
+	
 	}
 
 	private static int choosePosition(int min, int max) {
