@@ -27,6 +27,7 @@ public class SixImpl implements Six {
 
 
     public static DecimalFormat df = new DecimalFormat("0.000");
+
     @Override
     public String balance(String book) {
         if (book.isEmpty()) {
@@ -73,14 +74,70 @@ public class SixImpl implements Six {
         return result;
     }
 
+    public static HashMap<String, String> map = new HashMap<>();
+    public static double meanValue = 0.0;
+    public static double varianceValue = 0.0;
+
     @Override
     public double mean(String town, String strng) {
-        return 0;
+        meanValue = 0;
+        varianceValue = 0;
+        if (strng.indexOf((town + ":")) == -1) {
+            return -1;
+        } else {
+            int cityLength = strng.indexOf(town) + town.length() + 1;
+            strng = strng.substring(cityLength);
+            int newLine = strng.indexOf('\n');
+            if (newLine != -1) {
+                strng = strng.substring(0, newLine);
+            }
+            strng = strng.replaceAll(",", " ");
+            strng = strng.replaceAll("\\s+", " ");
+            String[] rainfall = strng.split(" ");
+            for (int i = 0; i < rainfall.length - 1; i += 2) {
+                map.put(rainfall[i], rainfall[i + 1]);
+            }
+            for (Map.Entry<String, String> countMap : map.entrySet()) {
+                meanValue = (meanValue + Double.parseDouble(countMap.getValue()));
+            }
+            double mapSize = map.size();
+            meanValue = meanValue / mapSize;
+        }
+        return meanValue;
     }
 
     @Override
     public double variance(String town, String strng) {
-        return 0;
+        meanValue = 0;
+        varianceValue = 0;
+        if (strng.indexOf((town + ":")) == -1) {
+            return -1;
+        } else {
+            int cityLength = strng.indexOf(town) + town.length() + 1;
+            strng = strng.substring(cityLength);
+            int newLine = strng.indexOf('\n');
+            if (newLine != -1) {
+                strng = strng.substring(0, newLine);
+            }
+            strng = strng.replaceAll(",", " ");
+            strng = strng.replaceAll("\\s+", " ");
+            String[] rainfall = strng.split(" ");
+            for (int i = 0; i < rainfall.length - 1; i += 2) {
+                map.put(rainfall[i], rainfall[i + 1]);
+            }
+            for (Map.Entry<String, String> countMap : map.entrySet()) {
+                meanValue = (meanValue + Double.parseDouble(countMap.getValue()));
+            }
+            double mapSize = map.size();
+            meanValue = meanValue / mapSize;
+        }
+        double mapSize = map.size();
+        for (Map.Entry<String, String> countMap : map.entrySet()) {
+            double value = Double.parseDouble(countMap.getValue());
+            varianceValue += Math.pow((value - meanValue), 2);
+        }
+        varianceValue = varianceValue / mapSize;
+        return varianceValue;
     }
 
     @Override
