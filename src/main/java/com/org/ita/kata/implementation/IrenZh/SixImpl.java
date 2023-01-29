@@ -1,6 +1,10 @@
 package com.org.ita.kata.implementation.IrenZh;
 
 import com.org.ita.kata.Six;
+import static java.util.stream.Collectors.averagingDouble;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SixImpl implements Six {
     @Override
@@ -36,12 +40,36 @@ public class SixImpl implements Six {
 
     @Override
     public double mean(String town, String strng) {
-        return 0;
+        return parseTemp(town, strng).stream()
+                .collect(averagingDouble(n -> n));
     }
 
     @Override
     public double variance(String town, String strng) {
-        return 0;
+        double mean = mean(town, strng);
+        if (mean == -1.0) return -1.0;
+
+        return parseTemp(town, strng).stream()
+                .collect(averagingDouble(n -> (n - mean) * (n - mean)));
+
+    }
+
+    private static List<Double> parseTemp(String town, String strng) {
+        List<Double> temps = new ArrayList<>();
+        for (String line : strng.split("\\n")) {
+            String[] data = line.split(":");
+            if (town.equals(data[0])) {
+                for (String weather : data[1].split(",")) {
+                    String[] temp = weather.split("\\s");
+                    temps.add(Double.parseDouble(temp[1]));
+                }
+                break;
+            }
+        }
+
+        if (temps.isEmpty()) temps.add(-1.0);
+
+        return temps;
     }
 
     @Override
@@ -51,6 +79,19 @@ public class SixImpl implements Six {
 
     @Override
     public String stockSummary(String[] lstOfArt, String[] lstOf1stLetter) {
-        return null;
+        String report = "";
+        if ((lstOfArt.length == 0) || (lstOf1stLetter.length == 0)) {
+            return report;
+        }
+        for (String letter : lstOf1stLetter) {
+            int quantity = 0;
+            for (String stockLetter : lstOfArt) {
+                if (stockLetter.substring(0, 1).equals(letter)) {
+                    quantity += Integer.parseInt(stockLetter.replaceAll("[^0-9]", ""));
+                } else quantity += 0;
+            }
+            report += " - (" + letter + " : " + quantity + ")";
+        }
+        return report.substring(3);
     }
 }
