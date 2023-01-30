@@ -1,6 +1,7 @@
 package com.org.ita.develop.kapustinIlya;
 
 import java.io.File;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
@@ -19,4 +20,12 @@ public class Controller {
 		File packageInterface = new File(namePackageImplementation);
 		return Stream.of(packageInterface.listFiles()).filter(File::isDirectory).map(File::getName).toList();
 	}
+	
+	public static Object getInvokeMethod(Method method, String className, String implemPerson) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, ClassNotFoundException {
+		Object ourClass = Class.forName("com.org.ita.kata.implementation." + implemPerson + "." + className + "Impl")
+				.getConstructor().newInstance();
+		Object[] parametrsObject = ScannerUpdate.inputMethodParametrs(method.getParameters());
+		return method.invoke(ourClass, parametrsObject);
+	}
+	
 }

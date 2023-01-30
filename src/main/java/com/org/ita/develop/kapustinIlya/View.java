@@ -5,83 +5,103 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 import java.math.BigInteger;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
 public class View {
 
-	public static void mainPage() throws ClassNotFoundException, InstantiationException, IllegalAccessException,
-			IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
+	public static void mainPage() {
+
+		System.out.println("/// Main page ///");
 		System.out.println("1. List student");
 		System.out.println("2. List level");
 		System.out.println("0. Exit");
-		int position = choosePosition(0, 2);
+
+		int position = ScannerUpdate.chooseMenuPosition(0, 2);
 		switch (position) {
 		case 2:
 			levelPage();
 			break;
 		}
+
 		System.out.println("/// Goodbya!!! ///");
 	}
 
-	private static void levelPage() throws ClassNotFoundException, InstantiationException, IllegalAccessException,
-			IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
+	private static void levelPage() {
+
 		List<String> levels = Controller.getLevels("src/main/java/com/org/ita/kata");
-		// Collections.sort(levels);
-		System.out.println("/// Levels: ///");
+		String chosenLevel = null;
+
+		System.out.println("/// Levels page ///");
 		for (int i = 0; i < levels.size(); i++) {
-			System.out.printf("%d: %s\n", i + 1, levels.get(i));
+			chosenLevel = levels.get(i).substring(0, levels.get(i).indexOf("."));
+			System.out.printf("%d: %s\n", i + 1, chosenLevel);
 		}
 		System.out.println("0. Exit");
 		System.out.println("-1. Main Page");
-		int position = choosePosition(-1, levels.size());
+
+		int position = ScannerUpdate.chooseMenuPosition(-1, levels.size());
+
 		if (position > 0) {
-			methodsPage(levels.get(position - 1).substring(0, levels.get(position - 1).indexOf(".")));
+			chosenLevel = levels.get(position - 1).substring(0, levels.get(position - 1).indexOf("."));
+			methodsPage(chosenLevel);
 		} else if (position == -1) {
 			mainPage();
 		}
 
 	}
 
-	private static void methodsPage(String className)
-			throws ClassNotFoundException, InstantiationException, IllegalAccessException, IllegalArgumentException,
-			InvocationTargetException, NoSuchMethodException, SecurityException {
-		List<Method> methods = Controller.getNameMethods(className);
+	private static void methodsPage(String className) {
+		try {
+			List<Method> methods = Controller.getNameMethods(className);
+			Method chosenMethod = null;
 
-		System.out.println("/// Methods: ///");
+			System.out.println("/// Methods: ///");
+			for (int i = 0; i < methods.size(); i++) {
+				chosenMethod = methods.get(i);
+				System.out.printf("%d: %s\n", i + 1, chosenMethod.getName());
+			}
+			System.out.println("0. Exit");
+			System.out.println("-1. Level page");
 
-		for (int i = 0; i < methods.size(); i++) {
-			System.out.printf("%d: %s\n", i + 1, methods.get(i).getName());
-		}
+			int position = ScannerUpdate.chooseMenuPosition(-1, methods.size());
 
-		System.out.println("0. Exit");
-		System.out.println("-1. Level page");
-
-		int position = choosePosition(-1, methods.size());
-		if (position > 0) {
-			implemPage(methods.get(position - 1), className);
-		} else if (position == -1) {
-			levelPage();
+			if (position > 0) {
+				chosenMethod = methods.get(position - 1);
+				implemPage(chosenMethod, className);
+			} else if (position == -1) {
+				levelPage();
+			}
+		} catch (ClassNotFoundException e) {
+			System.out.println("Something was wrong. Try Again.");
+			mainPage();
 		}
 	}
 
-	private static void implemPage(Method method, String className)
-			throws ClassNotFoundException, InstantiationException, IllegalAccessException, IllegalArgumentException,
-			InvocationTargetException, NoSuchMethodException, SecurityException {
+	private static void implemPage(Method method, String className) {
 		List<String> implems = Controller.getImplementation("src/main/java/com/org/ita/kata/implementation");
+		String chosenImplem = null;
 
 		System.out.println("///Implementation page: ///");
-
 		for (int i = 0; i < implems.size(); i++) {
-			System.out.printf("%d: %s\n", i + 1, implems.get(i));
+			chosenImplem = implems.get(i);
+			System.out.printf("%d: %s\n", i + 1, chosenImplem);
 		}
-
 		System.out.println("0. Exit");
 		System.out.println("-1. Methods page");
 
-		int position = choosePosition(-1, implems.size());
+		int position = ScannerUpdate.chooseMenuPosition(-1, implems.size());
+
 		if (position > 0) {
-			invokeMethodPage(method, className, implems.get(position - 1));
+			chosenImplem = implems.get(position - 1);
+			try {
+				invokeMethodPage(method, className, chosenImplem);
+			} catch (Exception e) {
+				System.out.println("Something was wrong. Try Again.");
+				mainPage();
+			}
+
 		} else if (position == -1) {
 			methodsPage(className);
 		}
@@ -93,101 +113,32 @@ public class View {
 
 		System.out.printf("/// Invoke methods:\"%s\" by %s: ///\n", method.getName(), implemPerson);
 
-		Object ourClass = Class.forName("com.org.ita.kata.implementation." + implemPerson + "." + className + "Impl")
-				.getConstructor().newInstance();
-		Parameter[] parametrs = method.getParameters();
-		Object[] parametrsObject = new Object[parametrs.length];
-		Scanner sc = new Scanner(System.in);
-		for (int i = 0; i < parametrs.length; i++) {
-			String typeParametrs = parametrs[i].toString().substring(0, parametrs[i].toString().indexOf(" "));
-			System.out.printf("Input next parametrs(%s): ", typeParametrs);
-			String next = sc.nextLine();
-			if (typeParametrs.contains("[]")) {
-				String[] values = next.split(" ");
-				switch (typeParametrs.substring(0, typeParametrs.indexOf("[]"))) {
-					case "int":
-						int[] valuesInt = new int[values.length];
-						for (int j = 0; j < values.length; j++ ) {
-							valuesInt[j] = Integer.parseInt(values[j]);
-						}
-						parametrsObject[i] = valuesInt;
-						break;
-					case "float":
-						float[] valuesFloat = new float[values.length];
-						for (int j = 0; j < values.length; j++ ) {
-							valuesFloat[j] = Float.parseFloat(values[j]);
-						}
-						parametrsObject[i] = valuesFloat;
-						break;
-					case "double":
-						double[] valuesDouble = new double[values.length];
-						for (int j = 0; j < values.length; j++ ) {
-							valuesDouble[j] = Double.parseDouble(values[j]);
-						}
-						parametrsObject[i] = valuesDouble;
-						break;
-					case "java.lang.String":
-						parametrsObject[i] = values;
-						break;
-				}
-				continue;
-			}
-			switch (typeParametrs) {
-			case "int":
-				parametrsObject[i] = Integer.parseInt(next);
-				break;
-			case "long":
-				parametrsObject[i] = Long.parseLong(next);
-				break;
-			case "float":
-				parametrsObject[i] = Float.parseFloat(next);
-				break;
-			case "double":
-				parametrsObject[i] = Double.parseDouble(next);
-				break;
-			case "java.math.BigInteger":
-				parametrsObject[i] = new BigInteger(next);
-				break;
-			case "java.lang.String":
-				parametrsObject[i] = next;
-				break;
-			}
-		}
-		
+		Object result = Controller.getInvokeMethod(method, className, implemPerson);
 		String typeReturnType = method.getReturnType().getSimpleName();
+
+		System.out.print("Result chosen methods is ");
 		if (typeReturnType.contains("[]")) {
-			switch (typeReturnType.substring(0,typeReturnType.indexOf("[]"))) {
+			switch (typeReturnType.substring(0, typeReturnType.indexOf("[]"))) {
 			case "int":
-				System.out.println(Arrays.toString((int[]) method.invoke(ourClass, parametrsObject)));
+				System.out.println(Arrays.toString((int[]) result));
 				break;
 			case "long":
-				System.out.println(Arrays.toString((long[]) method.invoke(ourClass, parametrsObject)));
+				System.out.println(Arrays.toString((long[]) result));
 				break;
 			case "float":
-				System.out.println(Arrays.toString((float[]) method.invoke(ourClass, parametrsObject)));
+				System.out.println(Arrays.toString((float[]) result));
 				break;
 			case "double":
-				System.out.println(Arrays.toString((double[]) method.invoke(ourClass, parametrsObject)));
+				System.out.println(Arrays.toString((double[]) result));
 				break;
 			case "String":
-				System.out.println(Arrays.toString((String[]) method.invoke(ourClass, parametrsObject)));
+				System.out.println(Arrays.toString((String[]) result));
 				break;
 			}
 		} else {
-			System.out.println(method.invoke(ourClass, parametrsObject));
+			System.out.println(result);
 		}
-	
+
 	}
 
-	private static int choosePosition(int min, int max) {
-		System.out.print("\nChoose position: ");
-		int position = 0;
-		Scanner scanner = new Scanner(System.in);
-		if (scanner.hasNextInt() && ((position = scanner.nextInt()) < min || position > max)) {
-			position = 0;
-			System.out.println("You choose wrong position");
-		}
-		System.out.println();
-		return position;
-	}
 }
