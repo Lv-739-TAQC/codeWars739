@@ -9,8 +9,14 @@ import com.org.ita.kata.utils.SystemInput;
 public class MenuEight implements MenuNumber {
 
     private StudentRealisationFactory studentRealisationFactory;
-    private String allTasks = "1.) Keep Hydrated!\n" + "2.) Volume of a Cuboid\n" +
-            "3.) Miles per gallon to kilometers per liter\n" + "n.) ... ";
+    private String allTasks = "1.) Keep Hydrated!\n"
+            + "2.) Volume of a Cuboid\n"
+            + "3.) Miles per gallon to kilometers per liter\n"
+            + "4.) To square root or no to square\n"
+            + "5.) Count of positives / sum of negatives\n"
+            + "6.) Convert a String to a Number\n"
+            + "7.) Formatting decimal places\n"
+            + "8.) Find numbers which are divisible by given number";
 
     public MenuEight(StudentRealisationFactory studentRealisationFactory) {
         this.studentRealisationFactory = studentRealisationFactory;
@@ -25,13 +31,13 @@ public class MenuEight implements MenuNumber {
         return this.studentRealisationFactory.setUpImplementation().implementationEightKata();
     }
 
-    public void getFirstTask() {
+    public void getKeepHydratedTask() {
         System.out.println("Enter time number : ");
         double time = SystemInput.inputDoubleNumber();
         System.out.println("Liters = " + getStudentEightKataRealisation().Liters(time));
     }
 
-    public void getSecondTask() {
+    public void getVolumeOfACuboidTask() {
         System.out.println("Enter length number : ");
         double length = SystemInput.inputDoubleNumber();
         System.out.println("Enter width number : ");
@@ -41,27 +47,27 @@ public class MenuEight implements MenuNumber {
         System.out.println("V = " + getStudentEightKataRealisation().getVolumeOfCuboid(length, width, height));
     }
 
-    public void getThirdTask() {
+    public void getMilesPerGallonToKilometersPerLiterTask() {
 
     }
 
-    public void getFourthTask() {
+    public void getToSquareRootOrNoToSquareTask() {
 
     }
 
-    public void getFifthTask() {
+    public void getCountOfPositivesSumOfNegativesTask() {
 
     }
 
-    public void getSixthTask() {
+    public void getConvertAStringToANumberTask() {
 
     }
 
-    public void getSeventhTask() {
+    public void getFormattingDecimalPlacesTask() {
 
     }
 
-    public void getEighthTask() {
+    public void getFindNumbersWhichAreDivisibleByGivenNumberTask() {
 
     }
 
@@ -70,32 +76,33 @@ public class MenuEight implements MenuNumber {
         System.out.println("\n[IMPLEMENTED BY : " + whoImplemented() + "]\n");
         while (true) {
             System.out.println("[ALL TASKS]\n" + allTasks);
+            System.out.println("9.) Go back\n");
             System.out.println("Enter number of task : ");
             String taskNumber = SystemInput.input.nextLine();
             switch (taskNumber) {
                 case "1":
-                    getFirstTask();
+                    getKeepHydratedTask();
                     break;
                 case "2":
-                    getSecondTask();
+                    getVolumeOfACuboidTask();
                     break;
                 case "3":
-                    getThirdTask();
+                    getMilesPerGallonToKilometersPerLiterTask();
                     break;
                 case "4":
-                    getFourthTask();
+                    getToSquareRootOrNoToSquareTask();
                     return;
                 case "5":
-                    getFifthTask();
+                    getCountOfPositivesSumOfNegativesTask();
                     break;
                 case "6":
-                    getSixthTask();
+                    getConvertAStringToANumberTask();
                     break;
                 case "7":
-                    getSeventhTask();
+                    getFormattingDecimalPlacesTask();
                     break;
                 case "8":
-                    getEighthTask();
+                    getFindNumbersWhichAreDivisibleByGivenNumberTask();
                     break;
                 case "9":
                     System.out.println(GO_BACK);

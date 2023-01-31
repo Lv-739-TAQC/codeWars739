@@ -9,7 +9,7 @@ import com.org.ita.kata.utils.SystemInput;
 public class MenuFour implements MenuNumber {
 
     private StudentRealisationFactory studentRealisationFactory;
-    private String allTasks = "ALL TASKS";
+    private String allTasks = "1.) The Greatest Warrior";
 
     public MenuFour(StudentRealisationFactory studentRealisationFactory) {
         this.studentRealisationFactory = studentRealisationFactory;
@@ -24,7 +24,7 @@ public class MenuFour implements MenuNumber {
         return this.studentRealisationFactory.setUpImplementation().implementationFourKata();
     }
 
-    public void getFirstTask() {
+    public void getTheGreatestWarriorTask() {
 
     }
 
@@ -33,11 +33,12 @@ public class MenuFour implements MenuNumber {
         System.out.println("\n[IMPLEMENTED BY : " + whoImplemented() + "]\n");
         while (true) {
             System.out.println("[ALL TASKS]\n" + allTasks);
+            System.out.println("2.) Go back\n");
             System.out.println("Enter number of task : ");
             String taskNumber = SystemInput.input.nextLine();
             switch (taskNumber) {
                 case "1":
-                    getFirstTask();
+                    getTheGreatestWarriorTask();
                     break;
                 case "2":
                     System.out.println(GO_BACK);

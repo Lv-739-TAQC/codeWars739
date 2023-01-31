@@ -10,7 +10,7 @@ public class MenuNumberFactory {
     public static final String INCORRECT_INPUT = "Incorrect input";
     public static final String EXIT_PROGRAM = "Exit";
 
-    private String katas = "1.) Kata 8\n" + "2.) Kata 7\n" + "3.) Kata 6\n" + "4.) Kata 5\n" + "5.) Kata 4\n";
+    private String katas = "1.) Kata 8\n" + "2.) Kata 7\n" + "3.) Kata 6\n" + "4.) Kata 5\n" + "5.) Kata 4";
 
     private StudentRealisationFactory studentRealisationFactory;
 
@@ -21,6 +21,7 @@ public class MenuNumberFactory {
     public void runMenu() {
         while (true) {
             System.out.println("[ALL KATAS]\n" + katas);
+            System.out.println("6.) Exit\n");
             System.out.println("Please enter number of kata : ");
             String kata = SystemInput.input.nextLine();
             switch (kata) {
@@ -38,6 +39,7 @@ public class MenuNumberFactory {
                     break;
                 case "5":
                     (new MenuFour(studentRealisationFactory)).getAllTasks();
+                    break;
                 case "6":
                     System.out.println(EXIT_PROGRAM);
                     return;

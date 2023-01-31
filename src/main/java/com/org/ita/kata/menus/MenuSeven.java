@@ -9,7 +9,8 @@ import com.org.ita.kata.utils.SystemInput;
 public class MenuSeven implements MenuNumber {
 
     private StudentRealisationFactory studentRealisationFactory;
-    private String allTasks = "ALL TASKS";
+    private String allTasks = "1.) Looking for a benefactor\n"
+            + "2.) Sum of the first nth term of Series";
 
     public MenuSeven(StudentRealisationFactory studentRealisationFactory) {
         this.studentRealisationFactory = studentRealisationFactory;
@@ -24,11 +25,11 @@ public class MenuSeven implements MenuNumber {
         return this.studentRealisationFactory.setUpImplementation().implementationSevenKata();
     }
 
-    public void getFirstTask() {
+    public void getLookingForABenefactorTask() {
 
     }
 
-    public void getSecondTask() {
+    public void getSumOfTheFirstNthTermOfSeriesTask() {
 
     }
 
@@ -37,14 +38,15 @@ public class MenuSeven implements MenuNumber {
         System.out.println("\n[IMPLEMENTED BY : " + whoImplemented() + "]\n");
         while (true) {
             System.out.println("[ALL TASKS]\n" + allTasks);
+            System.out.println("3.) Go back\n");
             System.out.println("Enter number of task : ");
             String taskNumber = SystemInput.input.nextLine();
             switch (taskNumber) {
                 case "1":
-                    getFirstTask();
+                    getLookingForABenefactorTask();
                     break;
                 case "2":
-                    getSecondTask();
+                    getSumOfTheFirstNthTermOfSeriesTask();
                     break;
                 case "3":
                     System.out.println(GO_BACK);

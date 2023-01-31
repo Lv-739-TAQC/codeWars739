@@ -17,6 +17,7 @@ public class SystemInput {
     public static final String FILE_NOT_FOUND = "File not found";
 
     public static final Scanner input = new Scanner(System.in);
+
     public static Student inputStudent() {
         while(true) {
             System.out.println("Enter student's name : ");
@@ -31,28 +32,22 @@ public class SystemInput {
 
     public static int inputIntNumber() {
         int value = 0;
-        while (true) {
-            try {
-                value = Integer.parseInt(input.nextLine());
-                break;
-            } catch (InputMismatchException | NumberFormatException e) {
-                System.out.println(INCORRECT_INT_INPUT);
-                return inputIntNumber();
-            }
+        try {
+            value = Integer.parseInt(input.nextLine());
+        } catch (InputMismatchException | NumberFormatException e) {
+            System.out.println(INCORRECT_INT_INPUT);
+            return inputIntNumber();
         }
         return value;
     }
 
     public static double inputDoubleNumber() {
         double value = 0;
-        while (true) {
-            try {
-                value = Double.parseDouble(input.nextLine());
-                break;
-            } catch (InputMismatchException | NumberFormatException e) {
-                System.out.println(INCORRECT_DOUBLE_INPUT);
-                return inputDoubleNumber();
-            }
+        try {
+            value = Double.parseDouble(input.nextLine());
+        } catch (InputMismatchException | NumberFormatException e) {
+            System.out.println(INCORRECT_DOUBLE_INPUT);
+            return inputDoubleNumber();
         }
         return value;
     }

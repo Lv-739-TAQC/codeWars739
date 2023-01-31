@@ -9,7 +9,11 @@ import com.org.ita.kata.utils.SystemInput;
 public class MenuFive implements MenuNumber {
 
     private StudentRealisationFactory studentRealisationFactory;
-    private String allTasks = "ALL TASKS";
+    private String allTasks = "1.) Gap in Primes\n"
+            + "2.) Trailing zeros in factorial\n"
+            + "3.) Perimeter of squares in a rectangle\n"
+            + "4.) Which x for that sum?\n"
+            + "5.) Find the smallest";
 
     public MenuFive(StudentRealisationFactory studentRealisationFactory) {
         this.studentRealisationFactory = studentRealisationFactory;
@@ -24,23 +28,23 @@ public class MenuFive implements MenuNumber {
         return this.studentRealisationFactory.setUpImplementation().implementationFiveKata();
     }
 
-    public void getFirstTask() {
+    public void getGapInPrimesTask() {
 
     }
 
-    public void getSecondTask() {
+    public void getTrailingZerosInFactorialTask() {
 
     }
 
-    public void getThirdTask() {
+    public void getPerimeterOfSquaresInARectangleTask() {
 
     }
 
-    public void getFourthTask() {
+    public void getWhichXForThatSumTask() {
 
     }
 
-    public void getFifthTask() {
+    public void getFindTheSmallestTask() {
 
     }
 
@@ -49,23 +53,24 @@ public class MenuFive implements MenuNumber {
         System.out.println("\n[IMPLEMENTED BY : " + whoImplemented() + "]\n");
         while (true) {
             System.out.println("[ALL TASKS]\n" + allTasks);
+            System.out.println("6.) Go back\n");
             System.out.println("Enter number of task : ");
             String taskNumber = SystemInput.input.nextLine();
             switch (taskNumber) {
                 case "1":
-                    getFirstTask();
+                    getGapInPrimesTask();
                     break;
                 case "2":
-                    getSecondTask();
+                    getTrailingZerosInFactorialTask();
                     break;
                 case "3":
-                    getThirdTask();
+                    getPerimeterOfSquaresInARectangleTask();
                     break;
                 case "4":
-                    getFourthTask();
+                    getWhichXForThatSumTask();
                     break;
                 case "5":
-                    getFifthTask();
+                    getFindTheSmallestTask();
                     break;
                 case "6":
                     System.out.println(GO_BACK);

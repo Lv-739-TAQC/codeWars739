@@ -9,7 +9,12 @@ import com.org.ita.kata.utils.SystemInput;
 public class MenuSix implements MenuNumber {
 
     private StudentRealisationFactory studentRealisationFactory;
-    private String allTasks = "ALL TASKS";
+    private String allTasks = "1.) Build a pile of Cubes\n"
+            + "2.) Easy balance checking\n"
+            + "3.) Floating-point Approximation (I)\n"
+            + "4.) Rainfall\n"
+            + "5.) Ranking NBA\n"
+            + "6.) Help the bookseller!";
 
     public MenuSix(StudentRealisationFactory studentRealisationFactory) {
         this.studentRealisationFactory = studentRealisationFactory;
@@ -24,27 +29,27 @@ public class MenuSix implements MenuNumber {
         return this.studentRealisationFactory.setUpImplementation().implementationSixKata();
     }
 
-    public void getFirstTask() {
+    public void getBuildAPileOfCubesTask() {
 
     }
 
-    public void getSecondTask() {
+    public void getEasyBalanceCheckingTask() {
 
     }
 
-    public void getThirdTask() {
+    public void getFloatingPointApproximationITask() {
 
     }
 
-    public void getFourthTask() {
+    public void getRainfallTask() {
 
     }
 
-    public void getFifthTask() {
+    public void getRankingNBATask() {
 
     }
 
-    public void getSixthTask() {
+    public void getHelpTheBooksellerTask() {
 
     }
 
@@ -53,26 +58,27 @@ public class MenuSix implements MenuNumber {
         System.out.println("\n[IMPLEMENTED BY : " + whoImplemented() + "]\n");
         while (true) {
             System.out.println("[ALL TASKS]\n" + allTasks);
+            System.out.println("7.) Go back\n");
             System.out.println("Enter number of task : ");
             String taskNumber = SystemInput.input.nextLine();
             switch (taskNumber) {
                 case "1":
-                    getFirstTask();
+                    getBuildAPileOfCubesTask();
                     break;
                 case "2":
-                    getSecondTask();
+                    getEasyBalanceCheckingTask();
                     break;
                 case "3":
-                    getThirdTask();
+                    getFloatingPointApproximationITask();
                     break;
                 case "4":
-                    getFourthTask();
+                    getRainfallTask();
                     break;
                 case "5":
-                    getFifthTask();
+                    getRankingNBATask();
                     break;
                 case "6":
-                    getSixthTask();
+                    getHelpTheBooksellerTask();
                     break;
                 case "7":
                     System.out.println(GO_BACK);

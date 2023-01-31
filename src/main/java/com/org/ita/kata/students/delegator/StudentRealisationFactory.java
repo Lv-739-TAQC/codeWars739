@@ -17,26 +17,26 @@ public class StudentRealisationFactory {
     }
 
     public StudentRealisation setUpImplementation() {
-        switch (this.student.getName()) {
-            case "Anna":
+        switch (this.student) {
+            case ANNA:
                 return new AnnaRealisation();
-            case "Bohdan":
+            case BOHDAN:
                 return new BohdanRealisation();
-            case "Denys":
+            case DENYS:
                 return new DenysRealisation();
-            case "Dmytro":
+            case DMYTRO:
                 return new DmytroRealisation();
-            case "Ilya":
+            case ILYA:
                 return new IlyaRealisation();
-            case "Ira":
+            case IRA:
                 return new IraRealisation();
-            case "Janet":
+            case JANET:
                 return new JanetRealisation();
-            case "Maksym":
+            case MAKSYM:
                 return new MaksymRealisation();
-            case "Tetiana":
+            case TETIANA:
                 return new TetianaRealisation();
-            case "Zhanna":
+            case ZHANNA:
                 return new ZhannaRealisation();
             default:
                 return null;
