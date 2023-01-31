@@ -26,7 +26,11 @@ public class MenuSeven implements MenuNumber {
     }
 
     public void getLookingForABenefactorTask() {
-
+        System.out.println("Enter financial donations from benefactors : ");
+        double[] arr = SystemInput.inputDoubleArray();
+        System.out.println("Enter the desired average donation : " );
+        double nAvg = SystemInput.inputDoubleNumber();
+        System.out.println("To reach the average donation, the next benefactor must give to the association : " + getStudentSevenKataRealisation().newAvg(arr, nAvg));
     }
 
     public void getSumOfTheFirstNthTermOfSeriesTask() {
