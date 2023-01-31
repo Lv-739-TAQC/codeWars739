@@ -53,7 +53,6 @@ public class FiveImpl implements Five {
             Z = X.add(Y);
             sum = sum.add(X);
         }
-
         return sum.multiply(BigInteger.valueOf(4));
     }
 
