@@ -5,6 +5,7 @@ import com.org.ita.kata.Six;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class SixImpl implements Six {
     @Override
@@ -62,7 +63,7 @@ public class SixImpl implements Six {
         if (townInString(town, strng)) return -1;
         for (String s : List.of(strng.split("\n"))) {
             if (s.contains(town)) {
-                return Arrays.stream(s.replaceAll("[^0-9.]", " ").trim().replaceAll(" +", " ").trim().split(" ")).mapToDouble(Double::parseDouble).boxed().toList().stream().mapToDouble(a -> a).average().getAsDouble();
+                return Arrays.stream(s.replaceAll("[^0-9.]", " ").trim().replaceAll(" +", " ").trim().split(" ")).mapToDouble(Double::parseDouble).boxed().collect(Collectors.toList()).stream().mapToDouble(a -> a).average().getAsDouble();
             }
         }
         return -1;
@@ -75,7 +76,7 @@ public class SixImpl implements Six {
         double avgDisp = 0;
         for (String s : List.of(strng.split("\n"))) {
             if (s.contains(town)) {
-                for (double number : Arrays.stream(s.replaceAll("[^0-9.]", " ").trim().replaceAll(" +", " ").trim().split(" ")).mapToDouble(Double::parseDouble).boxed().toList()) {
+                for (double number : Arrays.stream(s.replaceAll("[^0-9.]", " ").trim().replaceAll(" +", " ").trim().split(" ")).mapToDouble(Double::parseDouble).boxed() .collect(Collectors.toList())) {
                     avgDisp += Math.pow(number - average, 2);
                 }
                 return avgDisp/12;
@@ -98,7 +99,7 @@ public class SixImpl implements Six {
             return "";
         }
         int j = 0;
-        List<String> matches = Arrays.stream(resultSheet.split(",")).toList();
+        List<String> matches = Arrays.stream(resultSheet.split(",")).collect(Collectors.toList());
         int wins = 0, draws = 0, loses = 0, scored = 0, conceded = 0, points = 0;
         int counter = 0;
         String tempTeam = "";
@@ -108,7 +109,7 @@ public class SixImpl implements Six {
         StringBuilder builder = new StringBuilder(toFind + ":");
         for (String match : matches) {
             if(match.contains(toFind)){
-                matchArray = Arrays.stream(match.split(" ")).toList();
+                matchArray = Arrays.stream(match.split(" ")).collect(Collectors.toList());
                 for(int i = 0; i < matchArray.size(); i++) {
                     if(matchArray.get(i).matches("-?\\d+(\\.\\d+)?")){
                         if(matchArray.get(i).contains(".")){
