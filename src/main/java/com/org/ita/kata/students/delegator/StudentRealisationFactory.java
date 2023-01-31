@@ -1,27 +1,23 @@
-package com.org.ita.kata.factory.delegator;
+package com.org.ita.kata.students.delegator;
 
 import com.org.ita.kata.StudentRealisation;
-import com.org.ita.kata.factory.*;
+import com.org.ita.kata.students.*;
 
 public class StudentRealisationFactory {
 
-    private String studentName;
+    private Student student;
 
-    public StudentRealisationFactory(String studentName) {
-        this.studentName = studentName;
-    }
-
-    public String getStudentName() {
-        return studentName;
+    public StudentRealisationFactory(Student student) {
+        this.student = student;
     }
 
     @Override
     public String toString() {
-        return "You have chosen [" + getStudentName() + "] implementation !";
+        return "You have chosen [" + student.getName() + "] implementation !";
     }
 
     public StudentRealisation setUpImplementation() {
-        switch (this.studentName) {
+        switch (this.student.getName()) {
             case "Anna":
                 return new AnnaRealisation();
             case "Bohdan":
@@ -40,8 +36,10 @@ public class StudentRealisationFactory {
                 return new MaksymRealisation();
             case "Tetiana":
                 return new TetianaRealisation();
-            default:
+            case "Zhanna":
                 return new ZhannaRealisation();
+            default:
+                return null;
         }
     }
 }

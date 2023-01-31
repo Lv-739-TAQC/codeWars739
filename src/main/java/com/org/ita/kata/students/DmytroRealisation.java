@@ -1,9 +1,9 @@
-package com.org.ita.kata.factory;
+package com.org.ita.kata.students;
 
 import com.org.ita.kata.StudentRealisation;
-import com.org.ita.kata.implementation.DenisPitsul.*;
+import com.org.ita.kata.implementation.savaxn04.*;
 
-public class DenysRealisation implements StudentRealisation {
+public class DmytroRealisation implements StudentRealisation {
 
     public EightImpl implementationEightKata() {
         return new EightImpl();

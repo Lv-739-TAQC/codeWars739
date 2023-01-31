@@ -1,14 +1,14 @@
 package com.org.ita.kata.menus.delegator;
 
-import com.org.ita.kata.factory.delegator.StudentRealisationFactory;
+import com.org.ita.kata.students.delegator.StudentRealisationFactory;
 import com.org.ita.kata.menus.*;
 
 import com.org.ita.kata.utils.SystemInput;
 
-import static com.org.ita.kata.utils.Constant.ErrorMessages.INCORRECT_INPUT;
-import static com.org.ita.kata.utils.Constant.MenuSteps.EXIT_PROGRAM;
-
 public class MenuNumberFactory {
+
+    public static final String INCORRECT_INPUT = "Incorrect input";
+    public static final String EXIT_PROGRAM = "Exit";
 
     private String katas = "1.) Kata 8\n" + "2.) Kata 7\n" + "3.) Kata 6\n" + "4.) Kata 5\n" + "5.) Kata 4\n";
 

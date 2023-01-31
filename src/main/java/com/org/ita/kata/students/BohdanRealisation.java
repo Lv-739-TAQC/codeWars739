@@ -1,9 +1,9 @@
-package com.org.ita.kata.factory;
+package com.org.ita.kata.students;
 
 import com.org.ita.kata.StudentRealisation;
-import com.org.ita.kata.implementation.Maksym637.*;
+import com.org.ita.kata.implementation.dzobabohdan.*;
 
-public class MaksymRealisation implements StudentRealisation {
+public class BohdanRealisation implements StudentRealisation {
 
     public EightImpl implementationEightKata() {
         return new EightImpl();

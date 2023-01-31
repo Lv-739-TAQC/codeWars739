@@ -2,12 +2,9 @@ package com.org.ita.kata.menus;
 
 import com.org.ita.kata.MenuNumber;
 import com.org.ita.kata.Six;
-import com.org.ita.kata.factory.delegator.StudentRealisationFactory;
+import com.org.ita.kata.students.delegator.StudentRealisationFactory;
 
 import com.org.ita.kata.utils.SystemInput;
-
-import static com.org.ita.kata.utils.Constant.ErrorMessages.INCORRECT_INPUT;
-import static com.org.ita.kata.utils.Constant.MenuSteps.GO_BACK;
 
 public class MenuSix implements MenuNumber {
 

@@ -1,4 +1,4 @@
-package com.org.ita.kata.factory;
+package com.org.ita.kata.students;
 
 import com.org.ita.kata.StudentRealisation;
 import com.org.ita.kata.implementation.AnnaMatviienko.*;

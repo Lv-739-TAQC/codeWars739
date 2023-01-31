@@ -1,17 +1,33 @@
 package com.org.ita.kata.utils;
 
+import com.org.ita.kata.students.delegator.Student;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.InputMismatchException;
+import java.util.Objects;
 import java.util.Scanner;
 
-import static com.org.ita.kata.utils.Constant.ErrorMessages.INCORRECT_DOUBLE_INPUT;
-import static com.org.ita.kata.utils.Constant.ErrorMessages.INCORRECT_INT_INPUT;
-import static com.org.ita.kata.utils.Constant.ErrorMessages.FILE_NOT_FOUND;
-
 public class SystemInput {
+
+    public static final String INCORRECT_INT_INPUT = "The required type is [int]";
+    public static final String INCORRECT_DOUBLE_INPUT = "The required type is [double]";
+    public static final String STUDENT_NOT_FOUND = "Student not found";
+    public static final String FILE_NOT_FOUND = "File not found";
+
     public static final Scanner input = new Scanner(System.in);
+    public static Student inputStudent() {
+        while(true) {
+            System.out.println("Enter student's name : ");
+            String name = SystemInput.input.nextLine();
+            if(Objects.nonNull(Student.getStudentByName(name))){
+                return Student.getStudentByName(name);
+            } else {
+                System.out.println(STUDENT_NOT_FOUND);
+            }
+        }
+    }
 
     public static int inputIntNumber() {
         int value = 0;
