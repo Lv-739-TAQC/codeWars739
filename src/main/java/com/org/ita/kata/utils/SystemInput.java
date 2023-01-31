@@ -16,10 +16,10 @@ public class SystemInput {
     public static final String INCORRECT_DOUBLE_INPUT = "The required type is [double]";
     public static final String STUDENT_NOT_FOUND = "Student not found";
     public static final String FILE_NOT_FOUND = "File not found";
+    public static final String INCORRECT_BIGINTEGER_INPUT = "The required type is [BigInteger]";
 
     public static final Scanner input = new Scanner(System.in);
 
-    public static final String INCORRECT_BIGINTEGER_INPUT = "The required type if [BigInteger]";
 
     public static Student inputStudent() {
         while(true) {
