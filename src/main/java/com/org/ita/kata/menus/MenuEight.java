@@ -64,7 +64,9 @@ public class MenuEight implements MenuNumber {
     }
 
     public void getFormattingDecimalPlacesTask() {
-
+        System.out.println("Enter double number with several decimal places : ");
+        double doubleNumber = SystemInput.inputDoubleNumber();
+        System.out.println("Rounded number to two decimal place = " + getStudentEightKataRealisation().TwoDecimalPlaces(doubleNumber));
     }
 
     public void getFindNumbersWhichAreDivisibleByGivenNumberTask() {

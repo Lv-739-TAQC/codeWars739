@@ -41,6 +41,17 @@ public class SystemInput {
         return value;
     }
 
+    public static long inputLongNumber() {
+        long value = 0;
+        try {
+            value = Long.parseLong(input.nextLine());
+        } catch (InputMismatchException | NumberFormatException e) {
+            System.out.println(INCORRECT_INT_INPUT);
+            return inputLongNumber();
+        }
+        return value;
+    }
+
     public static double inputDoubleNumber() {
         double value = 0;
         try {
