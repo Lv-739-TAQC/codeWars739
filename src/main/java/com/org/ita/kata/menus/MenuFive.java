@@ -6,6 +6,7 @@ import com.org.ita.kata.students.delegator.StudentRealisationFactory;
 
 import com.org.ita.kata.utils.SystemInput;
 
+import java.util.Arrays;
 import java.math.BigInteger;
 
 public class MenuFive implements MenuNumber {
@@ -49,7 +50,12 @@ public class MenuFive implements MenuNumber {
     }
 
     public void getFindTheSmallestTask() {
-
+        long m = 0;
+        while(m <= 0){
+            System.out.println("Enter a positive number consisting of digits : ");
+            m = SystemInput.inputLongNumber();
+        }
+        System.out.println("The smallest number = " + Arrays.toString(getStudentFiveKataRealisation().smallest(m)));
     }
 
     @Override
