@@ -12,6 +12,7 @@ import java.util.Scanner;
 public class SystemInput {
 
     public static final String INCORRECT_INT_INPUT = "The required type is [int]";
+    public static final String INCORRECT_LONG_INPUT = "The required type is [long]";
     public static final String INCORRECT_DOUBLE_INPUT = "The required type is [double]";
     public static final String STUDENT_NOT_FOUND = "Student not found";
     public static final String FILE_NOT_FOUND = "File not found";
@@ -46,7 +47,7 @@ public class SystemInput {
         try {
             value = Long.parseLong(input.nextLine());
         } catch (InputMismatchException | NumberFormatException e) {
-            System.out.println(INCORRECT_INT_INPUT);
+            System.out.println(INCORRECT_LONG_INPUT);
             return inputLongNumber();
         }
         return value;
