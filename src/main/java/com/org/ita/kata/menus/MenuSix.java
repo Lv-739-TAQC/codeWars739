@@ -38,7 +38,9 @@ public class MenuSix implements MenuNumber {
     }
 
     public void getFloatingPointApproximationITask() {
-
+        System.out.println("Enter x near zero for f(x) function : ");
+        double x = SystemInput.inputNearZeroNumber();
+        System.out.println("Good approximation of f(x) is : " + getStudentSixKataRealisation().f(x));
     }
 
     public void getRainfallTask() {

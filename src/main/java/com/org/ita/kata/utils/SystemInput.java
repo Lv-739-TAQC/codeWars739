@@ -13,6 +13,7 @@ public class SystemInput {
 
     public static final String INCORRECT_INT_INPUT = "The required type is [int]";
     public static final String INCORRECT_DOUBLE_INPUT = "The required type is [double]";
+    public static final String INCORRECT_NUMBER_INPUT = "This number is not close to zero";
     public static final String STUDENT_NOT_FOUND = "Student not found";
     public static final String FILE_NOT_FOUND = "File not found";
 
@@ -50,6 +51,17 @@ public class SystemInput {
             return inputDoubleNumber();
         }
         return value;
+    }
+
+    public static double inputNearZeroNumber() {
+        while(true) {
+            double number = inputDoubleNumber();
+            if(number > 0 && number < 1) {
+                return number;
+            } else {
+                System.out.println(INCORRECT_NUMBER_INPUT);
+            }
+        }
     }
 
     public static int[] inputIntArray() {
