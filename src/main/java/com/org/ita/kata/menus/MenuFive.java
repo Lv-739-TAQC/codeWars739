@@ -8,6 +8,7 @@ import com.org.ita.kata.utils.SystemInput;
 
 import java.util.Arrays;
 import java.math.BigInteger;
+import java.util.Scanner;
 
 public class MenuFive implements MenuNumber {
 
@@ -46,7 +47,9 @@ public class MenuFive implements MenuNumber {
     }
 
     public void getWhichXForThatSumTask() {
-
+        System.out.println("Enter a decimal value:");
+        double m = SystemInput.input.nextDouble();
+        System.out.println("The solution is: " + getStudentFiveKataRealisation().solve(m));
     }
 
     public void getFindTheSmallestTask() {
