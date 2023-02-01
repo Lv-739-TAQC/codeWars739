@@ -30,7 +30,9 @@ public class MenuSix implements MenuNumber {
     }
 
     public void getBuildAPileOfCubesTask() {
-
+        System.out.println("Enter the total volume of the building : ");
+        long volume = SystemInput.inputLongNumber();
+        System.out.println("Number of cubes = " + getStudentSixKataRealisation().findNb(volume));
     }
 
     public void getEasyBalanceCheckingTask() {
