@@ -6,6 +6,8 @@ import com.org.ita.kata.students.delegator.StudentRealisationFactory;
 
 import com.org.ita.kata.utils.SystemInput;
 
+import java.util.Scanner;
+
 public class MenuSeven implements MenuNumber {
 
     private StudentRealisationFactory studentRealisationFactory;
@@ -34,7 +36,9 @@ public class MenuSeven implements MenuNumber {
     }
 
     public void getSumOfTheFirstNthTermOfSeriesTask() {
-
+        System.out.println("Enter the number of terms in the series:");
+        int n = SystemInput.input.nextInt();
+        System.out.println("The sum of the series is: " + getStudentSevenKataRealisation().seriesSum(n));
     }
 
     @Override
