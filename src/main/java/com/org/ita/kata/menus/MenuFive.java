@@ -8,6 +8,8 @@ import com.org.ita.kata.utils.SystemInput;
 
 import java.math.BigInteger;
 
+import static com.org.ita.kata.utils.SystemInput.INCORRECT_BIGINTEGER_INPUT;
+
 public class MenuFive implements MenuNumber {
 
     private StudentRealisationFactory studentRealisationFactory;
@@ -39,8 +41,16 @@ public class MenuFive implements MenuNumber {
     }
 
     public void getPerimeterOfSquaresInARectangleTask() {
-        System.out.println("Enter the quantity of squares : ");
-        BigInteger n= SystemInput.inputBigInteger();
+        BigInteger n;
+        while (true) {
+            System.out.println("Enter the quantity of squares : ");
+            n= SystemInput.inputBigInteger();
+            if (n.intValue()>0) {
+                break;
+            } else {
+                System.out.println("The quantity of squares cannot be less than zero. Please try one more time.");
+            }
+            }
         System.out.println("The total perimeter of all squares in a rectangle when there are n + 1 squares will be : " + getStudentFiveKataRealisation().perimeter(n));
     }
 
