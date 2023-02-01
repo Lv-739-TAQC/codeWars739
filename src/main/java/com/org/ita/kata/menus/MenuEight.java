@@ -6,6 +6,8 @@ import com.org.ita.kata.students.delegator.StudentRealisationFactory;
 
 import com.org.ita.kata.utils.SystemInput;
 
+import java.text.Format;
+
 public class MenuEight implements MenuNumber {
 
     private StudentRealisationFactory studentRealisationFactory;
@@ -52,7 +54,17 @@ public class MenuEight implements MenuNumber {
     }
 
     public void getToSquareRootOrNoToSquareTask() {
-
+        int[] numbers = SystemInput.inputIntArray();
+        System.out.print("Entered numbers: ");
+        for (int number: numbers) {
+            System.out.print(number + " ");
+        }
+        int[] result = getStudentEightKataRealisation().squareOrSquareRoot(numbers);
+        System.out.print("\nResult: ");
+        for (int number: result) {
+            System.out.print(number + " ");
+        }
+        System.out.print("\n");
     }
 
     public void getCountOfPositivesSumOfNegativesTask() {
