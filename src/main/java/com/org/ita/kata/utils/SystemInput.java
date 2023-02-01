@@ -5,6 +5,7 @@ import com.org.ita.kata.students.delegator.Student;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.math.BigInteger;
 import java.util.InputMismatchException;
 import java.util.Objects;
 import java.util.Scanner;
@@ -16,8 +17,10 @@ public class SystemInput {
     public static final String INCORRECT_DOUBLE_INPUT = "The required type is [double]";
     public static final String STUDENT_NOT_FOUND = "Student not found";
     public static final String FILE_NOT_FOUND = "File not found";
+    public static final String INCORRECT_BIGINTEGER_INPUT = "The required type is [BigInteger]";
 
     public static final Scanner input = new Scanner(System.in);
+
 
     public static Student inputStudent() {
         while(true) {
@@ -102,5 +105,16 @@ public class SystemInput {
                 System.out.println(FILE_NOT_FOUND);
             }
         }
+    }
+
+    public static BigInteger inputBigInteger() {
+        BigInteger value = BigInteger.valueOf(0);
+        try {
+            value = BigInteger.valueOf(Long.parseLong(input.nextLine()));
+        } catch (InputMismatchException | NumberFormatException e) {
+            System.out.println(INCORRECT_BIGINTEGER_INPUT);
+            return inputBigInteger();
+        }
+        return value;
     }
 }

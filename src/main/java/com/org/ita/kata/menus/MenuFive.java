@@ -7,6 +7,7 @@ import com.org.ita.kata.students.delegator.StudentRealisationFactory;
 import com.org.ita.kata.utils.SystemInput;
 
 import java.util.Arrays;
+import java.math.BigInteger;
 
 public class MenuFive implements MenuNumber {
 
@@ -39,7 +40,9 @@ public class MenuFive implements MenuNumber {
     }
 
     public void getPerimeterOfSquaresInARectangleTask() {
-
+        System.out.println("Enter the quantity of squares : ");
+        BigInteger n= SystemInput.inputBigInteger();
+        System.out.println("The total perimeter of all squares in a rectangle when there are n + 1 squares will be : " + getStudentFiveKataRealisation().perimeter(n));
     }
 
     public void getWhichXForThatSumTask() {
