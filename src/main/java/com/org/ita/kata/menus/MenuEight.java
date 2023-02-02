@@ -60,7 +60,9 @@ public class MenuEight implements MenuNumber {
     }
 
     public void getConvertAStringToANumberTask() {
-
+        System.out.println("Enter  string: ");
+        String str = SystemInput.inputStringToNumber();
+        System.out.println("Now it's a number : " + getStudentEightKataRealisation().stringToNumber(str));
     }
 
     public void getFormattingDecimalPlacesTask() {
