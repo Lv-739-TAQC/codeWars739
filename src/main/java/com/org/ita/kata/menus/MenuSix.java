@@ -1,46 +1,33 @@
 package com.org.ita.kata.menus;
 
 import com.org.ita.kata.MenuNumber;
-import com.org.ita.kata.Six;
-import com.org.ita.kata.students.delegator.StudentRealisationFactory;
-
+import com.org.ita.kata.students.delegator.Student;
+import com.org.ita.kata.utils.NameMethod;
 import com.org.ita.kata.utils.SystemInput;
 
-public class MenuSix implements MenuNumber {
+public class MenuSix extends MenuNumber {
 
-    private StudentRealisationFactory studentRealisationFactory;
-    private String allTasks = "1.) Build a pile of Cubes\n"
-            + "2.) Easy balance checking\n"
-            + "3.) Floating-point Approximation (I)\n"
-            + "4.) Rainfall\n"
-            + "5.) Ranking NBA\n"
-            + "6.) Help the bookseller!";
+	public MenuSix() {}
 
-    public MenuSix(StudentRealisationFactory studentRealisationFactory) {
-        this.studentRealisationFactory = studentRealisationFactory;
+	public MenuSix(Student student) {
+        super(student);
     }
-
-    @Override
-    public Object whoImplemented() {
-        return this.studentRealisationFactory.setUpImplementation().getClass();
-    }
-
-    public Six getStudentSixKataRealisation() {
-        return this.studentRealisationFactory.setUpImplementation().implementationSixKata();
-    }
-
+    @NameMethod(name = "Build a pile of Cubes")
     public void getBuildAPileOfCubesTask() {
-
+        System.out.println("Enter the total volume of the building : ");
+        long volume = SystemInput.inputLongNumber();
+        System.out.println("Number of cubes = " + getStudentSixKataRealisation().findNb(volume));
     }
 
+    @NameMethod(name = "Easy balance checking")
     public void getEasyBalanceCheckingTask() {
 
     }
-
+    @NameMethod(name = "Floating-point Approximation (I)")
     public void getFloatingPointApproximationITask() {
 
     }
-
+    @NameMethod(name = "Rainfall")
     public void getRainfallTask() {
         String data1 = "Rome:Jan 81.2,Feb 63.2,Mar 70.3,Apr 55.7,May 53.0,Jun 36.4,Jul 17.5,Aug 27.5,Sep 60.9,Oct 117.7,Nov 111.0,Dec 97.9" +
                 "\n" +
@@ -120,49 +107,21 @@ public class MenuSix implements MenuNumber {
 
         }
     }
-
+    @NameMethod(name = "Ranking NBA")
     public void getRankingNBATask() {
-
+    	System.out.print("Enter results of NBA teams in format \"team goal team goal, ... , team goal team goal\"" +
+    									" or \"file path_file\": ");
+    	String games = SystemInput.input.nextLine();
+    	if (games.subSequence(0, 4).equals("file")) {
+    		games = SystemInput.readFromFile();
+    	}
+    	games = SystemInput.readFromFile();
+    	System.out.print("Enter team: ");
+    	String team = SystemInput.readFromFile();
+    	getStudentSixKataRealisation().nbaCup(games, team);
     }
-
+    @NameMethod(name = "Help the bookseller!")
     public void getHelpTheBooksellerTask() {
 
-    }
-
-    @Override
-    public void getAllTasks() {
-        System.out.println("\n[IMPLEMENTED BY : " + whoImplemented() + "]\n");
-        while (true) {
-            System.out.println("[ALL TASKS]\n" + allTasks);
-            System.out.println("7.) Go back\n");
-            System.out.println("Enter number of task : ");
-            String taskNumber = SystemInput.input.nextLine();
-            switch (taskNumber) {
-                case "1":
-                    getBuildAPileOfCubesTask();
-                    break;
-                case "2":
-                    getEasyBalanceCheckingTask();
-                    break;
-                case "3":
-                    getFloatingPointApproximationITask();
-                    break;
-                case "4":
-                    getRainfallTask();
-                    break;
-                case "5":
-                    getRankingNBATask();
-                    break;
-                case "6":
-                    getHelpTheBooksellerTask();
-                    break;
-                case "7":
-                    System.out.println(GO_BACK);
-                    return;
-                default:
-                    System.out.println(INCORRECT_INPUT);
-                    break;
-            }
-        }
     }
 }
