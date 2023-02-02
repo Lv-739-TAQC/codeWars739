@@ -51,7 +51,9 @@ public class MenuEight extends MenuNumber {
     }
     @NameMethod(name = "Formatting decimal places")
     public void getFormattingDecimalPlacesTask() {
-
+        System.out.println("Enter double number with several decimal places : ");
+        double doubleNumber = SystemInput.inputDoubleNumber();
+        System.out.println("Rounded number to two decimal place = " + getStudentEightKataRealisation().TwoDecimalPlaces(doubleNumber));
     }
     @NameMethod(name = "Find numbers which are divisible by given number")
     public void getFindNumbersWhichAreDivisibleByGivenNumberTask() {

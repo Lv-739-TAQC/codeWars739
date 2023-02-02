@@ -57,7 +57,7 @@ public class SystemInput {
         }
         return value;
     }
-    
+
     public static float inputFloatNumber() {
         float value = 0;
         try {
