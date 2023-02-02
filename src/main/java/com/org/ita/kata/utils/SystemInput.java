@@ -26,13 +26,13 @@ public class SystemInput {
 
 
     public static Student inputStudent() {
-        while(true) {
+        while (true) {
             System.out.println("Enter student's name : ");
             String name = SystemInput.input.nextLine();
             try {
-            	return Student.getStudentByName(name);
+                return Student.getStudentByName(name);
             } catch (Exception e) {
-            	System.out.println(STUDENT_NOT_FOUND);
+                System.out.println(STUDENT_NOT_FOUND);
             }
         }
     }
@@ -128,7 +128,7 @@ public class SystemInput {
     public static String readFromFile() {
         while (true) {
             System.out.println("Enter path to file:");
-            try (BufferedReader br = new BufferedReader(new FileReader(input.nextLine()));) {
+            try (BufferedReader br = new BufferedReader(new FileReader(input.nextLine()))) {
                 StringBuilder sb = new StringBuilder();
                 String line = br.readLine();
                 while (line != null) {
@@ -159,7 +159,7 @@ public class SystemInput {
         try {
             str = input.nextLine();
             Integer.parseInt(str);
-        } catch (InputMismatchException | NumberFormatException e)  {
+        } catch (InputMismatchException | NumberFormatException e) {
             System.out.println(INCORRECT_INT_INPUT);
             return inputStringToNumber();
         }

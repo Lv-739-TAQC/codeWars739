@@ -12,7 +12,8 @@ import java.util.Map;
 
 public class MenuFour extends MenuNumber {
 
-	public MenuFour() {}
+
+	 public MenuFour() {}
 
     public MenuFour(Student student) {
         super(student);

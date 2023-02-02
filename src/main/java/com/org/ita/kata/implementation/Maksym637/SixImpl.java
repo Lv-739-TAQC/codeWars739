@@ -12,6 +12,50 @@ public class SixImpl implements Six {
     public static final String ERROR_MESSAGE_1 = ":This team didn't play!";
     public static final String ERROR_MESSAGE_2 = "Error(float number):";
 
+    public static String processingString(String string) {
+        return string.replaceAll("([^\\n. \\da-zA-Z])", "")
+                .replace("\n", " ")
+                .replace("\r", "");
+    }
+
+    public static boolean invalidData(Map<String, List<Double>> citiesMap, String town) {
+        return !(citiesMap.containsKey(town) && citiesMap.get(town).size() != 0);
+    }
+
+    public static Map<String, List<Double>> parseString(String data) {
+        Map<String, List<Double>> citiesMap = new HashMap<>();
+
+        String[] citiesRows = data.split("\n");
+
+        for (String cityRow : citiesRows) {
+            List<Double> cityRainfalls = new ArrayList<>();
+            String city = cityRow.substring(0, cityRow.indexOf(":"));
+            List<String> cityRainfallsString = Arrays.asList(cityRow.replace(city + ":", "").split(","));
+            if (cityRainfallsString.size() == 12) {
+                for (String cityRainfallString : cityRainfallsString) {
+                    cityRainfalls.add(Double.parseDouble(Arrays.asList(cityRainfallString.split(" ")).get(1)));
+                }
+            }
+            citiesMap.put(city, cityRainfalls);
+        }
+        return citiesMap;
+    }
+
+    public static boolean validateInput(String resultSheet, String toFind) {
+        String updatedResultSheet = resultSheet.replaceAll(",", " ");
+        List<String> resultSheetAll = Arrays.asList(updatedResultSheet.split(" "));
+        List<String> toFindCommand = Arrays.asList(toFind.split(" "));
+        return resultSheetAll.containsAll(toFindCommand);
+    }
+
+    public static boolean teamStartsFirst(String battles, String toFind) {
+        return battles.indexOf(toFind) == 0;
+    }
+
+    public static int convertToInt(String number) {
+        return Integer.parseInt(number);
+    }
+
     @Override
     public long findNb(long m) {
         long result = 1;
@@ -50,7 +94,7 @@ public class SixImpl implements Six {
 
         double totalExpense = 0;
 
-        for (int i = 1; i < prices.size(); i++){
+        for (int i = 1; i < prices.size(); i++) {
             totalExpense += prices.get(i);
         }
 
@@ -84,12 +128,6 @@ public class SixImpl implements Six {
                 .append(String.format(ROUNDING_1, averageExpense));
 
         return resString.toString();
-    }
-
-    public static String processingString(String string) {
-        return string.replaceAll("([^\\n. \\da-zA-Z])", "")
-                .replace("\n", " ")
-                .replace("\r", "");
     }
 
     @Override
@@ -127,32 +165,9 @@ public class SixImpl implements Six {
         return variance;
     }
 
-    public static boolean invalidData(Map<String, List<Double>> citiesMap, String town) {
-        return !(citiesMap.containsKey(town) && citiesMap.get(town).size() != 0);
-    }
-
-    public static Map<String, List<Double>> parseString(String data) {
-        Map<String, List<Double>> citiesMap = new HashMap<>();
-
-        List<String> citiesRows = Arrays.asList(data.split("\n"));
-
-        for (String cityRow : citiesRows) {
-            List<Double> cityRainfalls = new ArrayList<>();
-            String city = cityRow.substring(0, cityRow.indexOf(":"));
-            List<String> cityRainfallsString = Arrays.asList(cityRow.replace(city + ":", "").split(","));
-            if (cityRainfallsString.size() == 12) {
-                for (String cityRainfallString : cityRainfallsString) {
-                    cityRainfalls.add(Double.parseDouble(Arrays.asList(cityRainfallString.split(" ")).get(1)));
-                }
-            }
-            citiesMap.put(city, cityRainfalls);
-        }
-        return citiesMap;
-    }
-
     @Override
     public String nbaCup(String resultSheet, String toFind) {
-        List<String> listOfAllBattles = Arrays.asList(resultSheet.split(","));
+        String[] listOfAllBattles = resultSheet.split(",");
         List<String> listOfOccurBattles = new ArrayList<>();
         int W, D, L, Scored, Conceded, Points;
         W = D = L = Scored = Conceded = Points = 0;
@@ -214,21 +229,6 @@ public class SixImpl implements Six {
         }
         return toFind + ":" + "W=" + W + ";D=" + D + ";L=" + L + ";Scored="
                 + Scored + ";Conceded=" + Conceded + ";Points=" + Points;
-    }
-
-    public static boolean validateInput(String resultSheet, String toFind) {
-        String updatedResultSheet = resultSheet.replaceAll(",", " ");
-        List<String> resultSheetAll = Arrays.asList(updatedResultSheet.split(" "));
-        List<String> toFindCommand = Arrays.asList(toFind.split(" "));
-        return resultSheetAll.containsAll(toFindCommand);
-    }
-
-    public static boolean teamStartsFirst(String battles, String toFind) {
-        return battles.indexOf(toFind) == 0;
-    }
-
-    public static int convertToInt(String number) {
-        return Integer.parseInt(number);
     }
 
     @Override

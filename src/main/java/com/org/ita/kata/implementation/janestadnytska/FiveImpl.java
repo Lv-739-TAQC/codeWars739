@@ -5,6 +5,16 @@ import com.org.ita.kata.Five;
 import java.math.BigInteger;
 
 public class FiveImpl implements Five {
+    // if we find a prime, check if the number after the gap is also a prime
+    private static boolean isPrime(long k) {
+        for (int i = 2; i < (k / 2); i++) {
+            if (k % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     @Override
     public long[] gap(int g, long m, long n) {
         long bonus = 0;
@@ -19,22 +29,12 @@ public class FiveImpl implements Five {
         return null;
     }
 
-    // if we find a prime, check if the number after the gap is also a prime
-    private static boolean isPrime(long k) {
-        for (int i = 2; i < (k / 2); i++) {
-            if (k % i == 0) {
-                return false;
-            }
-        }
-        return true;
-    }
-
     @Override
     public int zeros(int n) {
         int zeroes = 0;
         int number = 5;
         while (number < n) {
-            zeroes += (int) (n / number);
+            zeroes += n / number;
             number *= 5;
         }
         return zeroes;

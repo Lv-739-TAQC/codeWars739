@@ -7,7 +7,7 @@ import java.util.List;
 
 public class FourImpl implements Four {
     private int experience = 100;
-    private List<String> achievements = new ArrayList<>();
+    private final List<String> achievements = new ArrayList<>();
 
     public int level() {
         return experience / 100;
@@ -18,25 +18,25 @@ public class FourImpl implements Four {
     }
 
     public String rank() {
-        if(level() >= 1 && level() < 10)
+        if (level() >= 1 && level() < 10)
             return "Pushover";
-        else if(level() >= 10 && level() < 20)
+        else if (level() >= 10 && level() < 20)
             return "Novice";
-        else if(level() >= 20 && level() < 30)
+        else if (level() >= 20 && level() < 30)
             return "Fighter";
-        else if(level() >= 30 && level() < 40)
+        else if (level() >= 30 && level() < 40)
             return "Warrior";
-        else if(level() >= 40 && level() < 50)
+        else if (level() >= 40 && level() < 50)
             return "Veteran";
-        else if(level() >= 50 && level() < 60)
+        else if (level() >= 50 && level() < 60)
             return "Sage";
-        else if(level() >= 60 && level() < 70)
+        else if (level() >= 60 && level() < 70)
             return "Elite";
-        else if(level() >= 70 && level() < 80)
+        else if (level() >= 70 && level() < 80)
             return "Conqueror";
-        else if(level() >= 80 && level() < 90)
+        else if (level() >= 80 && level() < 90)
             return "Champion";
-        else if(level() >= 90 && level() < 100)
+        else if (level() >= 90 && level() < 100)
             return "Master";
         else
             return "Greatest";
@@ -47,37 +47,32 @@ public class FourImpl implements Four {
     }
 
     public String training(String description, int experiencePoints, int minLevel) {
-        if(level() >= minLevel) {
+        if (level() >= minLevel) {
             experience += experiencePoints;
             if (experience > 10000)
                 experience = 10000;
             achievements.add(description);
             return description;
-        }
-        else
+        } else
             return "Not strong enough";
     }
 
     public String battle(int enemyLevel) {
         String resultOfBattle = "";
-        if(enemyLevel < 1 || enemyLevel > 100)
+        if (enemyLevel < 1 || enemyLevel > 100)
             return "Invalid level";
 
-        if(level() == enemyLevel) {
+        if (level() == enemyLevel) {
             experience += 10;
             resultOfBattle = "A good fight";
-        }
-        else if(level() - enemyLevel == 1) {
+        } else if (level() - enemyLevel == 1) {
             experience += 5;
             resultOfBattle = "A good fight";
-        }
-        else if(level() - enemyLevel >= 2) {
+        } else if (level() - enemyLevel >= 2) {
             resultOfBattle = "Easy fight";
-        }
-        else if(enemyLevel - level() >= 5 && enemyLevel / 10 > level() / 10) {
+        } else if (enemyLevel - level() >= 5 && enemyLevel / 10 > level() / 10) {
             resultOfBattle = "You've been defeated";
-        }
-        else {
+        } else {
             int diff = enemyLevel - level();
             experience += 20 * diff * diff;
             resultOfBattle = "An intense fight";

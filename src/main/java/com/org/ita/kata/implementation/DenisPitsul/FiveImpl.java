@@ -5,6 +5,20 @@ import com.org.ita.kata.Five;
 import java.math.BigInteger;
 
 public class FiveImpl implements Five {
+    private static boolean isPrime(long i) {
+        for (long j = 2; j < i / 2; j++) {
+            if (i % j == 0) return false;
+        }
+        return true;
+    }
+
+    public static long convertIntoLongNumber(int i, int j, String number) {
+        String newNumber = number.substring(0, i) + number.substring(i + 1);
+        StringBuilder subString = new StringBuilder(newNumber);
+        subString.insert(j, number.charAt(i));
+        return Long.parseLong(subString.toString());
+    }
+
     @Override
     public long[] gap(int g, long m, long n) {
         long last = Long.MIN_VALUE;
@@ -19,37 +33,30 @@ public class FiveImpl implements Five {
         return null;
     }
 
-    private static boolean isPrime(long i) {
-        for (long j = 2; j < i / 2; j++) {
-            if (i % j == 0) return false;
-        }
-        return true;
-    }
-
     @Override
     public int zeros(int n) {
-        int numOfZeroes=0;
-        while(n!= 0){
-            numOfZeroes += (int)Math.floor(n/5);
-            n/=5;
+        int numOfZeroes = 0;
+        while (n != 0) {
+            numOfZeroes += (int) Math.floor(n / 5);
+            n /= 5;
         }
         return numOfZeroes;
     }
 
     @Override
     public BigInteger perimeter(BigInteger n) {
-        BigInteger[] fib = new BigInteger[n.intValue()+1];
+        BigInteger[] fib = new BigInteger[n.intValue() + 1];
         for (int i = 0; i <= n.intValue(); i++) {
             if (i == 0 || i == 1) {
-                fib[i]=BigInteger.valueOf(1);
+                fib[i] = BigInteger.valueOf(1);
             } else {
-                fib[i]=((fib[i - 1]).add(fib[i - 2]));
+                fib[i] = ((fib[i - 1]).add(fib[i - 2]));
             }
         }
 
-        BigInteger sum=BigInteger.valueOf(0);
-        for(BigInteger e:fib) {
-            sum=sum.add(e);
+        BigInteger sum = BigInteger.valueOf(0);
+        for (BigInteger e : fib) {
+            sum = sum.add(e);
         }
 
         return sum.multiply(BigInteger.valueOf(4));
@@ -85,12 +92,5 @@ public class FiveImpl implements Five {
             }
         }
         return new long[]{resultNumber, iSmallest, jInsert};
-    }
-
-    public static long convertIntoLongNumber(int i, int j, String number) {
-        String newNumber = number.substring(0, i) + number.substring(i + 1);
-        StringBuilder subString = new StringBuilder(newNumber);
-        subString.insert(j, number.charAt(i));
-        return Long.parseLong(subString.toString());
     }
 }

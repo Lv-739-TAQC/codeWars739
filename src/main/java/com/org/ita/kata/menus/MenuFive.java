@@ -10,34 +10,69 @@ import java.util.Arrays;
 import java.math.BigInteger;
 
 public class MenuFive extends MenuNumber {
-	
-	public MenuFive() {}
 
-	public MenuFive(Student student) {
+    public MenuFive() {
+    }
+
+    public MenuFive(Student student) {
         super(student);
     }
+
     @NameMethod(name = "Gap in Primes")
     public void getGapInPrimesTask() {
-
+        long m, n;
+        int g;
+        while (true) {
+            System.out.println("Enter the start number of the search (m > 2) : ");
+            m = SystemInput.inputLongNumber();
+            if (m > 2) {
+                break;
+            } else {
+                System.out.println(INCORRECT_INPUT);
+            }
+        }
+        while (true) {
+            System.out.println("Enter the end number of the search (n >= " + m + ") : ");
+            n = SystemInput.inputLongNumber();
+            if (n >= m) {
+                break;
+            } else {
+                System.out.println(INCORRECT_INPUT);
+            }
+        }
+        while (true) {
+            System.out.println("Enter the gap we are looking for between " + m + " and " + n + " (g >= 2) : ");
+            g = SystemInput.inputIntNumber();
+            if (g >= 2) {
+                break;
+            } else {
+                System.out.println(INCORRECT_INPUT);
+            }
+        }
+        System.out.println("The first pair between " + m + " and " + n + " with a " + g + "-gap = " + Arrays.toString(getStudentFiveKataRealisation().gap(g, m, n)));
     }
+
     @NameMethod(name = "Trailing zeros in factorial")
     public void getTrailingZerosInFactorialTask() {
 
     }
+
     @NameMethod(name = "Perimeter of squares in a rectangle")
     public void getPerimeterOfSquaresInARectangleTask() {
         System.out.println("Enter the quantity of squares : ");
-        BigInteger n= SystemInput.inputBigInteger();
+        BigInteger n = SystemInput.inputBigInteger();
         System.out.println("The total perimeter of all squares in a rectangle when there are n + 1 squares will be : " + getStudentFiveKataRealisation().perimeter(n));
     }
+
     @NameMethod(name = "Which x for that sum?")
     public void getWhichXForThatSumTask() {
 
     }
+
     @NameMethod(name = "Find the smallest")
     public void getFindTheSmallestTask() {
         long m = 0;
-        while(m <= 0){
+        while (m <= 0) {
             System.out.println("Enter a positive number consisting of digits : ");
             m = SystemInput.inputLongNumber();
         }

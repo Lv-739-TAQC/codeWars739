@@ -10,6 +10,27 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class SixImpl implements Six {
+    private static double[] getRainfallValuesForTown(String town, String[] records) {
+        for (String record : records) {
+            if (record.startsWith(town + ":")) {
+                String[] values = record.split(":")[1].trim().split(",");
+                double[] rainfallValues = new double[values.length];
+                for (int i = 0; i < values.length; i++) {
+                    String input = values[i];
+                    String regex = "\\d+(\\.\\d+)";
+                    Pattern pattern = Pattern.compile(regex);
+                    Matcher matcher = pattern.matcher(input);
+                    if (matcher.find()) {
+                        String cleanedRainfallData = matcher.group();
+                        rainfallValues[i] = Double.parseDouble(cleanedRainfallData);
+                    }
+                }
+                return rainfallValues;
+            }
+        }
+        return null;
+    }
+
     @Override
     public long findNb(long m) {
         long totalVolume = 0;
@@ -88,27 +109,6 @@ public class SixImpl implements Six {
             variance += Math.pow(value - mean, 2);
         }
         return variance / rainfallValues.length;
-    }
-
-    private static double[] getRainfallValuesForTown(String town, String[] records) {
-        for (String record : records) {
-            if (record.startsWith(town + ":")) {
-                String[] values = record.split(":")[1].trim().split(",");
-                double[] rainfallValues = new double[values.length];
-                for (int i = 0; i < values.length; i++) {
-                    String input = values[i];
-                    String regex = "\\d+(\\.\\d+)";
-                    Pattern pattern = Pattern.compile(regex);
-                    Matcher matcher = pattern.matcher(input);
-                    if (matcher.find()) {
-                        String cleanedRainfallData = matcher.group();
-                        rainfallValues[i] = Double.parseDouble(cleanedRainfallData);
-                    }
-                }
-                return rainfallValues;
-            }
-        }
-        return null;
     }
 
     @Override
