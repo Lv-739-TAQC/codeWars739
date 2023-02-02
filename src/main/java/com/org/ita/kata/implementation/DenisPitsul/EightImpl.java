@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 public class EightImpl implements Eight {
     @Override
-    public int Liters(double time) {
+    public int liters(double time) {
         return (int) (time * 0.5);
     }
 
@@ -24,9 +24,9 @@ public class EightImpl implements Eight {
     @Override
     public int[] squareOrSquareRoot(int[] array) {
         int[] newArray = new int[array.length];
-        for(int i = 0; i < array.length; i++) {
+        for (int i = 0; i < array.length; i++) {
             int number = (int) Math.sqrt(array[i]);
-            if(Math.pow(number, 2) == array[i])
+            if (Math.pow(number, 2) == array[i])
                 newArray[i] = (int) Math.sqrt(array[i]);
             else
                 newArray[i] = (int) Math.pow(array[i], 2);
@@ -37,13 +37,13 @@ public class EightImpl implements Eight {
     @Override
     public int[] countPositivesSumNegatives(int[] input) {
         if (input == null || input.length == 0)
-            return new int[] {};
+            return new int[]{};
 
         int[] newArray = new int[2];
-        for(int i = 0; i < input.length; i++) {
-            if(input[i] > 0)
+        for (int i = 0; i < input.length; i++) {
+            if (input[i] > 0)
                 newArray[0]++;
-            else if(input[i] < 0)
+            else if (input[i] < 0)
                 newArray[1] += input[i];
         }
         return newArray;

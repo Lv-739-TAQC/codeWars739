@@ -10,7 +10,7 @@ public class SevenImpl implements Seven {
             sum += number;
         }
         long res = (long) Math.ceil(navg * (arr.length + 1) - sum);
-        if (res <= 0 )
+        if (res <= 0)
             throw new IllegalArgumentException();
         else
             return res;

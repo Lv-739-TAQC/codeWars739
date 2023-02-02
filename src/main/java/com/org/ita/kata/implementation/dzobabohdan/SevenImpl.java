@@ -16,16 +16,16 @@ public class SevenImpl implements Seven {
 
     @Override
     public String seriesSum(int n) {
-        if(n == 0) return "0.00";
+        if (n == 0) return "0.00";
 
         double res = 0;
         int count = 0;
 
         do {
             count++;
-            res += 1.0/((count*3.0) - 2.0);
-        } while(count != n);
+            res += 1.0 / ((count * 3.0) - 2.0);
+        } while (count != n);
 
-        return String.format("%.2f",res);
+        return String.format("%.2f", res);
     }
 }

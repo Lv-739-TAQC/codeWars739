@@ -6,17 +6,6 @@ import java.math.BigInteger;
 import java.util.*;
 
 public class FiveImpl implements Five {
-    @Override
-    public long[] gap(int g, long m, long n) {
-        long[] primeGap = generator(m, n);
-        for (int i = 0; i < primeGap.length - 1; i++) {
-            if (primeGap[i] >= m && primeGap[i] == primeGap[i + 1] - g) {
-                return Arrays.copyOfRange(primeGap, i, i + 2);
-            }
-        }
-        return null;
-    }
-
     private static long[] generator(long m, long n) {
         long[] primes = new long[(int) (n - m)];
         int numPrimes = 0;
@@ -29,46 +18,12 @@ public class FiveImpl implements Five {
                     break;
                 }
             }
-            if (prime == true) {
-                primes[numPrimes] = (long) i;
+            if (prime) {
+                primes[numPrimes] = i;
                 numPrimes++;
             }
         }
         return Arrays.copyOfRange(primes, 0, numPrimes);
-    }
-
-    @Override
-    public int zeros(int n) {
-        int count = 0;
-        while (n > 0) {
-            n /= 5;
-            count += n;
-        }
-        return count;
-    }
-
-    @Override
-    public BigInteger perimeter(BigInteger n) {
-        HashMap<BigInteger, BigInteger> fibonachyList = new HashMap<>();
-        BigInteger zero = BigInteger.ZERO;
-        BigInteger one = BigInteger.ONE;
-        BigInteger two = BigInteger.TWO;
-        fibonachyList.put(zero, zero);
-        fibonachyList.put(one, one);
-        for (BigInteger i = two; i.compareTo(n.add(one)) <= 0; i = i.add(one)) {
-            fibonachyList.put(i, (fibonachyList.get(i.subtract(one)).add(fibonachyList.get(i.subtract(two)))));
-        }
-        BigInteger sumOfPerimeters = zero;
-        for (Map.Entry<BigInteger, BigInteger> entry : fibonachyList.entrySet()) {
-            sumOfPerimeters = sumOfPerimeters.add(entry.getValue());
-        }
-        return sumOfPerimeters.multiply(BigInteger.valueOf(4));
-    }
-
-    @Override
-    public double solve(double m) {
-        double x = -2 * m - 1;
-        return (-x - Math.sqrt(Math.pow(x, 2) - 4 * m * m)) / (2 * m);
     }
 
     public static ArrayList<Long> convertToList(long n) {
@@ -164,6 +119,51 @@ public class FiveImpl implements Five {
             }
         }
         return endIndex;
+    }
+
+    @Override
+    public long[] gap(int g, long m, long n) {
+        long[] primeGap = generator(m, n);
+        for (int i = 0; i < primeGap.length - 1; i++) {
+            if (primeGap[i] >= m && primeGap[i] == primeGap[i + 1] - g) {
+                return Arrays.copyOfRange(primeGap, i, i + 2);
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public int zeros(int n) {
+        int count = 0;
+        while (n > 0) {
+            n /= 5;
+            count += n;
+        }
+        return count;
+    }
+
+    @Override
+    public BigInteger perimeter(BigInteger n) {
+        HashMap<BigInteger, BigInteger> fibonachyList = new HashMap<>();
+        BigInteger zero = BigInteger.ZERO;
+        BigInteger one = BigInteger.ONE;
+        BigInteger two = BigInteger.TWO;
+        fibonachyList.put(zero, zero);
+        fibonachyList.put(one, one);
+        for (BigInteger i = two; i.compareTo(n.add(one)) <= 0; i = i.add(one)) {
+            fibonachyList.put(i, (fibonachyList.get(i.subtract(one)).add(fibonachyList.get(i.subtract(two)))));
+        }
+        BigInteger sumOfPerimeters = zero;
+        for (Map.Entry<BigInteger, BigInteger> entry : fibonachyList.entrySet()) {
+            sumOfPerimeters = sumOfPerimeters.add(entry.getValue());
+        }
+        return sumOfPerimeters.multiply(BigInteger.valueOf(4));
+    }
+
+    @Override
+    public double solve(double m) {
+        double x = -2 * m - 1;
+        return (-x - Math.sqrt(Math.pow(x, 2) - 4 * m * m)) / (2 * m);
     }
 
     @Override

@@ -7,6 +7,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SixImpl implements Six {
+    public static DecimalFormat df = new DecimalFormat("0.000");
+    public static HashMap<String, String> map = new HashMap<>();
+    public static double meanValue = 0.0;
+    public static double varianceValue = 0.0;
+
+    public static Double formatting(double number) {
+        return Double.valueOf(df.format(number));
+    }
+
     @Override
     public long findNb(long m) {
         int count;
@@ -24,8 +33,6 @@ public class SixImpl implements Six {
         }
         return count;
     }
-
-    public static DecimalFormat df = new DecimalFormat("0.000");
 
     @Override
     public String balance(String book) {
@@ -63,19 +70,11 @@ public class SixImpl implements Six {
         return result;
     }
 
-    public static Double formatting(double number) {
-        return Double.valueOf(df.format(number));
-    }
-
     @Override
     public double f(double x) {
         double result = Math.expm1(Math.log1p(x) / 2);
         return result;
     }
-
-    public static HashMap<String, String> map = new HashMap<>();
-    public static double meanValue = 0.0;
-    public static double varianceValue = 0.0;
 
     @Override
     public double mean(String town, String strng) {

@@ -6,7 +6,7 @@ import com.org.ita.kata.students.*;
 @Deprecated
 public class StudentRealisationFactory {
 
-    private Student student;
+    private final Student student;
 
     public StudentRealisationFactory(Student student) {
         this.student = student;

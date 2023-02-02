@@ -5,8 +5,9 @@ import com.org.ita.kata.students.delegator.Student;
 import com.org.ita.kata.utils.NameMethod;
 
 public class MenuFour extends MenuNumber {
-	
-	public MenuFour() {}
+
+    public MenuFour() {
+    }
 
     public MenuFour(Student student) {
         super(student);

@@ -15,12 +15,11 @@ public class FourImpl implements Four {
 
     private static final int MAX_LEVEL = 100;
     private static final int MAX_EXPERIENCE = 10000;
-
+    private final List<String> currentAchievements = new ArrayList<>();
     private int currentLevel = 1;
     private int currentExperience = 100;
-    private List<String> ranks = Arrays.asList("Pushover", "Novice", "Fighter", "Warrior", "Veteran",
+    private final List<String> ranks = Arrays.asList("Pushover", "Novice", "Fighter", "Warrior", "Veteran",
             "Sage", "Elite", "Conqueror", "Champion", "Master", "Greatest");
-    private final List<String> currentAchievements = new ArrayList<>();
 
     public int level() {
         return Math.min(this.currentLevel, MAX_LEVEL);

@@ -7,11 +7,13 @@ import com.org.ita.kata.utils.SystemInput;
 
 public class MenuSix extends MenuNumber {
 
-	public MenuSix() {}
+    public MenuSix() {
+    }
 
-	public MenuSix(Student student) {
+    public MenuSix(Student student) {
         super(student);
     }
+
     @NameMethod(name = "Build a pile of Cubes")
     public void getBuildAPileOfCubesTask() {
         System.out.println("Enter the total volume of the building : ");
@@ -23,10 +25,12 @@ public class MenuSix extends MenuNumber {
     public void getEasyBalanceCheckingTask() {
 
     }
+
     @NameMethod(name = "Floating-point Approximation (I)")
     public void getFloatingPointApproximationITask() {
 
     }
+
     @NameMethod(name = "Rainfall")
     public void getRainfallTask() {
         String data1 = "Rome:Jan 81.2,Feb 63.2,Mar 70.3,Apr 55.7,May 53.0,Jun 36.4,Jul 17.5,Aug 27.5,Sep 60.9,Oct 117.7,Nov 111.0,Dec 97.9" +
@@ -107,19 +111,21 @@ public class MenuSix extends MenuNumber {
 
         }
     }
+
     @NameMethod(name = "Ranking NBA")
     public void getRankingNBATask() {
-    	System.out.print("Enter results of NBA teams in format \"team goal team goal, ... , team goal team goal\"" +
-    									" or \"file path_file\": ");
-    	String games = SystemInput.input.nextLine();
-    	if (games.subSequence(0, 4).equals("file")) {
-    		games = SystemInput.readFromFile();
-    	}
-    	games = SystemInput.readFromFile();
-    	System.out.print("Enter team: ");
-    	String team = SystemInput.readFromFile();
-    	getStudentSixKataRealisation().nbaCup(games, team);
+        System.out.print("Enter results of NBA teams in format \"team goal team goal, ... , team goal team goal\"" +
+                " or \"file path_file\": ");
+        String games = SystemInput.input.nextLine();
+        if (games.subSequence(0, 4).equals("file")) {
+            games = SystemInput.readFromFile();
+        }
+        games = SystemInput.readFromFile();
+        System.out.print("Enter team: ");
+        String team = SystemInput.readFromFile();
+        getStudentSixKataRealisation().nbaCup(games, team);
     }
+
     @NameMethod(name = "Help the bookseller!")
     public void getHelpTheBooksellerTask() {
 
