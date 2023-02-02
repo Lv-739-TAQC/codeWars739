@@ -5,8 +5,13 @@ import com.org.ita.kata.Eight;
 import java.util.Arrays;
 
 public class EightImpl implements Eight {
+    static boolean isSquareInteger(double x) {
+        double sq = Math.sqrt(x);
+        return ((sq - Math.floor(sq)) == 0);
+    }
+
     @Override
-    public int Liters(double time) {
+    public int liters(double time) {
         double liters = 0.5;
         return (int) Math.floor(time * liters);
     }
@@ -36,11 +41,6 @@ public class EightImpl implements Eight {
             }
         }
         return newArr;
-    }
-
-    static boolean isSquareInteger(double x) {
-        double sq = Math.sqrt(x);
-        return ((sq - Math.floor(sq)) == 0);
     }
 
     @Override

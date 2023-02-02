@@ -1,45 +1,63 @@
 package com.org.ita.kata.menus;
 
-import com.org.ita.kata.Five;
-import com.org.ita.kata.MenuNumber;
-import com.org.ita.kata.students.delegator.StudentRealisationFactory;
 
+import com.org.ita.kata.MenuNumber;
+import com.org.ita.kata.students.delegator.Student;
+import com.org.ita.kata.utils.NameMethod;
 import com.org.ita.kata.utils.SystemInput;
 
+import java.util.Arrays;
 import java.math.BigInteger;
 
-import static com.org.ita.kata.utils.SystemInput.INCORRECT_BIGINTEGER_INPUT;
+public class MenuFive extends MenuNumber {
 
-public class MenuFive implements MenuNumber {
-
-    private StudentRealisationFactory studentRealisationFactory;
-    private String allTasks = "1.) Gap in Primes\n"
-            + "2.) Trailing zeros in factorial\n"
-            + "3.) Perimeter of squares in a rectangle\n"
-            + "4.) Which x for that sum?\n"
-            + "5.) Find the smallest";
-
-    public MenuFive(StudentRealisationFactory studentRealisationFactory) {
-        this.studentRealisationFactory = studentRealisationFactory;
+    public MenuFive() {
     }
 
-    @Override
-    public Object whoImplemented() {
-        return this.studentRealisationFactory.setUpImplementation().getClass();
+    public MenuFive(Student student) {
+        super(student);
     }
 
-    public Five getStudentFiveKataRealisation() {
-        return this.studentRealisationFactory.setUpImplementation().implementationFiveKata();
-    }
-
+    @NameMethod(name = "Gap in Primes")
     public void getGapInPrimesTask() {
-
+        long m, n;
+        int g;
+        while (true) {
+            System.out.println("Enter the start number of the search (m > 2) : ");
+            m = SystemInput.inputLongNumber();
+            if (m > 2) {
+                break;
+            } else {
+                System.out.println(INCORRECT_INPUT);
+            }
+        }
+        while (true) {
+            System.out.println("Enter the end number of the search (n >= " + m + ") : ");
+            n = SystemInput.inputLongNumber();
+            if (n >= m) {
+                break;
+            } else {
+                System.out.println(INCORRECT_INPUT);
+            }
+        }
+        while (true) {
+            System.out.println("Enter the gap we are looking for between " + m + " and " + n + " (g >= 2) : ");
+            g = SystemInput.inputIntNumber();
+            if (g >= 2) {
+                break;
+            } else {
+                System.out.println(INCORRECT_INPUT);
+            }
+        }
+        System.out.println("The first pair between " + m + " and " + n + " with a " + g + "-gap = " + Arrays.toString(getStudentFiveKataRealisation().gap(g, m, n)));
     }
 
+    @NameMethod(name = "Trailing zeros in factorial")
     public void getTrailingZerosInFactorialTask() {
 
     }
 
+    @NameMethod(name = "Perimeter of squares in a rectangle")
     public void getPerimeterOfSquaresInARectangleTask() {
         BigInteger n;
         while (true) {
@@ -54,45 +72,18 @@ public class MenuFive implements MenuNumber {
         System.out.println("The total perimeter of all squares in a rectangle when there are n + 1 squares will be : " + getStudentFiveKataRealisation().perimeter(n));
     }
 
+    @NameMethod(name = "Which x for that sum?")
     public void getWhichXForThatSumTask() {
 
     }
 
+    @NameMethod(name = "Find the smallest")
     public void getFindTheSmallestTask() {
-
-    }
-
-    @Override
-    public void getAllTasks() {
-        System.out.println("\n[IMPLEMENTED BY : " + whoImplemented() + "]\n");
-        while (true) {
-            System.out.println("[ALL TASKS]\n" + allTasks);
-            System.out.println("6.) Go back\n");
-            System.out.println("Enter number of task : ");
-            String taskNumber = SystemInput.input.nextLine();
-            switch (taskNumber) {
-                case "1":
-                    getGapInPrimesTask();
-                    break;
-                case "2":
-                    getTrailingZerosInFactorialTask();
-                    break;
-                case "3":
-                    getPerimeterOfSquaresInARectangleTask();
-                    break;
-                case "4":
-                    getWhichXForThatSumTask();
-                    break;
-                case "5":
-                    getFindTheSmallestTask();
-                    break;
-                case "6":
-                    System.out.println(GO_BACK);
-                    return;
-                default:
-                    System.out.println(INCORRECT_INPUT);
-                    break;
-            }
+        long m = 0;
+        while (m <= 0) {
+            System.out.println("Enter a positive number consisting of digits : ");
+            m = SystemInput.inputLongNumber();
         }
+        System.out.println("The smallest number = " + Arrays.toString(getStudentFiveKataRealisation().smallest(m)));
     }
 }

@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 public class EightImpl implements Eight {
     @Override
-    public int Liters(double time) {
+    public int liters(double time) {
         double litre = 0.5;
         return (int) Math.floor(time * litre);
     }
