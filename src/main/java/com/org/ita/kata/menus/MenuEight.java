@@ -35,7 +35,17 @@ public class MenuEight extends MenuNumber {
     }
     @NameMethod(name = "To square root or no to square")
     public void getToSquareRootOrNoToSquareTask() {
-
+        int[] numbers = SystemInput.inputIntArray();
+        System.out.print("Entered numbers: ");
+        for (int number: numbers) {
+            System.out.print(number + " ");
+        }
+        int[] result = getStudentEightKataRealisation().squareOrSquareRoot(numbers);
+        System.out.print("\nResult: ");
+        for (int number: result) {
+            System.out.print(number + " ");
+        }
+        System.out.print("\n");
     }
     @NameMethod(name = "Count of positives / sum of negatives")
     public void getCountOfPositivesSumOfNegativesTask() {
