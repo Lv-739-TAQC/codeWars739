@@ -10,29 +10,14 @@ import java.util.Arrays;
 import java.util.List;
 
 public class EightTest {
-    private final List<Object> students = new ArrayList<>(Arrays.asList(
-            new com.org.ita.kata.implementation.DenisPitsul.EightImpl(),
-            new com.org.ita.kata.implementation.AnnaMatviienko.EightImpl(),
-            new com.org.ita.kata.implementation.dzobabohdan.EightImpl(),
-            new com.org.ita.kata.implementation.IrenZh.EightImpl(),
-            new com.org.ita.kata.implementation.janestadnytska.EightImpl(),
-            new com.org.ita.kata.implementation.kapustinIlya.EightImpl(),
-            new com.org.ita.kata.implementation.Maksym637.EightImpl(),
-            new com.org.ita.kata.implementation.savaxn04.EightImpl(),
-            new com.org.ita.kata.implementation.TafiyJanet.EightImpl(),
-            new com.org.ita.kata.implementation.TetianaFilatova.EightImpl()
-    ));
-
     public Object[][] combineImplWithTests(Object[][] testsData) {
-        int index = 0;
-        Object[][] data = new Object[students.size()*testsData.length][testsData[0].length];
-        for(Object student : students) {
-            for(Object[] dataTest : testsData) {
-                data[index] = new Object[]{student,dataTest[0],dataTest[1]};
-                index++;
+        List<Object[]> rowsWithImpl = new ArrayList<>();
+        for (Student student: Student.values()) {
+            for (Object[] row: testsData) {
+                rowsWithImpl.add(new Object[]{student.getStudentRealisation().implementationEightKata(), row[0], row[1]});
             }
         }
-        return data;
+        return rowsWithImpl.toArray(Object[][]::new);
     }
 
     @DataProvider(name = "dpTestLiters")
