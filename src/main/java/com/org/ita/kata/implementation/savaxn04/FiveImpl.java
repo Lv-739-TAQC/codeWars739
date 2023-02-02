@@ -76,9 +76,9 @@ public class FiveImpl implements Five {
         int indexFrom = 0;
         int indexTo = 0;
         String number = String.valueOf(n);
-        for (int i = 0; i < number.length(); i++) {
-            for (int j = 0; j < number.length(); j++) {
-                if (i != j && makeNewLong(number, i, j) < min) {
+        for (int i=0; i<number.length(); i++) {
+            for (int j=0; j<number.length(); j++) {
+                if (i!=j && makeNewLong(number, i, j) < min) {
                     min = makeNewLong(number, i, j);
                     indexFrom = i;
                     indexTo = j;

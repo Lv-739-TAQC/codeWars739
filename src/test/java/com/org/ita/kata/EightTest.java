@@ -6,11 +6,10 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class EightTest {
-    public Object[][] combineImplWithTests(Object[][] testsData) {
+    public Object[][] combineImplWithLitersTests(Object[][] testsData) {
         List<Object[]> rowsWithImpl = new ArrayList<>();
         for (Student student: Student.values()) {
             for (Object[] row: testsData) {
@@ -39,7 +38,7 @@ public class EightTest {
                 {15, 30.546259060975842},
                 {3, 7.653405763033755}
         };
-        return combineImplWithTests(data);
+        return combineImplWithLitersTests(data);
     }
 
     @Test(dataProvider = "dpTestLiters")
