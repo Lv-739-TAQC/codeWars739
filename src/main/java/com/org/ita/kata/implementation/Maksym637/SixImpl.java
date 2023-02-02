@@ -2,14 +2,12 @@ package com.org.ita.kata.implementation.Maksym637;
 
 import com.org.ita.kata.Six;
 
-import java.text.DecimalFormat;
 import java.util.*;
 
 public class SixImpl implements Six {
 
     public static final String REGEX_WORDS = "[^a-zA-Z']+";
     public static final String ROUNDING_1 = "%.2f";
-    public static final DecimalFormat df = new DecimalFormat("0.00");
 
     public static final String ERROR_MESSAGE_1 = ":This team didn't play!";
     public static final String ERROR_MESSAGE_2 = "Error(float number):";
@@ -42,20 +40,17 @@ public class SixImpl implements Six {
         wordsFromText.removeIf(String::isEmpty);
         digitsFromText.removeIf(String::isEmpty);
 
-        System.out.println(wordsFromText);
-        System.out.println(digitsFromText);
-
         for (int i = 0; i < digitsFromText.size(); i++) {
             if (i % 2 != 0) {
                 rows.add(digitsFromText.get(i));
             } else {
-                prices.add(formatting(Double.parseDouble(digitsFromText.get(i))));
+                prices.add(Double.parseDouble(digitsFromText.get(i)));
             }
         }
 
         double totalExpense = 0;
 
-        for (int i = 1; i < prices.size(); i++) {
+        for (int i = 1; i < prices.size(); i++){
             totalExpense += prices.get(i);
         }
 
@@ -89,10 +84,6 @@ public class SixImpl implements Six {
                 .append(String.format(ROUNDING_1, averageExpense));
 
         return resString.toString();
-    }
-
-    public static Double formatting(double number) {
-        return Double.valueOf(df.format(number));
     }
 
     public static String processingString(String string) {
