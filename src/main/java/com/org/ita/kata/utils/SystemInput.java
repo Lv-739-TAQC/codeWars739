@@ -5,6 +5,7 @@ import com.org.ita.kata.students.delegator.Student;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.math.BigInteger;
 import java.util.InputMismatchException;
 import java.util.Objects;
 import java.util.Scanner;
@@ -14,19 +15,23 @@ public class SystemInput {
     public static final String INCORRECT_INT_INPUT = "The required type is [int]";
     public static final String INCORRECT_LONG_INPUT = "The required type is [long]";
     public static final String INCORRECT_DOUBLE_INPUT = "The required type is [double]";
+    public static final String INCORRECT_FLOAT_INPUT = "The required type is [float]";
     public static final String STUDENT_NOT_FOUND = "Student not found";
     public static final String FILE_NOT_FOUND = "File not found";
+    public static final String INCORRECT_BIGINTEGER_INPUT = "The required type is [BigInteger]";
+
 
     public static final Scanner input = new Scanner(System.in);
+
 
     public static Student inputStudent() {
         while(true) {
             System.out.println("Enter student's name : ");
             String name = SystemInput.input.nextLine();
-            if(Objects.nonNull(Student.getStudentByName(name))){
-                return Student.getStudentByName(name);
-            } else {
-                System.out.println(STUDENT_NOT_FOUND);
+            try {
+            	return Student.getStudentByName(name);
+            } catch (Exception e) {
+            	System.out.println(STUDENT_NOT_FOUND);
             }
         }
     }
@@ -49,6 +54,17 @@ public class SystemInput {
         } catch (InputMismatchException | NumberFormatException e) {
             System.out.println(INCORRECT_LONG_INPUT);
             return inputLongNumber();
+        }
+        return value;
+    }
+
+    public static float inputFloatNumber() {
+        float value = 0;
+        try {
+            value = Float.parseFloat(input.nextLine());
+        } catch (InputMismatchException | NumberFormatException e) {
+            System.out.println(INCORRECT_FLOAT_INPUT);
+            return inputFloatNumber();
         }
         return value;
     }
@@ -102,5 +118,27 @@ public class SystemInput {
                 System.out.println(FILE_NOT_FOUND);
             }
         }
+    }
+
+    public static BigInteger inputBigInteger() {
+        BigInteger value = BigInteger.valueOf(0);
+        try {
+            value = BigInteger.valueOf(Long.parseLong(input.nextLine()));
+        } catch (InputMismatchException | NumberFormatException e) {
+            System.out.println(INCORRECT_BIGINTEGER_INPUT);
+            return inputBigInteger();
+        }
+        return value;
+    }
+    public static String inputStringToNumber() {
+        String str;
+        try {
+            str = input.nextLine();
+            Integer.parseInt(str);
+        } catch (InputMismatchException | NumberFormatException e)  {
+            System.out.println(INCORRECT_INT_INPUT);
+            return inputStringToNumber();
+        }
+        return str;
     }
 }

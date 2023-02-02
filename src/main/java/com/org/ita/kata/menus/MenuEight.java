@@ -1,42 +1,24 @@
 package com.org.ita.kata.menus;
-
-import com.org.ita.kata.Eight;
+import java.util.Arrays;
 import com.org.ita.kata.MenuNumber;
-import com.org.ita.kata.students.delegator.StudentRealisationFactory;
-
+import com.org.ita.kata.students.delegator.Student;
+import com.org.ita.kata.utils.NameMethod;
 import com.org.ita.kata.utils.SystemInput;
 
-public class MenuEight implements MenuNumber {
+public class MenuEight extends MenuNumber {
 
-    private StudentRealisationFactory studentRealisationFactory;
-    private String allTasks = "1.) Keep Hydrated!\n"
-            + "2.) Volume of a Cuboid\n"
-            + "3.) Miles per gallon to kilometers per liter\n"
-            + "4.) To square root or no to square\n"
-            + "5.) Count of positives / sum of negatives\n"
-            + "6.) Convert a String to a Number\n"
-            + "7.) Formatting decimal places\n"
-            + "8.) Find numbers which are divisible by given number";
+	public MenuEight() {}
 
-    public MenuEight(StudentRealisationFactory studentRealisationFactory) {
-        this.studentRealisationFactory = studentRealisationFactory;
+	public MenuEight(Student student) {
+        super(student);
     }
-
-    @Override
-    public Object whoImplemented() {
-        return this.studentRealisationFactory.setUpImplementation().getClass();
-    }
-
-    public Eight getStudentEightKataRealisation() {
-        return this.studentRealisationFactory.setUpImplementation().implementationEightKata();
-    }
-
+    @NameMethod(name = "Keep Hydrated!")
     public void getKeepHydratedTask() {
         System.out.println("Enter time number : ");
         double time = SystemInput.inputDoubleNumber();
         System.out.println("Liters = " + getStudentEightKataRealisation().Liters(time));
     }
-
+    @NameMethod(name = "Volume of a Cuboid")
     public void getVolumeOfACuboidTask() {
         System.out.println("Enter length number : ");
         double length = SystemInput.inputDoubleNumber();
@@ -47,72 +29,34 @@ public class MenuEight implements MenuNumber {
         System.out.println("V = " + getStudentEightKataRealisation().getVolumeOfCuboid(length, width, height));
     }
 
+    @NameMethod(name = "Miles per gallon to kilometers per liter")
     public void getMilesPerGallonToKilometersPerLiterTask() {
 
     }
-
+    @NameMethod(name = "To square root or no to square")
     public void getToSquareRootOrNoToSquareTask() {
 
     }
-
+    @NameMethod(name = "Count of positives / sum of negatives")
     public void getCountOfPositivesSumOfNegativesTask() {
-
+    	int[] array = SystemInput.inputIntArray();
+    	int[] result = getStudentEightKataRealisation().countPositivesSumNegatives(array);
+    	System.out.println(Arrays.toString(result));
     }
-
+    @NameMethod(name = "Convert a String to a Number")
     public void getConvertAStringToANumberTask() {
-
+        System.out.println("Enter  string: ");
+        String str = SystemInput.inputStringToNumber();
+        System.out.println("Now it's a number : " + getStudentEightKataRealisation().stringToNumber(str));
     }
-
+    @NameMethod(name = "Formatting decimal places")
     public void getFormattingDecimalPlacesTask() {
         System.out.println("Enter double number with several decimal places : ");
         double doubleNumber = SystemInput.inputDoubleNumber();
         System.out.println("Rounded number to two decimal place = " + getStudentEightKataRealisation().TwoDecimalPlaces(doubleNumber));
     }
-
+    @NameMethod(name = "Find numbers which are divisible by given number")
     public void getFindNumbersWhichAreDivisibleByGivenNumberTask() {
 
-    }
-
-    @Override
-    public void getAllTasks() {
-        System.out.println("\n[IMPLEMENTED BY : " + whoImplemented() + "]\n");
-        while (true) {
-            System.out.println("[ALL TASKS]\n" + allTasks);
-            System.out.println("9.) Go back\n");
-            System.out.println("Enter number of task : ");
-            String taskNumber = SystemInput.input.nextLine();
-            switch (taskNumber) {
-                case "1":
-                    getKeepHydratedTask();
-                    break;
-                case "2":
-                    getVolumeOfACuboidTask();
-                    break;
-                case "3":
-                    getMilesPerGallonToKilometersPerLiterTask();
-                    break;
-                case "4":
-                    getToSquareRootOrNoToSquareTask();
-                    return;
-                case "5":
-                    getCountOfPositivesSumOfNegativesTask();
-                    break;
-                case "6":
-                    getConvertAStringToANumberTask();
-                    break;
-                case "7":
-                    getFormattingDecimalPlacesTask();
-                    break;
-                case "8":
-                    getFindNumbersWhichAreDivisibleByGivenNumberTask();
-                    break;
-                case "9":
-                    System.out.println(GO_BACK);
-                    return;
-                default:
-                    System.out.println(INCORRECT_INPUT);
-                    break;
-            }
-        }
     }
 }
