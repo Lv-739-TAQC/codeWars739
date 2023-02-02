@@ -15,8 +15,14 @@ public abstract class MenuNumber {
     
     private Student student;
     
+    public MenuNumber() {}
+    
     public MenuNumber(Student student) {
         this.student = student;
+    }
+    
+    public void SetStudent(Student student) {
+    	this.student = student;
     }
     
     public Object whoImplemented() {

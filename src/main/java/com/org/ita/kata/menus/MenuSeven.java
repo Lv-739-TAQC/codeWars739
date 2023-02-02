@@ -6,6 +6,8 @@ import com.org.ita.kata.utils.NameMethod;
 import com.org.ita.kata.utils.SystemInput;
 
 public class MenuSeven extends MenuNumber {
+	
+	public MenuSeven() {}
 
     public MenuSeven(Student student) {
         super(student);

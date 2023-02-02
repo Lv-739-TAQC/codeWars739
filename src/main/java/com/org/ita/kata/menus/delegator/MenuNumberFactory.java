@@ -1,6 +1,7 @@
 package com.org.ita.kata.menus.delegator;
 
 import com.org.ita.kata.students.delegator.Student;
+import com.org.ita.kata.MenuNumber;
 import com.org.ita.kata.menus.*;
 
 import com.org.ita.kata.utils.SystemInput;
@@ -26,31 +27,18 @@ public class MenuNumberFactory {
         while (true) {
             System.out.println("[ALL KATAS]\n" + katas);
             System.out.println("0. Exit\n");
-            System.out.println("Please enter number of kata : ");
+            System.out.println("Please enter name of kata : ");
             String kata = SystemInput.input.nextLine();
-            
-            switch (kata) {
-                case "1":
-                    (new MenuEight(student)).getAllTasks();
-                    break;
-                case "2":
-                    (new MenuSeven(student)).getAllTasks();
-                    break;
-                case "3":
-                    (new MenuSix(student)).getAllTasks();
-                    break;
-                case "4":
-                    (new MenuFive(student)).getAllTasks();
-                    break;
-                case "5":
-                    (new MenuFour(student)).getAllTasks();
-                    break;
-                case "0":
-                    System.out.println(EXIT_PROGRAM);
-                    return;
-                default:
-                    System.out.println(INCORRECT_INPUT);
-                    break;
+            if (kata.equals("0")) {
+            	System.out.println(EXIT_PROGRAM);
+                return;
+            }
+            try {
+            	MenuNumber menuNumber = MenuLevel.valueOf(kata.toUpperCase()).getMenuNumber();
+                menuNumber.SetStudent(student);
+                menuNumber.getAllTasks();
+            } catch (Exception e) {
+            	System.out.println(INCORRECT_INPUT);
             }
         }
     }

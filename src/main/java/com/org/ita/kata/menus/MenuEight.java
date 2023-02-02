@@ -7,6 +7,8 @@ import com.org.ita.kata.utils.SystemInput;
 
 public class MenuEight extends MenuNumber {
 
+	public MenuEight() {}
+	
 	public MenuEight(Student student) {
         super(student);
     }

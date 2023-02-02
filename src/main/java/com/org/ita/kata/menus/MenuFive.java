@@ -10,6 +10,8 @@ import java.util.Arrays;
 import java.math.BigInteger;
 
 public class MenuFive extends MenuNumber {
+	
+	public MenuFive() {}
 
 	public MenuFive(Student student) {
         super(student);
