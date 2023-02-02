@@ -46,9 +46,19 @@ public class MenuSix implements MenuNumber {
     public void getRainfallTask() {
 
     }
-
+    
+    // Author = Kapustin Ilya
     public void getRankingNBATask() {
-
+    	System.out.print("Enter results of NBA teams in format \"team goal team goal, ... , team goal team goal\"" +
+    									" or \"file path_file\": ");
+    	String games = SystemInput.input.nextLine();
+    	if (games.subSequence(0, 4).equals("file")) {
+    		games = SystemInput.readFromFile();
+    	}
+    	games = SystemInput.readFromFile();
+    	System.out.print("Enter team: ");
+    	String team = SystemInput.readFromFile();
+    	getStudentSixKataRealisation().nbaCup(games, team);
     }
 
     public void getHelpTheBooksellerTask() {

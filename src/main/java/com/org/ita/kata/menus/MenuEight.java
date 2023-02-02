@@ -1,5 +1,8 @@
 package com.org.ita.kata.menus;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 import com.org.ita.kata.Eight;
 import com.org.ita.kata.MenuNumber;
 import com.org.ita.kata.students.delegator.StudentRealisationFactory;
@@ -54,9 +57,12 @@ public class MenuEight implements MenuNumber {
     public void getToSquareRootOrNoToSquareTask() {
 
     }
-
+    
+    // Author = Kapustin Ilya
     public void getCountOfPositivesSumOfNegativesTask() {
-
+    	int[] array = SystemInput.inputIntArray();
+    	int[] result = getStudentEightKataRealisation().countPositivesSumNegatives(array);
+    	System.out.println(Arrays.toString(result));
     }
 
     public void getConvertAStringToANumberTask() {
