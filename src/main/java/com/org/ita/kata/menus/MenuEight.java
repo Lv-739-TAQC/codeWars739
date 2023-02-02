@@ -1,5 +1,5 @@
 package com.org.ita.kata.menus;
-
+import java.util.Arrays;
 import com.org.ita.kata.MenuNumber;
 import com.org.ita.kata.students.delegator.Student;
 import com.org.ita.kata.utils.NameMethod;
@@ -8,7 +8,7 @@ import com.org.ita.kata.utils.SystemInput;
 public class MenuEight extends MenuNumber {
 
 	public MenuEight() {}
-	
+
 	public MenuEight(Student student) {
         super(student);
     }
@@ -28,7 +28,7 @@ public class MenuEight extends MenuNumber {
         double height = SystemInput.inputDoubleNumber();
         System.out.println("V = " + getStudentEightKataRealisation().getVolumeOfCuboid(length, width, height));
     }
-    
+
     @NameMethod(name = "Miles per gallon to kilometers per liter")
     public void getMilesPerGallonToKilometersPerLiterTask() {
 
@@ -39,7 +39,9 @@ public class MenuEight extends MenuNumber {
     }
     @NameMethod(name = "Count of positives / sum of negatives")
     public void getCountOfPositivesSumOfNegativesTask() {
-
+    	int[] array = SystemInput.inputIntArray();
+    	int[] result = getStudentEightKataRealisation().countPositivesSumNegatives(array);
+    	System.out.println(Arrays.toString(result));
     }
     @NameMethod(name = "Convert a String to a Number")
     public void getConvertAStringToANumberTask() {

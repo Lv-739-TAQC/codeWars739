@@ -6,7 +6,7 @@ import com.org.ita.kata.utils.NameMethod;
 import com.org.ita.kata.utils.SystemInput;
 
 public class MenuSix extends MenuNumber {
-	
+
 	public MenuSix() {}
 
 	public MenuSix(Student student) {
@@ -18,7 +18,7 @@ public class MenuSix extends MenuNumber {
         long volume = SystemInput.inputLongNumber();
         System.out.println("Number of cubes = " + getStudentSixKataRealisation().findNb(volume));
     }
-    
+
     @NameMethod(name = "Easy balance checking")
     public void getEasyBalanceCheckingTask() {
 
@@ -33,7 +33,16 @@ public class MenuSix extends MenuNumber {
     }
     @NameMethod(name = "Ranking NBA")
     public void getRankingNBATask() {
-
+    	System.out.print("Enter results of NBA teams in format \"team goal team goal, ... , team goal team goal\"" +
+    									" or \"file path_file\": ");
+    	String games = SystemInput.input.nextLine();
+    	if (games.subSequence(0, 4).equals("file")) {
+    		games = SystemInput.readFromFile();
+    	}
+    	games = SystemInput.readFromFile();
+    	System.out.print("Enter team: ");
+    	String team = SystemInput.readFromFile();
+    	getStudentSixKataRealisation().nbaCup(games, team);
     }
     @NameMethod(name = "Help the bookseller!")
     public void getHelpTheBooksellerTask() {
