@@ -3,6 +3,7 @@ package com.org.ita.kata.students.delegator;
 import com.org.ita.kata.StudentRealisation;
 import com.org.ita.kata.students.*;
 
+@Deprecated
 public class StudentRealisationFactory {
 
     private Student student;
