@@ -20,6 +20,7 @@ public class SystemInput {
     public static final String FILE_NOT_FOUND = "File not found";
     public static final String INCORRECT_BIGINTEGER_INPUT = "The required type is [BigInteger]";
 
+
     public static final Scanner input = new Scanner(System.in);
 
 
@@ -128,5 +129,16 @@ public class SystemInput {
             return inputBigInteger();
         }
         return value;
+    }
+    public static String inputStringToNumber() {
+        String str;
+        try {
+            str = input.nextLine();
+            Integer.parseInt(str);
+        } catch (InputMismatchException | NumberFormatException e)  {
+            System.out.println(INCORRECT_INT_INPUT);
+            return inputStringToNumber();
+        }
+        return str;
     }
 }
