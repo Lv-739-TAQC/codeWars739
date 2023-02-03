@@ -7,24 +7,15 @@ import java.util.List;
 
 public class StudentProvider {
     public static Object[][] combineDataWithStudent(Object[][] testData) {
-        List<Object[]> rowsWithImpl = new ArrayList<>();
+        List<Object[]> rowsStudentImplementation = new ArrayList<>();
         for (Student student : Student.values()) {
             for (Object[] row : testData) {
-                if (row.length == 2) {
-                    rowsWithImpl.add(new Object[]{
-                            student.getStudentRealisation(), row[0], row[1]
-                    });
-                } else if (row.length == 3) {
-                    rowsWithImpl.add(new Object[]{
-                            student.getStudentRealisation(), row[0], row[1], row[2]
-                    });
-                } else {
-                    rowsWithImpl.add(new Object[]{
-                            student.getStudentRealisation(), row[0], row[1], row[2], row[3]
-                    });
-                }
+                Object[] object = new Object[row.length + 1];
+                object[0] = student.getStudentRealisation();
+                System.arraycopy(row, 0, object, 1, row.length);
+                rowsStudentImplementation.add(object);
             }
         }
-        return rowsWithImpl.toArray(Object[][]::new);
+        return rowsStudentImplementation.toArray(Object[][]::new);
     }
 }
