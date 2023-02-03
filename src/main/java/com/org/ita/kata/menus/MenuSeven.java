@@ -19,7 +19,17 @@ public class MenuSeven extends MenuNumber {
         System.out.println("Enter financial donations from benefactors : ");
         double[] arr = SystemInput.inputDoubleArray();
         System.out.println("Enter the desired average donation : ");
-        double nAvg = SystemInput.inputDoubleNumber();
+        double nAvg;
+        while (true) {
+            nAvg = SystemInput.inputDoubleNumber();
+            try {
+                getStudentSevenKataRealisation().newAvg(arr, nAvg);
+            } catch (IllegalArgumentException e) {
+                System.out.println(e+" : Your  expectations are not great enough. Please enter other donation.");
+                continue;
+            }
+            break;
+        }
         System.out.println("To reach the average donation, the next benefactor must give to the association : " + getStudentSevenKataRealisation().newAvg(arr, nAvg));
     }
 
