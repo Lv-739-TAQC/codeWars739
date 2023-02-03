@@ -67,8 +67,29 @@ public class EightTest {
         Assert.assertEquals(actual, expected);
     }
 
-    @Test
-    public void testMpgToKPM() {
+    public Object[][] combineImplAndMpgToKPMtestData(Object[][] testsData) {
+        List<Object[]> rowsWithImpl = new ArrayList<>();
+        for (Student student : Student.values()) {
+            for (Object[] row : testsData) {
+                rowsWithImpl.add(new Object[]{student.getStudentRealisation().implementationEightKata(), row[0], row[1]});
+            }
+        }
+        return rowsWithImpl.toArray(Object[][]::new);
+    }
+
+    @DataProvider(name = "dpTestMpgToKPM")
+    public Object[][] dpTestMpgToKPM() {
+        Object[][] data = new Object[][]{
+                {7.08f, 20},
+                {10.62f, 30},
+        };
+        return combineImplAndMpgToKPMtestData(data);
+    }
+
+    @Test(dataProvider = "dpTestMpgToKPM")
+    public void testMpgToKPM(Eight eight, float expected, float mpg) {
+        float actual = eight.mpgToKPM(mpg);
+        Assert.assertEquals(actual, expected);
     }
 
     @Test
