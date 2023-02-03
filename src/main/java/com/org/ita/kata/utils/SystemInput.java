@@ -15,7 +15,6 @@ public class SystemInput {
     public static final String INCORRECT_INT_INPUT = "The required type is [int]";
     public static final String INCORRECT_LONG_INPUT = "The required type is [long]";
     public static final String INCORRECT_DOUBLE_INPUT = "The required type is [double]";
-    public static final String INCORRECT_FLOAT_INPUT = "The required type is [float]";
     public static final String INCORRECT_NUMBER_INPUT = "This number is not close to zero";
     public static final String INCORRECT_WARRIOR_INPUT = "This field must starts from 1";
     public static final String INCORRECT_FLOAT_INPUT = "The required type is [float]";
