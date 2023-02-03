@@ -40,11 +40,7 @@ public class MenuEight extends MenuNumber {
 
     @NameMethod(name = "Miles per gallon to kilometers per liter")
     public void getMilesPerGallonToKilometersPerLiterTask() {
-        System.out.println("To convert miles per imperial gallon into kilometers per liter, please, enter the number of miles per imperial gallon to be converted:");
-        float mpg = SystemInput.inputFloatNumber();
-        System.out.println();
-        System.out.println(mpg + " miles per imperial gallon = " + getStudentEightKataRealisation().mpgToKPM(mpg) + " kilometers per liter.");
-        System.out.println();
+
     }
 
     @NameMethod(name = "To square root or no to square")
