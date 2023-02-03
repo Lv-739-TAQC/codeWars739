@@ -8,7 +8,7 @@ import static com.org.ita.kata.providers.StudentProvider.combineDataWithStudent;
 
 public class DataProviderFive {
     @DataProvider(name = "dpTestPerimeter")
-    public Object[][] dpTestPerimeter() {
+    public static Object[][] dpTestPerimeter() {
         Object[][] data = new Object[][]{
                 {new BigInteger("80"), new BigInteger("5")},
                 {new BigInteger("216"), new BigInteger("7")},

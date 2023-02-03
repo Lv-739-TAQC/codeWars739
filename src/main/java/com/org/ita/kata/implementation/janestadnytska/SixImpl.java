@@ -98,20 +98,20 @@ public class SixImpl implements Six {
         String[] teams = resultSheet.split(",");
         int score;
         int concede;
-        for (int i = 0; i < teams.length; i++) {
-            if (teams[i].contains(toFind)) {
-                int j = teams[i].indexOf(toFind);
+        for(String team: teams){
+            if(team.contains(toFind)){
+                int j = team.indexOf(toFind);
                 try {
-                    String[] splitTeams = teams[i].split(" ");
-                    if (j == 0) {
+                    String[] splitTeams = team.split(" ");
+                    if(j == 0){
                         score = Integer.parseInt(splitTeams[toFind.split(" ").length]);
                         concede = Integer.parseInt(splitTeams[splitTeams.length - 1]);
-                    } else {
+                    }else{
                         concede = Integer.parseInt(splitTeams[splitTeams.length - toFind.split(" ").length - 2]);
                         score = Integer.parseInt(splitTeams[splitTeams.length - 1]);
                     }
                 } catch (NumberFormatException e) {
-                    return "Error(float number):" + teams[i];
+                    return "Error(float number):" + team;
                 }
                 scored += score;
                 conceded += concede;
