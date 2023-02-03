@@ -1,5 +1,6 @@
 package com.org.ita.kata;
 
+import com.org.ita.kata.providers.DataProviderEight;
 import com.org.ita.kata.students.delegator.Student;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
@@ -81,9 +82,9 @@ public class EightTest {
         return combineImplAndTwoDecimalPlacesTestData(data);
     }
 
-    @Test(dataProvider = "dpTestTwoDecimalPlaces")
-    public void testTwoDecimalPlaces(Eight eight, double expected, double input) {
-        double actual = eight.TwoDecimalPlaces(input);
+    @Test(dataProvider = "dpTestTwoDecimalPlaces", dataProviderClass = DataProviderEight.class)
+    public void testTwoDecimalPlaces(StudentRealisation studentRealisation, double expected, double input) {
+        double actual = studentRealisation.implementationEightKata().TwoDecimalPlaces(input);
         Assert.assertEquals(actual, expected);
     }
 
