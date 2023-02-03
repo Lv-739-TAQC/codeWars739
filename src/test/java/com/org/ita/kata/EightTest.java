@@ -1,5 +1,6 @@
 package com.org.ita.kata;
 
+import com.org.ita.kata.implementation.AnnaMatviienko.EightImpl;
 import com.org.ita.kata.students.delegator.Student;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
@@ -40,9 +41,30 @@ public class EightTest {
         Assert.assertEquals(actual, expected);
     }
 
+    public Object[][] combineImplAndVolumeOfCuboidTestData(Object[][] testsData) {
+        List<Object[]> rowsWithImpl = new ArrayList<>();
+        for (Student student : Student.values()) {
+            for (Object[] row : testsData) {
+                rowsWithImpl.add(new Object[]{student.getStudentRealisation().implementationEightKata(), row[0], row[1], row[2], row[3]});
+            }
+        }
+        return rowsWithImpl.toArray(Object[][]::new);
+    }
 
-    @Test
-    public void testGetVolumeOfCuboid() {
+    @DataProvider(name = "dpTestVolumeOfCuboid")
+    public Object[][] dpTestVolumeOfCuboid() {
+        Object[][] data = new Object[][]{
+                {4, 1, 2, 2},
+                {63, 6.3, 2, 5},
+                {31.48464, 4.4, 3.56, 2.01}
+        };
+        return combineImplAndVolumeOfCuboidTestData(data);
+    }
+
+    @Test(dataProvider = "dpTestVolumeOfCuboid")
+    public void testGetVolumeOfCuboid(Eight eight, double expected, double length, double width, double height) {
+        double actual = eight.getVolumeOfCuboid(length, width, height);
+        Assert.assertEquals(actual, expected);
     }
 
     @Test
@@ -63,8 +85,8 @@ public class EightTest {
 
     public Object[][] combineImplAndTwoDecimalPlacesTestData(Object[][] testsData) {
         List<Object[]> rowsWithImpl = new ArrayList<>();
-        for (Student student: Student.values()) {
-            for (Object[] row: testsData) {
+        for (Student student : Student.values()) {
+            for (Object[] row : testsData) {
                 rowsWithImpl.add(new Object[]{student.getStudentRealisation().implementationEightKata(), row[0], row[1]});
             }
         }
