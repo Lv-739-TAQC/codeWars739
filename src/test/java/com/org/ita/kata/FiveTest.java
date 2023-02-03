@@ -17,4 +17,10 @@ public class FiveTest {
         String actual = Arrays.toString(studentRealisation.implementationFiveKata().gap(g, m, n));
         Assert.assertEquals(actual, expected);
     }
+
+    @Test(dataProvider = "dpTestSmallest", dataProviderClass = DataProviderFive.class)
+    public void testSmallest(Five five, String expected, long input) {
+        String actual = Arrays.toString(five.smallest(input));
+        Assert.assertEquals(actual, expected);
+    }
 }

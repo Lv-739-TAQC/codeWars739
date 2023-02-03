@@ -28,4 +28,10 @@ public class SixTest {
         double actualResult = studentRealisation.implementationSixKata().f(x);
         assertFunctionEquals(actualResult, expectedResult);
     }
+
+    @Test(dataProvider = "dpTestFindNb", dataProviderClass = DataProviderSix.class)
+    public void testFindNb(Six six, long expected, long input) {
+        long actual = six.findNb(input);
+        Assert.assertEquals(actual, expected);
+    }
 }
