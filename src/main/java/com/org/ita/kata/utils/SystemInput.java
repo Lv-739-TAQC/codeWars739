@@ -144,7 +144,7 @@ public class SystemInput {
     }
 
     public static BigInteger inputBigInteger() {
-        BigInteger value = BigInteger.valueOf(0);
+        BigInteger value;
         try {
             value = BigInteger.valueOf(Long.parseLong(input.nextLine()));
         } catch (InputMismatchException | NumberFormatException e) {
