@@ -6,6 +6,10 @@ import com.org.ita.kata.MenuNumber;
 import com.org.ita.kata.students.delegator.Student;
 import com.org.ita.kata.utils.NameMethod;
 import com.org.ita.kata.utils.SystemInput;
+import com.sun.jdi.FloatValue;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 public class MenuEight extends MenuNumber {
 
@@ -36,7 +40,11 @@ public class MenuEight extends MenuNumber {
 
     @NameMethod(name = "Miles per gallon to kilometers per liter")
     public void getMilesPerGallonToKilometersPerLiterTask() {
-
+        System.out.println("To convert miles per imperial gallon into kilometers per liter, please, enter the number of miles per imperial gallon to be converted:");
+        float mpg = SystemInput.inputFloatNumber();
+        System.out.println();
+        System.out.println(mpg + " miles per imperial gallon = " + getStudentEightKataRealisation().mpgToKPM(mpg) + " kilometers per liter.");
+        System.out.println();
     }
 
     @NameMethod(name = "To square root or no to square")
