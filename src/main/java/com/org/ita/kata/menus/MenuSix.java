@@ -26,8 +26,71 @@ public class MenuSix extends MenuNumber {
     }
 
 
+    public boolean exitMenu;
+
     @NameMethod(name = "Easy balance checking")
     public void getEasyBalanceCheckingTask() {
+        exitMenu = false;
+        Scanner scanner = new Scanner(System.in);
+        String file1Content = "";
+        String file2Content = "";
+        String file3Content = "";
+        String path = "src/main/resources/balance/";
+        File input1 = new File(path + "input1.txt");
+        File input2 = new File(path + "input2.txt");
+        File input3 = new File(path + "input3.txt");
+        System.out.println();
+        System.out.println("Please, choose one of three files to work with while Balance Checking task execution: ");
+        System.out.println();
+        file1Content = getContent("First", input1);
+        file2Content = getContent("Second", input2);
+        file3Content = getContent("Third", input3);
+        while (!exitMenu) {
+            System.out.println("Enter '1' to work with input1.txt");
+            System.out.println("Enter '2' to work with input2.txt");
+            System.out.println("Enter '3' to work with input3.txt");
+            System.out.println();
+            System.out.println("Make Your choice: ");
+            int i = scanner.nextInt();
+            switch (i) {
+                case 1:
+                    System.out.println(getStudentSixKataRealisation().balance(file1Content));
+                    System.out.println();
+                    return;
+                case 2:
+                    System.out.println(getStudentSixKataRealisation().balance(file2Content));
+                    System.out.println();
+                    return;
+                case 3:
+                    System.out.println(getStudentSixKataRealisation().balance(file3Content));
+                    System.out.println();
+                    return;
+                default:
+                    System.out.println("Please, enter correct value: 1, 2 or 3.");
+                    System.out.println();
+            }
+        }
+        scanner.close();
+    }
+
+    public String getContent(String fileNum, File input) {
+        StringBuilder sb = new StringBuilder();
+        try {
+            Scanner scanner = new Scanner(input);
+            System.out.println(fileNum + " file name: " + input.getName());
+            System.out.println(fileNum + " file content: ");
+            while (scanner.hasNextLine()) {
+                sb.append(scanner.nextLine()).append("\n");
+            }
+            System.out.println();
+            scanner.close();
+
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found, please, make sure, the path is correct.");
+            System.out.println();
+            exitMenu = true;
+        }
+        return sb.toString();
     }
 
 
