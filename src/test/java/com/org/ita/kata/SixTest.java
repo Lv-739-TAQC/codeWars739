@@ -30,8 +30,8 @@ public class SixTest {
     }
 
     @Test(dataProvider = "dpTestFindNb", dataProviderClass = DataProviderSix.class)
-    public void testFindNb(Six six, long expected, long input) {
-        long actual = six.findNb(input);
-        Assert.assertEquals(actual, expected);
+    public void testFindNb(StudentRealisation studentRealisation, long expected, long input) {
+        long actual = studentRealisation.implementationSixKata().findNb(input);
+        assertFunctionEquals(actual, expected);
     }
 }

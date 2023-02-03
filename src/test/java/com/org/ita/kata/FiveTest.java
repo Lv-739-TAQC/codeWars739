@@ -19,8 +19,8 @@ public class FiveTest {
     }
 
     @Test(dataProvider = "dpTestSmallest", dataProviderClass = DataProviderFive.class)
-    public void testSmallest(Five five, String expected, long input) {
-        String actual = Arrays.toString(five.smallest(input));
+    public void testSmallest(StudentRealisation studentRealisation, String expected, long input) {
+        String actual = Arrays.toString(studentRealisation.implementationFiveKata().smallest(input));
         Assert.assertEquals(actual, expected);
     }
 }
