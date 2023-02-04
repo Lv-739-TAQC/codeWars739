@@ -8,6 +8,18 @@ import java.util.List;
 
 public class FiveImpl implements Five {
 
+    public static boolean isPrime(long n) {
+        if (n <= 1) {
+            return false;
+        }
+        for (long i = 2; i <= Math.sqrt(n); i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     //Gap in Primes
     @Override
     public long[] gap(int g, long m, long n) {
@@ -20,23 +32,11 @@ public class FiveImpl implements Five {
 
         for (int i = 0; i < primes.size() - 1; i++) {
             if (primes.get(i + 1) - primes.get(i) == g) {
-                return new long[] { primes.get(i), primes.get(i + 1) };
+                return new long[]{primes.get(i), primes.get(i + 1)};
             }
         }
 
         return null;
-    }
-
-    public static boolean isPrime(long n) {
-        if (n <= 1) {
-            return false;
-        }
-        for (long i = 2; i <= Math.sqrt(n); i++) {
-            if (n % i == 0) {
-                return false;
-            }
-        }
-        return true;
     }
 
     //Number of trailing zeros of N!
@@ -65,10 +65,10 @@ public class FiveImpl implements Five {
         BigInteger result = BigInteger.valueOf(0);
 
         for (int i = 2; i < n.intValue() + 1; i++) {
-            cubes.add(cubes.get(i-1).add(cubes.get(i-2)));
+            cubes.add(cubes.get(i - 1).add(cubes.get(i - 2)));
         }
 
-        for (BigInteger bi: cubes) {
+        for (BigInteger bi : cubes) {
             result = result.add(bi);
         }
 

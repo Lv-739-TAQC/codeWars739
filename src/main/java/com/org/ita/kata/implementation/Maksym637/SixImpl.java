@@ -2,17 +2,59 @@ package com.org.ita.kata.implementation.Maksym637;
 
 import com.org.ita.kata.Six;
 
-import java.text.DecimalFormat;
 import java.util.*;
 
 public class SixImpl implements Six {
 
     public static final String REGEX_WORDS = "[^a-zA-Z']+";
     public static final String ROUNDING_1 = "%.2f";
-    public static final DecimalFormat df = new DecimalFormat("0.00");
 
     public static final String ERROR_MESSAGE_1 = ":This team didn't play!";
     public static final String ERROR_MESSAGE_2 = "Error(float number):";
+
+    public static String processingString(String string) {
+        return string.replaceAll("([^\\n. \\da-zA-Z])", "")
+                .replace("\n", " ")
+                .replace("\r", "");
+    }
+
+    public static boolean invalidData(Map<String, List<Double>> citiesMap, String town) {
+        return !(citiesMap.containsKey(town) && citiesMap.get(town).size() != 0);
+    }
+
+    public static Map<String, List<Double>> parseString(String data) {
+        Map<String, List<Double>> citiesMap = new HashMap<>();
+
+        String[] citiesRows = data.split("\n");
+
+        for (String cityRow : citiesRows) {
+            List<Double> cityRainfalls = new ArrayList<>();
+            String city = cityRow.substring(0, cityRow.indexOf(":"));
+            List<String> cityRainfallsString = Arrays.asList(cityRow.replace(city + ":", "").split(","));
+            if (cityRainfallsString.size() == 12) {
+                for (String cityRainfallString : cityRainfallsString) {
+                    cityRainfalls.add(Double.parseDouble(Arrays.asList(cityRainfallString.split(" ")).get(1)));
+                }
+            }
+            citiesMap.put(city, cityRainfalls);
+        }
+        return citiesMap;
+    }
+
+    public static boolean validateInput(String resultSheet, String toFind) {
+        String updatedResultSheet = resultSheet.replaceAll(",", " ");
+        List<String> resultSheetAll = Arrays.asList(updatedResultSheet.split(" "));
+        List<String> toFindCommand = Arrays.asList(toFind.split(" "));
+        return resultSheetAll.containsAll(toFindCommand);
+    }
+
+    public static boolean teamStartsFirst(String battles, String toFind) {
+        return battles.indexOf(toFind) == 0;
+    }
+
+    public static int convertToInt(String number) {
+        return Integer.parseInt(number);
+    }
 
     @Override
     public long findNb(long m) {
@@ -42,14 +84,11 @@ public class SixImpl implements Six {
         wordsFromText.removeIf(String::isEmpty);
         digitsFromText.removeIf(String::isEmpty);
 
-        System.out.println(wordsFromText);
-        System.out.println(digitsFromText);
-
         for (int i = 0; i < digitsFromText.size(); i++) {
             if (i % 2 != 0) {
                 rows.add(digitsFromText.get(i));
             } else {
-                prices.add(formatting(Double.parseDouble(digitsFromText.get(i))));
+                prices.add(Double.parseDouble(digitsFromText.get(i)));
             }
         }
 
@@ -91,16 +130,6 @@ public class SixImpl implements Six {
         return resString.toString();
     }
 
-    public static Double formatting(double number) {
-        return Double.valueOf(df.format(number));
-    }
-
-    public static String processingString(String string) {
-        return string.replaceAll("([^\\n. \\da-zA-Z])", "")
-                .replace("\n", " ")
-                .replace("\r", "");
-    }
-
     @Override
     public double f(double x) {
         return x / (1 + Math.sqrt(1 + x));
@@ -136,32 +165,9 @@ public class SixImpl implements Six {
         return variance;
     }
 
-    public static boolean invalidData(Map<String, List<Double>> citiesMap, String town) {
-        return !(citiesMap.containsKey(town) && citiesMap.get(town).size() != 0);
-    }
-
-    public static Map<String, List<Double>> parseString(String data) {
-        Map<String, List<Double>> citiesMap = new HashMap<>();
-
-        List<String> citiesRows = Arrays.asList(data.split("\n"));
-
-        for (String cityRow : citiesRows) {
-            List<Double> cityRainfalls = new ArrayList<>();
-            String city = cityRow.substring(0, cityRow.indexOf(":"));
-            List<String> cityRainfallsString = Arrays.asList(cityRow.replace(city + ":", "").split(","));
-            if (cityRainfallsString.size() == 12) {
-                for (String cityRainfallString : cityRainfallsString) {
-                    cityRainfalls.add(Double.parseDouble(Arrays.asList(cityRainfallString.split(" ")).get(1)));
-                }
-            }
-            citiesMap.put(city, cityRainfalls);
-        }
-        return citiesMap;
-    }
-
     @Override
     public String nbaCup(String resultSheet, String toFind) {
-        List<String> listOfAllBattles = Arrays.asList(resultSheet.split(","));
+        String[] listOfAllBattles = resultSheet.split(",");
         List<String> listOfOccurBattles = new ArrayList<>();
         int W, D, L, Scored, Conceded, Points;
         W = D = L = Scored = Conceded = Points = 0;
@@ -223,21 +229,6 @@ public class SixImpl implements Six {
         }
         return toFind + ":" + "W=" + W + ";D=" + D + ";L=" + L + ";Scored="
                 + Scored + ";Conceded=" + Conceded + ";Points=" + Points;
-    }
-
-    public static boolean validateInput(String resultSheet, String toFind) {
-        String updatedResultSheet = resultSheet.replaceAll(",", " ");
-        List<String> resultSheetAll = Arrays.asList(updatedResultSheet.split(" "));
-        List<String> toFindCommand = Arrays.asList(toFind.split(" "));
-        return resultSheetAll.containsAll(toFindCommand);
-    }
-
-    public static boolean teamStartsFirst(String battles, String toFind) {
-        return battles.indexOf(toFind) == 0;
-    }
-
-    public static int convertToInt(String number) {
-        return Integer.parseInt(number);
     }
 
     @Override

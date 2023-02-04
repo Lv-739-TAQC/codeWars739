@@ -7,18 +7,18 @@ import java.util.Arrays;
 
 public class EightImpl implements Eight {
     @Override
-    public int Liters(double time) {
-        return (int) Math.floor(time/2.0);
+    public int liters(double time) {
+        return (int) Math.floor(time / 2.0);
     }
 
     @Override
     public double getVolumeOfCuboid(double length, double width, double height) {
-        return length*width*height;
+        return length * width * height;
     }
 
     @Override
     public float mpgToKPM(float mpg) {
-        float kpm = mpg/2.824809363f;
+        float kpm = mpg / 2.824809363f;
         DecimalFormat df = new DecimalFormat("0.00");
         String result = df.format(kpm);
         return Float.parseFloat(result);
@@ -31,8 +31,7 @@ public class EightImpl implements Eight {
         for (int i = 0; i < array.length; i++) {
             if (Math.sqrt(array[i]) % 1 != 0) {
                 newArray[i] = (int) Math.pow(array[i], 2);
-            }
-            else  {
+            } else {
                 newArray[i] = (int) Math.sqrt(array[i]);
             }
         }
