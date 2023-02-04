@@ -154,11 +154,8 @@ public class SystemInput {
         return value;
     }
 
-<<<<<<< HEAD
+
     public static String inputNumber() {
-=======
-    public static String inputStringToNumber() {
->>>>>>> origin/main
         String str;
         try {
             str = input.nextLine();

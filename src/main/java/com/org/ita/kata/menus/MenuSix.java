@@ -28,80 +28,11 @@ public class MenuSix extends MenuNumber {
 
     @NameMethod(name = "Floating-point Approximation (I)")
     public void getFloatingPointApproximationITask() {
-        System.out.println("Enter x near zero for f(x) function : ");
-        double x = SystemInput.inputNearZeroNumber();
-        System.out.println("Good approximation of f(x) is : " + getStudentSixKataRealisation().f(x));
+
     }
 
     @NameMethod(name = "Rainfall")
     public void getRainfallTask() {
-<<<<<<< HEAD
-
-    }
-
-    public void getRankingNBATask() {
-
-    }
-
-    public void getHelpTheBooksellerTask() {
-        System.out.println("Enter the code of books : ");
-        String L [] = {"ABAR 200", "CDXE 500", "BKWR 250", "BTSQ 890", "DRTY 600"};
-        String M [] = {"BBAR 150", "CDXE 515", "BKWR 250", "BTSQ 890", "DRTY 600"};
-        String N [] = {"CBART 20", "CDXEF 50", "BKWRK 25", "BTSQZ 89", "DRTYM 60"};
-        String F [] = {"ROXANNE 102", "RHODODE 123", "BKWRKAA 125", "BTSQZFG 239", "DRTYMKH 060"};
-        String P [] = {};
-        String code []  = {""};
-        boolean isNotChosen = true;
-        while (isNotChosen) {
-            System.out.println("There are codes of stocklist" +
-                    "\nChoose which one to use:" +
-                    "\n-> L" +
-                    "\n-> M" +
-                    "\n-> N" +
-                    "\n-> F" +
-                    "\n-> P");
-            String yourCode = SystemInput.input.nextLine();
-            switch (yourCode) {
-                case "L":
-                    code  = L ;
-                    isNotChosen = false;
-                    break;
-                case "M":
-                    code  = M ;
-                    isNotChosen = false;
-                    break;
-                case "N":
-                    code  = N;
-                    isNotChosen = false;
-                    break;
-                case "F":
-                    code  = F ;
-                    isNotChosen = false;
-                    break;
-                case "P":
-                    code  = P ;
-                    isNotChosen = false;
-                    break;
-                default:
-                    System.out.println(INCORRECT_INPUT);
-                    break;
-            }
-        }
-        System.out.println("Enter the first letter of category : ");
-        String category []  = SystemInput.inputString();
-        System.out.println("Your report " + getStudentSixKataRealisation().stockSummary(code, category));
-    }
-
-    @Override
-    public void getAllTasks() {
-        System.out.println("\n[IMPLEMENTED BY : " + whoImplemented() + "]\n");
-        while (true) {
-            System.out.println("[ALL TASKS]\n" + allTasks);
-            System.out.println("7.) Go back\n");
-            System.out.println("Enter number of task : ");
-            String taskNumber = SystemInput.input.nextLine();
-            switch (taskNumber) {
-=======
         String data1 = "Rome:Jan 81.2,Feb 63.2,Mar 70.3,Apr 55.7,May 53.0,Jun 36.4,Jul 17.5,Aug 27.5,Sep 60.9,Oct 117.7,Nov 111.0,Dec 97.9" +
                 "\n" +
                 "London:Jan 48.0,Feb 38.9,Mar 39.9,Apr 42.2,May 47.3,Jun 52.1,Jul 59.5,Aug 57.2,Sep 55.4,Oct 62.0,Nov 59.0,Dec 52.9" +
@@ -150,7 +81,6 @@ public class MenuSix extends MenuNumber {
                     "\n3) data1 + data2");
             String ans = SystemInput.input.nextLine();
             switch (ans) {
->>>>>>> origin/main
                 case "1":
                     data = data1;
                     isNotChosen = false;
@@ -198,6 +128,53 @@ public class MenuSix extends MenuNumber {
 
     @NameMethod(name = "Help the bookseller!")
     public void getHelpTheBooksellerTask() {
-
+        {
+            System.out.println("Enter the code of books : ");
+            String L[] = {"ABAR 200", "CDXE 500", "BKWR 250", "BTSQ 890", "DRTY 600"};
+            String M[] = {"BBAR 150", "CDXE 515", "BKWR 250", "BTSQ 890", "DRTY 600"};
+            String N[] = {"CBART 20", "CDXEF 50", "BKWRK 25", "BTSQZ 89", "DRTYM 60"};
+            String F[] = {"ROXANNE 102", "RHODODE 123", "BKWRKAA 125", "BTSQZFG 239", "DRTYMKH 060"};
+            String P[] = {};
+            String code[] = {""};
+            boolean isNotChosen = true;
+            while (isNotChosen) {
+                System.out.println("There are codes of stocklist" +
+                        "\nChoose which one to use:" +
+                        "\n-> L" +
+                        "\n-> M" +
+                        "\n-> N" +
+                        "\n-> F" +
+                        "\n-> P");
+                String yourCode = SystemInput.input.nextLine();
+                switch (yourCode) {
+                    case "L":
+                        code = L;
+                        isNotChosen = false;
+                        break;
+                    case "M":
+                        code = M;
+                        isNotChosen = false;
+                        break;
+                    case "N":
+                        code = N;
+                        isNotChosen = false;
+                        break;
+                    case "F":
+                        code = F;
+                        isNotChosen = false;
+                        break;
+                    case "P":
+                        code = P;
+                        isNotChosen = false;
+                        break;
+                    default:
+                        System.out.println(INCORRECT_INPUT);
+                        break;
+                }
+            }
+            System.out.println("Enter the first letter of category : ");
+            String category[] = SystemInput.inputString();
+            System.out.println("Your report " + getStudentSixKataRealisation().stockSummary(code, category));
+        }
     }
 }
