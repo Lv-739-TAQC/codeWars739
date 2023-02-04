@@ -74,7 +74,10 @@ public class DataProviderFour {
     @DataProvider(name = "dpWarriorTraining")
     public static Object[][] dpWarriorTraining() {
         Object[][] data = new Object[][]{
-
+                {"Defeated Chuck Norris", "Defeated Chuck Norris", 9000, 1},
+                {"Do the Hookie Pookie", "Do the Hookie Pookie", 8500, 1},
+                {"Not strong enough", "Defeated Chuck Norris", 9000, 2},
+                {"Not strong enough", "Do the Hookie Pookie", 8500, 4},
         };
         return combineDataWithStudent(data);
     }

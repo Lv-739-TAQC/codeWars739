@@ -75,4 +75,15 @@ public class FourTest {
     /**
      * Test the trainings of warrior
      */
+    @Test(dataProvider = "dpWarriorTraining", dataProviderClass = DataProviderFour.class)
+    public void testTrainings(StudentRealisation studentRealisation,
+                              String expectedResult,
+                              String description,
+                              int trainingExperience,
+                              int trainingLevel) {
+        Assert.assertEquals(
+                studentRealisation.implementationFourKata().training(description, trainingExperience, trainingLevel),
+                expectedResult
+        );
+    }
 }
