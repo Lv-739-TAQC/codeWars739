@@ -118,15 +118,19 @@ public class SystemInput {
         }
         return value;
     }
-    public static String inputStringToNumber() {
+
+    public static String inputNumber() {
         String str;
         try {
             str = input.nextLine();
             Integer.parseInt(str);
-        } catch (InputMismatchException | NumberFormatException e)  {
+        } catch (InputMismatchException | NumberFormatException e) {
             System.out.println(INCORRECT_INT_INPUT);
-            return inputStringToNumber();
+            return inputNumber();
         }
         return str;
+    }
+    public static String[] inputString() {
+        return input.nextLine().split("\\s");
     }
 }
