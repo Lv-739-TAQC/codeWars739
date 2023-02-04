@@ -9,7 +9,7 @@ import java.util.List;
 public class FourTest {
 
     /**
-     * Test the initialized warrior (Warrior first)
+     * Test the initialized warrior (The first warrior)
      */
     @Test(dataProvider = "dpWarriorFirst", dataProviderClass = DataProviderFour.class)
     public void testLevel1(StudentRealisation studentRealisation, int expectedResult) {
@@ -32,7 +32,7 @@ public class FourTest {
     }
 
     /**
-     * Test warrior after training (Warrior second)
+     * Test warrior after training (The second warrior)
      */
     @Test(dataProvider = "dpWarriorSecond", dataProviderClass = DataProviderFour.class)
     public void testLevel2(StudentRealisation studentRealisation, int expectedResult) {
