@@ -17,7 +17,7 @@ public class SixImpl implements Six {
             } else if (m == 0) {
                 count = n;
                 break;
-            } else if (m < 0) {
+            } else {
                 count = -1;
                 break;
             }
@@ -69,8 +69,7 @@ public class SixImpl implements Six {
 
     @Override
     public double f(double x) {
-        double result = Math.expm1(Math.log1p(x) / 2);
-        return result;
+        return Math.expm1(Math.log1p(x) / 2);
     }
 
     public static HashMap<String, String> map = new HashMap<>();
@@ -150,7 +149,7 @@ public class SixImpl implements Six {
             return "";
         }
         String result = "";
-        HashMap<String, Integer> map = new HashMap();
+        HashMap<String, Integer> map = new HashMap<>();
         for (int i = 0; i < lstOfArt.length; i++) {
             String[] temp;
             temp = lstOfArt[i].split(" ");
