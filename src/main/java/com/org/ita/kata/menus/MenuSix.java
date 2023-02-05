@@ -28,7 +28,9 @@ public class MenuSix extends MenuNumber {
 
     @NameMethod(name = "Floating-point Approximation (I)")
     public void getFloatingPointApproximationITask() {
-
+        System.out.println("Enter x near zero for f(x) function : ");
+        double x = SystemInput.inputNearZeroNumber();
+        System.out.println("Good approximation of f(x) is : " + getStudentSixKataRealisation().f(x));
     }
 
     @NameMethod(name = "Rainfall")
@@ -138,7 +140,7 @@ public class MenuSix extends MenuNumber {
             String code[] = {""};
             boolean isNotChosen = true;
             while (isNotChosen) {
-                System.out.println("There are codes of stocklist" +
+                System.out.println("There are codes of stocklistes" +
                         "\nChoose which one to use:" +
                         "\n-> L" +
                         "\n-> M" +
