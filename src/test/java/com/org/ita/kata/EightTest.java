@@ -1,5 +1,6 @@
 package com.org.ita.kata;
 
+import com.org.ita.kata.providers.DataProviderEight;
 import com.org.ita.kata.students.delegator.Student;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
@@ -57,10 +58,13 @@ public class EightTest {
     public void testCountPositivesSumNegatives() {
     }
 
-    @Test
-    public void testStringToNumber() {
+    @Test(dataProvider = "dpTestStringToNumber", dataProviderClass = DataProviderEight.class)
+    public void testStringToNumber (StudentRealisation studentRealisation, int expected, String input) {
+        Integer actual = studentRealisation.implementationEightKata().stringToNumber(input);
+        Assert.assertEquals(actual, expected);
     }
 
+    @Test
     public Object[][] combineImplAndTwoDecimalPlacesTestData(Object[][] testsData) {
         List<Object[]> rowsWithImpl = new ArrayList<>();
         for (Student student: Student.values()) {
