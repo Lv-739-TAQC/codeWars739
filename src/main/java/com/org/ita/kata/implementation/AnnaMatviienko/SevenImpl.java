@@ -26,8 +26,7 @@ public class SevenImpl implements Seven {
             for (int i = 0; i < n; i++) {
                 sum += 1d / (double) (1 + i * 3);
             }
-            String Result = String.format("%.2f", sum);
-            return Result;
+            return String.format("%.2f", sum);
         }
     }
 }
