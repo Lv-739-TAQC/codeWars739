@@ -5,13 +5,15 @@ import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.util.List;
+
 public class FourImpl implements Four {
-		private final int MAX_LEVEL = 100;
+
+		  private final int MAX_LEVEL = 100;
 	    private final int MAX_EXPERIENCE = 10000;
 	  
 	    private int level = 1;
 	    private int experience = 100;
-	  
 	  
 	    private String easyFight = "Easy fight";
 	    private String goodFight = "A good fight";
