@@ -68,11 +68,11 @@ public class SixImpl implements Six {
                 scored = scored + result.getLocalResultTeam();
                 conceded = conceded + result.getVisitorResultTeam();
 
-            } else if (result.winLocal() && result.isVisitor(toFind)) { // Soy visitante y gana visitante
+            } else if (result.winLocal() && result.isVisitor(toFind)) {
                 losses++;
                 scored = scored + result.getVisitorResultTeam();
                 conceded = conceded + result.getLocalResultTeam();
-            } else if (result.winVisitor() && result.isVisitor(toFind)) { // Soy visitante y pierde visitante
+            } else if (result.winVisitor() && result.isVisitor(toFind)) {
                 winners++;
                 scored = scored + result.getVisitorResultTeam();
                 conceded = conceded + result.getLocalResultTeam();
@@ -184,10 +184,9 @@ public class SixImpl implements Six {
             return -1d;
         }
         double average = Arrays.stream(townTemp).average().getAsDouble();
-        double variance = Arrays.stream(townTemp)
+        return Arrays.stream(townTemp)
                 .map(p -> Math.pow(p - average, 2))
                 .sum() / townTemp.length;
-        return variance;
     }
 
     @Override
