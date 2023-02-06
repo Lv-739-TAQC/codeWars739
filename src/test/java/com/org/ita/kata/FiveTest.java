@@ -14,6 +14,12 @@ public class FiveTest {
         Assert.assertEquals(actual, expected);
     }
 
+    @Test(dataProvider = "dpTestSmallest", dataProviderClass = DataProviderFive.class)
+    public void testSmallest(StudentRealisation studentRealisation, String expected, long input) {
+        String actual = Arrays.toString(studentRealisation.implementationFiveKata().smallest(input));
+        Assert.assertEquals(actual, expected);
+    }
+
     @Test(dataProvider = "dpTestPerimeter", dataProviderClass = DataProviderFive.class)
     public void testPerimeter(StudentRealisation studentRealisation, BigInteger expected, BigInteger input) {
         BigInteger actual = studentRealisation.implementationFiveKata().perimeter(input);

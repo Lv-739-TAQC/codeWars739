@@ -60,4 +60,10 @@ public class SixTest {
         double actual = studentRealisation.implementationSixKata().variance(town, data);
         Assert.assertEquals(actual, expected, 1e-2);
     }
+
+    @Test(dataProvider = "dpTestFindNb", dataProviderClass = DataProviderSix.class)
+    public void testFindNb(StudentRealisation studentRealisation, long expected, long input) {
+        long actual = studentRealisation.implementationSixKata().findNb(input);
+        assertFunctionEquals(actual, expected);
+    }
 }
