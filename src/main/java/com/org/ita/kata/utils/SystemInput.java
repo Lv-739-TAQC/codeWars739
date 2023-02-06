@@ -18,7 +18,6 @@ public class SystemInput {
     public static final String INCORRECT_FLOAT_INPUT = "The required type is [float]";
     public static final String INCORRECT_NUMBER_INPUT = "This number is not close to zero";
     public static final String INCORRECT_WARRIOR_INPUT = "This field must starts from 1";
-    public static final String INCORRECT_FLOAT_INPUT = "The required type is [float]";
     public static final String STUDENT_NOT_FOUND = "Student not found";
     public static final String FILE_NOT_FOUND = "File not found";
     public static final String INCORRECT_BIGINTEGER_INPUT = "The required type is [BigInteger]";

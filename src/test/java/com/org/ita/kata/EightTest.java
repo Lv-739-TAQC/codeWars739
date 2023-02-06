@@ -37,8 +37,10 @@ public class EightTest {
     public void testStringToNumber() {
     }
 
-    @Test
-    public void testTwoDecimalPlaces() {
+    @Test(dataProvider = "dpTestTwoDecimalPlaces", dataProviderClass = DataProviderEight.class)
+    public void testTwoDecimalPlaces(StudentRealisation studentRealisation, double expected, double input) {
+        double actual = studentRealisation.implementationEightKata().TwoDecimalPlaces(input);
+        Assert.assertEquals(actual, expected);
     }
 
     @Test

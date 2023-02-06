@@ -4,11 +4,20 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.math.BigInteger;
+import java.util.Arrays;
 
 public class FiveTest {
 
-    @Test
-    public void testGap() {
+    @Test(dataProvider = "dpTestGap", dataProviderClass = DataProviderFive.class)
+    public void testGap(StudentRealisation studentRealisation, String expected, int g, long m, long n) {
+        String actual = Arrays.toString(studentRealisation.implementationFiveKata().gap(g, m, n));
+        Assert.assertEquals(actual, expected);
+    }
+
+    @Test(dataProvider = "dpTestSmallest", dataProviderClass = DataProviderFive.class)
+    public void testSmallest(StudentRealisation studentRealisation, String expected, long input) {
+        String actual = Arrays.toString(studentRealisation.implementationFiveKata().smallest(input));
+        Assert.assertEquals(actual, expected);
     }
 
     @Test(dataProvider = "dpTestPerimeter", dataProviderClass = DataProviderFive.class)
