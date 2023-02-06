@@ -50,8 +50,12 @@ public class EightTest {
     public void testMpgToKPM() {
     }
 
-    @Test
-    public void testSquareOrSquareRoot() {
+    @Test(dataProvider = "dpSquareOrSquareRoot", dataProviderClass = DataProviderEight.class)
+    public void testSquareOrSquareRoot(StudentRealisation studentRealisation, int[] expected, int[] input) {
+        int[] copiedInput = new int[input.length];
+        System.arraycopy(input, 0, copiedInput, 0, copiedInput.length);
+        int[] actual = studentRealisation.implementationEightKata().squareOrSquareRoot(copiedInput);
+        Assert.assertEquals(actual, expected);
     }
 
     @Test
