@@ -34,8 +34,10 @@ public class EightTest {
         Assert.assertEquals(actual, expected);
     }
 
-    @Test
-    public void testCountPositivesSumNegatives() {
+    @Test(dataProvider = "dpCountPositivesSumNegatives", dataProviderClass = DataProviderEight.class)
+    public void testCountPositivesSumNegatives(StudentRealisation studentRealisation, int[] expected, int[] input) {
+    	int[] actual = studentRealisation.implementationEightKata().countPositivesSumNegatives(input);
+    	Assert.assertEquals(actual,expected);
     }
 
     @Test

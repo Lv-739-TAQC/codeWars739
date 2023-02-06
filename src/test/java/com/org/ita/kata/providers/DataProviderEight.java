@@ -1,7 +1,6 @@
 package com.org.ita.kata.providers;
 
 import org.testng.annotations.DataProvider;
-
 import static com.org.ita.kata.providers.StudentProvider.combineDataWithStudent;
 
 public class DataProviderEight {
@@ -48,4 +47,12 @@ public class DataProviderEight {
         };
         return combineDataWithStudent(data);
     }
+    @DataProvider(name = "dpCountPositivesSumNegatives")
+    public static Object[][] dpCountPositivesSumNegatives(){
+    	Object[][] data = {
+    			{new int[] {10, -65}, new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15}},
+    			{new int[] {8, -50}, new int[] {0, 2, 3, 0, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14}}};
+    	return combineDataWithStudent(data);
+    }
+   
 }
