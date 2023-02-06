@@ -22,7 +22,7 @@ public class SevenImpl implements Seven {
             return String.valueOf(sum);
         } else {
             for (int i = 0; i < n; i++) {
-                sum += Double.valueOf(1) / Double.valueOf(1 + i * 3);
+                sum += (double) 1 / ((double) 1 + i * (double) 3);
             }
             return String.format("%.2f", sum);
         }

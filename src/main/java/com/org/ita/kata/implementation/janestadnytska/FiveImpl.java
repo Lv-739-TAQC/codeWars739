@@ -42,7 +42,7 @@ public class FiveImpl implements Five {
 
     @Override
     public BigInteger perimeter(BigInteger n) {
-        BigInteger X = BigInteger.valueOf(0);
+        BigInteger X;
         BigInteger Y = BigInteger.valueOf(1);
         BigInteger Z = BigInteger.valueOf(1);
         BigInteger sum = BigInteger.valueOf(0);
