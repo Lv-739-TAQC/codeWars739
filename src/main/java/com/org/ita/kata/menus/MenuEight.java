@@ -64,7 +64,7 @@ public class MenuEight extends MenuNumber {
     @NameMethod(name = "Convert a String to a Number")
     public void getConvertAStringToANumberTask() {
         System.out.println("Enter  string: ");
-        String str = SystemInput.inputStringToNumber();
+        String str = SystemInput.inputNumber();
         System.out.println("Now it's a number : " + getStudentEightKataRealisation().stringToNumber(str));
     }
 
