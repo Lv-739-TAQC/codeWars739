@@ -29,4 +29,10 @@ public class FiveTest {
         BigInteger actual = studentRealisation.implementationFiveKata().perimeter(input);
         Assert.assertEquals(actual, expected);
     }
+    @Test(dataProvider = "dpSolveTest", dataProviderClass = DataProviderFive.class)
+    public void testSolve(StudentRealisation studentRealisation, double input, double expected) {
+        double actual = studentRealisation.implementationFiveKata().solve(input);
+        Assert.assertEquals(actual,expected);
+    }
+
 }

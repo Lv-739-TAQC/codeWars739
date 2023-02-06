@@ -1,6 +1,9 @@
 package com.org.ita.kata.providers;
+
 import org.testng.annotations.DataProvider;
+
 import static com.org.ita.kata.providers.StudentProvider.combineDataWithStudent;
+
 public class DataProviderSeven {
     @DataProvider(name = "dpTestNewAvg")
     public static Object[][] dpTestNewAvg() {
@@ -18,7 +21,18 @@ public class DataProviderSeven {
         };
         return combineDataWithStudent(data);
     }
+
+    @DataProvider(name = "dpNthSeriesTest")
+    public static Object[][] dpNthSeriesTest() {
+        Object[][] data = new Object[][]{
+                {"1.57", 5},
+                {"1.77", 9},
+                {"1.94", 15}
+        };
+        return combineDataWithStudent(data);
+    }
 }
+
 
 
 

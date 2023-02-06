@@ -15,6 +15,11 @@ public class SevenTest {
         long actualResult = studentRealisation.implementationSevenKata().newAvg(arr, nAvg);
         Assert.assertEquals(actualResult, expectedResult);
     }
+    @Test(dataProvider = "dpNthSeriesTest", dataProviderClass = DataProviderSeven.class)
+    public void nthSeriesTest(StudentRealisation studentRealisation, String expectedResult, int input){
+        String actualResult = studentRealisation.implementationSevenKata().seriesSum(input);
+        Assert.assertEquals(actualResult, expectedResult);
+    }
 
 }
 
