@@ -5,6 +5,10 @@ import com.org.ita.kata.students.delegator.Student;
 import com.org.ita.kata.utils.NameMethod;
 import com.org.ita.kata.utils.SystemInput;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 public class MenuSix extends MenuNumber {
 
     public MenuSix() {
@@ -21,10 +25,74 @@ public class MenuSix extends MenuNumber {
         System.out.println("Number of cubes = " + getStudentSixKataRealisation().findNb(volume));
     }
 
+
+    public boolean exitMenu;
+
     @NameMethod(name = "Easy balance checking")
     public void getEasyBalanceCheckingTask() {
-
+        exitMenu = false;
+        Scanner scanner = new Scanner(System.in);
+        String file1Content = "";
+        String file2Content = "";
+        String file3Content = "";
+        String path = "src/main/resources/balance/";
+        File input1 = new File(path + "input1.txt");
+        File input2 = new File(path + "input2.txt");
+        File input3 = new File(path + "input3.txt");
+        System.out.println();
+        System.out.println("Please, choose one of three files to work with while Balance Checking task execution: ");
+        System.out.println();
+        file1Content = getContent("First", input1);
+        file2Content = getContent("Second", input2);
+        file3Content = getContent("Third", input3);
+        while (!exitMenu) {
+            System.out.println("Enter '1' to work with input1.txt");
+            System.out.println("Enter '2' to work with input2.txt");
+            System.out.println("Enter '3' to work with input3.txt");
+            System.out.println();
+            System.out.println("Make Your choice: ");
+            int i = scanner.nextInt();
+            switch (i) {
+                case 1:
+                    System.out.println(getStudentSixKataRealisation().balance(file1Content));
+                    System.out.println();
+                    return;
+                case 2:
+                    System.out.println(getStudentSixKataRealisation().balance(file2Content));
+                    System.out.println();
+                    return;
+                case 3:
+                    System.out.println(getStudentSixKataRealisation().balance(file3Content));
+                    System.out.println();
+                    return;
+                default:
+                    System.out.println("Please, enter correct value: 1, 2 or 3.");
+                    System.out.println();
+            }
+        }
+        scanner.close();
     }
+
+    public String getContent(String fileNum, File input) {
+        StringBuilder sb = new StringBuilder();
+        try {
+            Scanner scanner = new Scanner(input);
+            System.out.println(fileNum + " file name: " + input.getName());
+            System.out.println(fileNum + " file content: ");
+            while (scanner.hasNextLine()) {
+                sb.append(scanner.nextLine()).append("\n");
+            }
+            System.out.println();
+            scanner.close();
+
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found, please, make sure, the path is correct.");
+            System.out.println();
+            exitMenu = true;
+        }
+        return sb.toString();
+    }
+
 
     @NameMethod(name = "Floating-point Approximation (I)")
     public void getFloatingPointApproximationITask() {
@@ -130,6 +198,53 @@ public class MenuSix extends MenuNumber {
 
     @NameMethod(name = "Help the bookseller!")
     public void getHelpTheBooksellerTask() {
-
+        {
+            System.out.println("Enter the code of books : ");
+            String L[] = {"ABAR 200", "CDXE 500", "BKWR 250", "BTSQ 890", "DRTY 600"};
+            String M[] = {"BBAR 150", "CDXE 515", "BKWR 250", "BTSQ 890", "DRTY 600"};
+            String N[] = {"CBART 20", "CDXEF 50", "BKWRK 25", "BTSQZ 89", "DRTYM 60"};
+            String F[] = {"ROXANNE 102", "RHODODE 123", "BKWRKAA 125", "BTSQZFG 239", "DRTYMKH 060"};
+            String P[] = {};
+            String code[] = {""};
+            boolean isNotChosen = true;
+            while (isNotChosen) {
+                System.out.println("There are codes of stocklistes" +
+                        "\nChoose which one to use:" +
+                        "\n-> L" +
+                        "\n-> M" +
+                        "\n-> N" +
+                        "\n-> F" +
+                        "\n-> P");
+                String yourCode = SystemInput.input.nextLine();
+                switch (yourCode) {
+                    case "L":
+                        code = L;
+                        isNotChosen = false;
+                        break;
+                    case "M":
+                        code = M;
+                        isNotChosen = false;
+                        break;
+                    case "N":
+                        code = N;
+                        isNotChosen = false;
+                        break;
+                    case "F":
+                        code = F;
+                        isNotChosen = false;
+                        break;
+                    case "P":
+                        code = P;
+                        isNotChosen = false;
+                        break;
+                    default:
+                        System.out.println(INCORRECT_INPUT);
+                        break;
+                }
+            }
+            System.out.println("Enter the first letter of category : ");
+            String category[] = SystemInput.inputString();
+            System.out.println("Your report " + getStudentSixKataRealisation().stockSummary(code, category));
+        }
     }
 }

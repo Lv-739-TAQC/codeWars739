@@ -153,4 +153,22 @@ public class DataProviderSix {
         };
         return combineDataWithStudent(data);
     }
+
+    @DataProvider(name = "dpMean")
+    public static Object[][] dpMean() {
+        Object[][] data = new Object[][]{
+                {"London", 51.199999999999996},
+                {"Beijing", 52.416666666666664}
+        };
+        return combineDataWithStudent(data);
+    }
+
+    @DataProvider(name = "dpVariance")
+    public static Object[][] dpVariance() {
+        Object[][] data = new Object[][]{
+                {"London", 57.42833333333374},
+                {"Beijing", 4808.37138888889}
+        };
+        return combineDataWithStudent(data);
+    }
 }
