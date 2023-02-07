@@ -7,7 +7,7 @@ import com.org.ita.kata.Eight;
 public class EightImpl implements Eight {
 
 	@Override
-	public int Liters(double time) {
+	public int liters(double time) {
 		return (int) (Math.floor(time) * 0.5);
 	}
 
