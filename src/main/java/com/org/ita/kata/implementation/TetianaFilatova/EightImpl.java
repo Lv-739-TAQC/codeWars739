@@ -1,6 +1,7 @@
 package com.org.ita.kata.implementation.TetianaFilatova;
 
 import com.org.ita.kata.Eight;
+import java.util.ArrayList;
 
 public class EightImpl implements Eight {
     @Override
