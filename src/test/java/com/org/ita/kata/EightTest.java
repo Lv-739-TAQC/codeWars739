@@ -1,6 +1,7 @@
 package com.org.ita.kata;
 
 import com.org.ita.kata.providers.DataProviderEight;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -35,8 +36,10 @@ public class EightTest {
     	Assert.assertEquals(actual,expected);
     }
 
-    @Test
-    public void testStringToNumber() {
+    @Test(dataProvider = "dpTestStringToNumber", dataProviderClass = DataProviderEight.class)
+    public void testStringToNumber (StudentRealisation studentRealisation, int expected, String input) {
+        Integer actual = studentRealisation.implementationEightKata().stringToNumber(input);
+        Assert.assertEquals(actual, expected);
     }
 
     @Test(dataProvider = "dpTestTwoDecimalPlaces", dataProviderClass = DataProviderEight.class)

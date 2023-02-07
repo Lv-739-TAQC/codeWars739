@@ -1,6 +1,7 @@
 package com.org.ita.kata.providers;
 
 import org.testng.annotations.DataProvider;
+
 import static com.org.ita.kata.providers.StudentProvider.combineDataWithStudent;
 
 public class DataProviderEight {
@@ -55,5 +56,14 @@ public class DataProviderEight {
     			{new int[] {8, -50}, new int[] {0, 2, 3, 0, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14}}};
     	return combineDataWithStudent(data);
     }
-   
+    @DataProvider (name = "dpTestStringToNumber")
+    public static Object [] [] dpTestStringToNumber () {
+        Object[][] data = new Object[][]{
+                {1234, "1234"},
+                {605, "605"},
+                {1405, "1405"},
+                {-7, "-7"},
+        };
+        return combineDataWithStudent(data);
+    }
 }
