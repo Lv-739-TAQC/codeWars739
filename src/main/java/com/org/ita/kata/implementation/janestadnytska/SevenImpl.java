@@ -4,12 +4,12 @@ import com.org.ita.kata.Seven;
 
 public class SevenImpl implements Seven {
     @Override
-    public long newAvg(double[] arr, double navg) {
+    public long newAvg(double[] arr, double nAvg) {
         double sum = 0;
         for (double num : arr) {
             sum += num;
         }
-        long result = (long) Math.ceil(navg * (arr.length + 1) - sum);
+        long result = (long) Math.ceil(nAvg * (arr.length + 1) - sum);
         if (result <= 0) {
             throw new IllegalArgumentException();
         } else return result;
