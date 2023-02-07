@@ -64,10 +64,9 @@ public class FiveImpl implements Five {
 
     @Override
     public double solve(double m) {
-        double a = m;
         double b = 2 * m + 1;
         double D = 4 * m + 1;
-        return (b - Math.sqrt(D)) / (2 * a);
+        return (b - Math.sqrt(D)) / (2 * m);
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.org.ita.kata.utils;
 
 import com.org.ita.kata.students.delegator.Student;
 
+import java.util.Objects;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -26,12 +27,12 @@ public class SystemInput {
 
 
     public static Student inputStudent() {
-        while (true) {
+        while(true) {
             System.out.println("Enter student's name : ");
             String name = SystemInput.input.nextLine();
-            try {
+            if(Objects.nonNull(Student.getStudentByName(name))){
                 return Student.getStudentByName(name);
-            } catch (Exception e) {
+            } else {
                 System.out.println(STUDENT_NOT_FOUND);
             }
         }
@@ -128,7 +129,7 @@ public class SystemInput {
     public static String readFromFile() {
         while (true) {
             System.out.println("Enter path to file:");
-            try (BufferedReader br = new BufferedReader(new FileReader(input.nextLine()))) {
+            try (BufferedReader br = new BufferedReader(new FileReader(input.nextLine()));) {
                 StringBuilder sb = new StringBuilder();
                 String line = br.readLine();
                 while (line != null) {
@@ -154,15 +155,19 @@ public class SystemInput {
         return value;
     }
 
-    public static String inputStringToNumber() {
+
+    public static String inputNumber() {
         String str;
         try {
             str = input.nextLine();
             Integer.parseInt(str);
         } catch (InputMismatchException | NumberFormatException e) {
             System.out.println(INCORRECT_INT_INPUT);
-            return inputStringToNumber();
+            return inputNumber();
         }
         return str;
+    }
+    public static String[] inputString() {
+        return input.nextLine().split("\\s");
     }
 }

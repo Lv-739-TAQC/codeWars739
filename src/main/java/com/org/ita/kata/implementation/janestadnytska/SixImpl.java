@@ -30,7 +30,7 @@ public class SixImpl implements Six {
             double amount = Double.parseDouble(line.substring(line.lastIndexOf(' ') + 1));
             total += amount;
             balance -= amount;
-            bookNew += String.format("\\r\\n%s Balance %.2f", line, balance);
+            bookNew = bookNew+ String.format("\\r\\n%s Balance %.2f", line, balance);
         }
         return bookNew + String.format("\\r\\nTotal expense  %.2f\\r\\nAverage expense  %.2f", total,
                 total / (lines.length - 1));
@@ -38,8 +38,7 @@ public class SixImpl implements Six {
 
     @Override
     public double f(double x) {
-        double newX = x / (Math.sqrt(1.00 + x) + 1.00);
-        return newX;
+        return x / (Math.sqrt(1.00 + x) + 1.00);
     }
 
     @Override
@@ -86,7 +85,7 @@ public class SixImpl implements Six {
 
     @Override
     public String nbaCup(String resultSheet, String toFind) {
-        if (toFind == "") return "";
+        if (toFind.equals("")) return "";
         if (!resultSheet.contains(toFind + " ")) return toFind + ":This team didn't play!";
         String res = toFind + ":";
         int wons = 0;
@@ -97,22 +96,22 @@ public class SixImpl implements Six {
         int points = 0;
 
         String[] teams = resultSheet.split(",");
-        int score = 0;
-        int concede = 0;
-        for (int i = 0; i < teams.length; i++) {
-            if (teams[i].contains(toFind)) {
-                int j = teams[i].indexOf(toFind);
+        int score;
+        int concede;
+        for(String team: teams){
+            if(team.contains(toFind)){
+                int j = team.indexOf(toFind);
                 try {
-                    String[] splitTeams = teams[i].split(" ");
-                    if (j == 0) {
+                    String[] splitTeams = team.split(" ");
+                    if(j == 0){
                         score = Integer.parseInt(splitTeams[toFind.split(" ").length]);
                         concede = Integer.parseInt(splitTeams[splitTeams.length - 1]);
-                    } else {
+                    }else{
                         concede = Integer.parseInt(splitTeams[splitTeams.length - toFind.split(" ").length - 2]);
                         score = Integer.parseInt(splitTeams[splitTeams.length - 1]);
                     }
                 } catch (NumberFormatException e) {
-                    return "Error(float number):" + teams[i];
+                    return "Error(float number):" + team;
                 }
                 scored += score;
                 conceded += concede;
@@ -127,8 +126,7 @@ public class SixImpl implements Six {
                 }
             }
         }
-        String finalResult = res + "W=" + wons + ";D=" + draws + ";L=" + lost + ";Scored=" + scored + ";Conceded=" + conceded + ";Points=" + points;
-        return finalResult;
+        return res + "W=" + wons + ";D=" + draws + ";L=" + lost + ";Scored=" + scored + ";Conceded=" + conceded + ";Points=" + points;
     }
 
     @Override
@@ -144,7 +142,7 @@ public class SixImpl implements Six {
                     quantity += Integer.parseInt(stockLetter.replaceAll("[^0-9]", ""));
                 } else quantity += 0;
             }
-            report += " - (" + letter + " : " + quantity + ")";
+            report = report+ " - (" + letter + " : " + quantity + ")";
         }
         return report.substring(3);
     }
