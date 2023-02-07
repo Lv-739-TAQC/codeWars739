@@ -139,13 +139,13 @@ public class SixImpl implements Six {
             String[] line = lines[i].split("[ ]+");
             if (i == 0) {
                 balance = Double.parseDouble(line[0]);
-                sb.append("Original Balance: ").append(line[0]).append("\\r\\n");
+                sb.append("Original Balance: ").append(df.format(Double.parseDouble(line[0]))).append("\\r\\n");
             } else {
                 balance -= Double.parseDouble(line[2]);
                 totalExpense += Double.parseDouble(line[2]);
                 balanceDecreaseCount++;
                 String strBalance = df.format(balance).replace(",", ".");
-                sb.append(line[0]).append(" ").append(line[1]).append(" ").append(line[2])
+                sb.append(line[0]).append(" ").append(line[1]).append(" ").append(df.format(Double.parseDouble(line[2])))
                         .append(" Balance ").append(strBalance).append("\\r\\n");
             }
         }
