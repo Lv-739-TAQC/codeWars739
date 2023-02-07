@@ -1,6 +1,12 @@
 package com.org.ita.kata.providers;
 
 import org.testng.annotations.DataProvider;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Locale;
+
 import static com.org.ita.kata.providers.StudentProvider.combineDataWithStudent;
 
 public class DataProviderSix {
@@ -170,32 +176,90 @@ public class DataProviderSix {
         };
         return combineDataWithStudent(data);
     }
-    
+
     @DataProvider(name = "dpNbaCup")
     public static Object[][] dpNbaCup(){
-    	String resultSheet1 = "Los Angeles Clippers 104 Dallas Mavericks 88,New York Knicks 101 Atlanta Hawks 112,Indiana Pacers 103 Memphis Grizzlies 112,"
+        String resultSheet1 = "Los Angeles Clippers 104 Dallas Mavericks 88,New York Knicks 101 Atlanta Hawks 112,Indiana Pacers 103 Memphis Grizzlies 112,"
                 + "Los Angeles Lakers 111 Minnesota Timberwolves 112,Phoenix Suns 95 Dallas Mavericks 111,Portland Trail Blazers 112 New Orleans Pelicans 94,"
                 + "Sacramento Kings 104 Los Angeles Clippers 111,Houston Rockets 85 Denver Nuggets 105,Memphis Grizzlies 76 Cleveland Cavaliers 106,"
                 + "Milwaukee Bucks 97 New York Knicks 122,Oklahoma City Thunder 112 San Antonio Spurs 106,Boston Celtics 112 Philadelphia 76ers 95,"
                 + "Brooklyn Nets 100 Chicago Bulls 115,Detroit Pistons 92 Utah Jazz 87,Miami Heat 104 Charlotte Hornets 94,"
                 + "Toronto Raptors 106 Indiana Pacers 99,Orlando Magic 87 Washington Wizards 88,Golden State Warriors 111 New Orleans Pelicans 95,"
                 + "Atlanta Hawks 94 Detroit Pistons 106,Chicago Bulls 97 Cleveland Cavaliers 95,";
-        String resultSheet2 = "San Antonio Spurs 111 Houston Rockets 86,Chicago Bulls 103 Dallas Mavericks 102,Minnesota Timberwolves 112 Milwaukee Bucks 108,"  
-                + "New Orleans Pelicans 93 Miami Heat 90,Boston Celtics 81 Philadelphia 76ers 65,Detroit Pistons 115 Atlanta Hawks 87,"  
-                + "Toronto Raptors 92 Washington Wizards 82,Orlando Magic 86 Memphis Grizzlies 76,Los Angeles Clippers 115 Portland Trail Blazers 109,"  
-                + "Los Angeles Lakers 97 Golden State Warriors 136,Utah Jazz 98 Denver Nuggets 78,Boston Celtics 99 New York Knicks 85,"  
-                + "Indiana Pacers 98 Charlotte Hornets 86,Dallas Mavericks 87 Phoenix Suns 99,Atlanta Hawks 81 Memphis Grizzlies 82,"  
-                + "Miami Heat 110 Washington Wizards 105,Detroit Pistons 94 Charlotte Hornets 99,Orlando Magic 110 New Orleans Pelicans 107,"  
-                + "Los Angeles Clippers 130 Golden State Warriors 95,Utah Jazz 102 Oklahoma City Thunder 113,San Antonio Spurs 84 Phoenix Suns 104,"  
-                + "Chicago Bulls 103 Indiana Pacers 94,Milwaukee Bucks 106 Minnesota Timberwolves 88,Los Angeles Lakers 104 Portland Trail Blazers 102,"  
+        String resultSheet2 = "San Antonio Spurs 111 Houston Rockets 86,Chicago Bulls 103 Dallas Mavericks 102,Minnesota Timberwolves 112 Milwaukee Bucks 108,"
+                + "New Orleans Pelicans 93 Miami Heat 90,Boston Celtics 81 Philadelphia 76ers 65,Detroit Pistons 115 Atlanta Hawks 87,"
+                + "Toronto Raptors 92 Washington Wizards 82,Orlando Magic 86 Memphis Grizzlies 76,Los Angeles Clippers 115 Portland Trail Blazers 109,"
+                + "Los Angeles Lakers 97 Golden State Warriors 136,Utah Jazz 98 Denver Nuggets 78,Boston Celtics 99 New York Knicks 85,"
+                + "Indiana Pacers 98 Charlotte Hornets 86,Dallas Mavericks 87 Phoenix Suns 99,Atlanta Hawks 81 Memphis Grizzlies 82,"
+                + "Miami Heat 110 Washington Wizards 105,Detroit Pistons 94 Charlotte Hornets 99,Orlando Magic 110 New Orleans Pelicans 107,"
+                + "Los Angeles Clippers 130 Golden State Warriors 95,Utah Jazz 102 Oklahoma City Thunder 113,San Antonio Spurs 84 Phoenix Suns 104,"
+                + "Chicago Bulls 103 Indiana Pacers 94,Milwaukee Bucks 106 Minnesota Timberwolves 88,Los Angeles Lakers 104 Portland Trail Blazers 102,"
                 + "Houston Rockets 120 New Orleans Pelicans 100,Boston Celtics 111 Brooklyn Nets 105,Charlotte Hornets 94 Chicago Bulls 86,Cleveland Cavaliers 103 Dallas Mavericks 97";
         String resultSheet3 = resultSheet1 + resultSheet2;
-        
+
         Object[][] data = {
-        		{"Boston Celtics:W=4;D=0;L=0;Scored=403;Conceded=350;Points=12", resultSheet3, "Boston Celtics"},
-        		{"Boston Celt:This team didn't play!", resultSheet3, "Boston Celt"}
-        		};
-        
-    	return combineDataWithStudent(data);
+                {"Boston Celtics:W=4;D=0;L=0;Scored=403;Conceded=350;Points=12", resultSheet3, "Boston Celtics"},
+                {"Boston Celt:This team didn't play!", resultSheet3, "Boston Celt"}
+        };
+
+        return combineDataWithStudent(data);
+    }
+
+    @DataProvider(name = "dpEasyBalance")
+    public static Object[][] dpEasyBalance() {
+        Locale.setDefault(Locale.ENGLISH);
+        String filePath1 = "src/main/resources/balance/input1.txt";
+        String filePath2 = "src/main/resources/balance/input2.txt";
+        String filePath3 = "src/main/resources/balance/input3.txt";
+        String solution1 = "Original Balance: 1000.00\\r\\n" +
+                "125 Market 125.45 Balance 874.55\\r\\n" +
+                "126 Hardware 34.95 Balance 839.60\\r\\n" +
+                "127 Video 7.45 Balance 832.15\\r\\n" +
+                "128 Book 14.32 Balance 817.83\\r\\n" +
+                "129 Gasoline 16.10 Balance 801.73\\r\\n" +
+                "Total expense  198.27\\r\\n" +
+                "Average expense  39.65";
+        String solution2 = "Original Balance: 1883.00\\r\\n" +
+                "001 Picture 120.30 Balance 1762.70\\r\\n" +
+                "002 Beauty 17.50 Balance 1745.20\\r\\n" +
+                "003 Picture 128.00 Balance 1617.20\\r\\n" +
+                "004 Music 3.20 Balance 1614.00\\r\\n" +
+                "005 Grocery 120.30 Balance 1493.70\\r\\n" +
+                "006 Market 12.22 Balance 1481.48\\r\\n" +
+                "007 Grocery 11.00 Balance 1470.48\\r\\n" +
+                "008 Books 17.60 Balance 1452.88\\r\\n" +
+                "009 Pen 71.41 Balance 1381.47\\r\\n" +
+                "Total expense  501.53\\r\\n" +
+                "Average expense  55.73";
+        String solution3 = "Original Balance: 1327.00\\r\\n" +
+                "001 Car 3.20 Balance 1323.80\\r\\n" +
+                "002 Meat 54.00 Balance 1269.80\\r\\n" +
+                "003 Beauty 17.50 Balance 1252.30\\r\\n" +
+                "004 Photos 17.50 Balance 1234.80\\r\\n" +
+                "005 Car 24.81 Balance 1209.99\\r\\n" +
+                "006 Stamps 12.22 Balance 1197.77\\r\\n" +
+                "007 Market 17.00 Balance 1180.77\\r\\n" +
+                "008 Hairdresser 110.73 Balance 1070.04\\r\\n" +
+                "009 Photos 17.00 Balance 1053.04\\r\\n" +
+                "010 Gasoline 17.50 Balance 1035.54\\r\\n" +
+                "Total expense  291.46\\r\\n" +
+                "Average expense  29.15";
+        Object[][] data = new Object[][]{
+                {solution1, getStringFromFile(filePath1)},
+                {solution2, getStringFromFile(filePath2)},
+                {solution3, getStringFromFile(filePath3)}
+        };
+        return combineDataWithStudent(data);
+    }
+
+    public static String getStringFromFile(String filePath) {
+        try {
+            Path fileName = Path.of(filePath);
+            return Files.readString(fileName);
+        } catch (IOException e) {
+            System.out.println("File not found: " + e);
+        }
+        return filePath;
     }
 }
+

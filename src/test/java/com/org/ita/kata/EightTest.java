@@ -14,12 +14,16 @@ public class EightTest {
     }
 
 
-    @Test
-    public void testGetVolumeOfCuboid() {
+    @Test(dataProvider = "dpTestVolumeOfCuboid", dataProviderClass = DataProviderEight.class)
+    public void testGetVolumeOfCuboid(StudentRealisation studentRealisation, double expected, double length, double width, double height) {
+        double actual = studentRealisation.implementationEightKata().getVolumeOfCuboid(length, width, height);
+        Assert.assertEquals(actual, expected);
     }
 
-    @Test
-    public void testMpgToKPM() {
+    @Test(dataProvider = "dpTestMpgToKPM", dataProviderClass = DataProviderEight.class)
+    public void testMpgToKPM(StudentRealisation studentRealisation, float expected, float mpg) {
+        float actual = studentRealisation.implementationEightKata().mpgToKPM(mpg);
+        Assert.assertEquals(actual, expected);
     }
 
     @Test(dataProvider = "dpSquareOrSquareRoot", dataProviderClass = DataProviderEight.class)
