@@ -67,8 +67,14 @@ public class SixTest {
         assertFunctionEquals(actual, expected);
     }
 
+    @Test(dataProvider = "dpNbaCup", dataProviderClass = DataProviderSix.class)
+    public void testNbaCup(StudentRealisation studentRealisation, String expected, String resultSheet, String toFind) {
+        String actual = studentRealisation.implementationSixKata().nbaCup(resultSheet, toFind);
+        Assert.assertEquals(actual, expected);
+    }
+
     @Test(dataProvider = "dpEasyBalance", dataProviderClass = DataProviderSix.class)
-    public void testEasyBalance(StudentRealisation studentRealisation, String expected, String input){
+    public void testEasyBalance(StudentRealisation studentRealisation, String expected, String input) {
         String actual = studentRealisation.implementationSixKata().balance(input);
         Assert.assertEquals(actual, expected);
     }

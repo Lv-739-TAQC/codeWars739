@@ -71,7 +71,7 @@ public abstract class MenuNumber {
             System.out.print(sb);
 
             try {
-                int taskNumber = Integer.valueOf(SystemInput.input.nextLine());
+                int taskNumber = Integer.parseInt(SystemInput.input.nextLine());
                 if (taskNumber == 0) {
                     return;
                 }

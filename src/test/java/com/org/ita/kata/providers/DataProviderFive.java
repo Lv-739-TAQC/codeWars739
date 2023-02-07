@@ -6,19 +6,6 @@ import org.testng.annotations.DataProvider;
 import static com.org.ita.kata.providers.StudentProvider.combineDataWithStudent;
 
 public class DataProviderFive {
-
-    @DataProvider(name = "dpTestGap")
-    public static Object[][] dpTestGap() {
-        Object[][] data = new Object[][]{
-                {"[101, 103]",2,100,110},
-                {"[103, 107]",4,100,110},
-                {"null",6,100,110},
-                {"[359, 367]",8,300,400},
-                {"[337, 347]",10,300,400}
-        };
-        return combineDataWithStudent(data);
-    }
-
     @DataProvider(name = "dpTestPerimeter")
     public static Object[][] dpTestPerimeter() {
         Object[][] data = new Object[][]{
@@ -242,6 +229,17 @@ public class DataProviderFive {
                 {"[32125812947811712, 3, 0]", 321025812947811712L},
                 {"[31733387900529184, 17, 0]", 317333879005291840L},
                 {"[73404919377766528, 9, 0]", 734049193077766528L}
+        };
+        return combineDataWithStudent(data);
+    }
+    @DataProvider(name = "dpTestGap")
+    public static Object[][] dpTestGap() {
+        Object[][] data = new Object[][]{
+                {"[101, 103]", 2, 100, 110},
+                {"[103, 107]", 4, 100, 110},
+                {"null", 6, 100, 110},
+                {"[359, 367]", 8, 300, 400},
+                {"[337, 347]", 10, 300, 400},
         };
         return combineDataWithStudent(data);
     }

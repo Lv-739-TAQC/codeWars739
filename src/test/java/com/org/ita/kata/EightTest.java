@@ -1,13 +1,8 @@
 package com.org.ita.kata;
 
 import com.org.ita.kata.providers.DataProviderEight;
-import com.org.ita.kata.students.delegator.Student;
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class EightTest {
 
@@ -38,8 +33,10 @@ public class EightTest {
         Assert.assertEquals(actual, expected);
     }
 
-    @Test
-    public void testCountPositivesSumNegatives() {
+    @Test(dataProvider = "dpCountPositivesSumNegatives", dataProviderClass = DataProviderEight.class)
+    public void testCountPositivesSumNegatives(StudentRealisation studentRealisation, int[] expected, int[] input) {
+    	int[] actual = studentRealisation.implementationEightKata().countPositivesSumNegatives(input);
+    	Assert.assertEquals(actual,expected);
     }
 
     @Test
