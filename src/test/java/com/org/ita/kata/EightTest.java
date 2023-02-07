@@ -1,13 +1,8 @@
 package com.org.ita.kata;
 
 import com.org.ita.kata.providers.DataProviderEight;
-import com.org.ita.kata.students.delegator.Student;
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class EightTest {
 
