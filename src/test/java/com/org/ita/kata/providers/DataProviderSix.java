@@ -2,6 +2,11 @@ package com.org.ita.kata.providers;
 
 import org.testng.annotations.DataProvider;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Locale;
+
 import static com.org.ita.kata.providers.StudentProvider.combineDataWithStudent;
 
 public class DataProviderSix {
@@ -171,4 +176,62 @@ public class DataProviderSix {
         };
         return combineDataWithStudent(data);
     }
+
+    @DataProvider(name = "dpEasyBalance")
+    public static Object[][] dpEasyBalance() {
+        Locale.setDefault(Locale.ENGLISH);
+        String filePath1 = "src/main/resources/balance/input1.txt";
+        String filePath2 = "src/main/resources/balance/input2.txt";
+        String filePath3 = "src/main/resources/balance/input3.txt";
+        String solution1 = "Original Balance: 1000.00\\r\\n" +
+                "125 Market 125.45 Balance 874.55\\r\\n" +
+                "126 Hardware 34.95 Balance 839.60\\r\\n" +
+                "127 Video 7.45 Balance 832.15\\r\\n" +
+                "128 Book 14.32 Balance 817.83\\r\\n" +
+                "129 Gasoline 16.10 Balance 801.73\\r\\n" +
+                "Total expense  198.27\\r\\n" +
+                "Average expense  39.65";
+        String solution2 = "Original Balance: 1883.00\\r\\n" +
+                "001 Picture 120.30 Balance 1762.70\\r\\n" +
+                "002 Beauty 17.50 Balance 1745.20\\r\\n" +
+                "003 Picture 128.00 Balance 1617.20\\r\\n" +
+                "004 Music 3.20 Balance 1614.00\\r\\n" +
+                "005 Grocery 120.30 Balance 1493.70\\r\\n" +
+                "006 Market 12.22 Balance 1481.48\\r\\n" +
+                "007 Grocery 11.00 Balance 1470.48\\r\\n" +
+                "008 Books 17.60 Balance 1452.88\\r\\n" +
+                "009 Pen 71.41 Balance 1381.47\\r\\n" +
+                "Total expense  501.53\\r\\n" +
+                "Average expense  55.73";
+        String solution3 = "Original Balance: 1327.00\\r\\n" +
+                "001 Car 3.20 Balance 1323.80\\r\\n" +
+                "002 Meat 54.00 Balance 1269.80\\r\\n" +
+                "003 Beauty 17.50 Balance 1252.30\\r\\n" +
+                "004 Photos 17.50 Balance 1234.80\\r\\n" +
+                "005 Car 24.81 Balance 1209.99\\r\\n" +
+                "006 Stamps 12.22 Balance 1197.77\\r\\n" +
+                "007 Market 17.00 Balance 1180.77\\r\\n" +
+                "008 Hairdresser 110.73 Balance 1070.04\\r\\n" +
+                "009 Photos 17.00 Balance 1053.04\\r\\n" +
+                "010 Gasoline 17.50 Balance 1035.54\\r\\n" +
+                "Total expense  291.46\\r\\n" +
+                "Average expense  29.15";
+        Object[][] data = new Object[][]{
+                {solution1, getStringFromFile(filePath1)},
+                {solution2, getStringFromFile(filePath2)},
+                {solution3, getStringFromFile(filePath3)}
+        };
+        return combineDataWithStudent(data);
+    }
+
+    public static String getStringFromFile(String filePath) {
+        try {
+            Path fileName = Path.of(filePath);
+            return Files.readString(fileName);
+        } catch (IOException e) {
+            System.out.println("File not found: " + e);
+        }
+        return filePath;
+    }
 }
+

@@ -66,4 +66,10 @@ public class SixTest {
         long actual = studentRealisation.implementationSixKata().findNb(input);
         assertFunctionEquals(actual, expected);
     }
+
+    @Test(dataProvider = "dpEasyBalance", dataProviderClass = DataProviderSix.class)
+    public void testEasyBalance(StudentRealisation studentRealisation, String expected, String input){
+        String actual = studentRealisation.implementationSixKata().balance(input);
+        Assert.assertEquals(actual, expected);
+    }
 }
