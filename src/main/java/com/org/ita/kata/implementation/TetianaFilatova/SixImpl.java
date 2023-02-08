@@ -2,6 +2,10 @@ package com.org.ita.kata.implementation.TetianaFilatova;
 
 import com.org.ita.kata.Six;
 
+import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class SixImpl implements Six {
     @Override
     public long findNb(long m) {
@@ -40,7 +44,7 @@ public class SixImpl implements Six {
             newLine += String.format("\\r\\n%s Balance %.2f", row, origBalance);
             
         }
-        return newLine + String.format("\\r\\nTotal expense  %.2f\\r\\nAverage expense  %.2f", totalEx, totalEx / (rows.length - 1))
+        return newLine + String.format("\\r\\nTotal expense  %.2f\\r\\nAverage expense  %.2f", totalEx, totalEx / (rows.length - 1));
     }
 
     @Override
@@ -95,102 +99,97 @@ public class SixImpl implements Six {
     }
 
     @Override
-    import java.util.regex.Matcher;
-    import java.util.regex.Pattern;
-    import java.util.*;
-
     public String nbaCup(String resultSheet, String toFind) {
-        public static String nbaCup(String resultSheet, String toFind) {
-            if (toFind == ""){
+        if (toFind == ""){
 
-                return "";
-            }
+            return "";
+        }
 
-            if (!resultSheet.contains(toFind + " ")){
+        if (!resultSheet.contains(toFind + " ")){
 
-                return toFind + ":This team didn't play!";
-            }
+            return toFind + ":This team didn't play!";
+        }
 
-            //Splitting input by commas resulting in games array
+        //Splitting input by commas resulting in games array
 
-            String arrGames[] = resultSheet.split(",");
-            int teamWins = 0;
-            int teamDraws = 0;
-            int teamLosses = 0;
-            int teamPoints = 0;
-            int teamScored = 0;
-            int teamConceded = 0;
+        String arrGames[] = resultSheet.split(",");
+        int teamWins = 0;
+        int teamDraws = 0;
+        int teamLosses = 0;
+        int teamPoints = 0;
+        int teamScored = 0;
+        int teamConceded = 0;
 
-            //Work on each game results
-            for (int i = 0; i < arrGames.length; i++) {
-                //Process result only if team of interest was participating in game
-                if (arrGames[i].contains(toFind)) {
+        //Work on each game results
+        for (int i = 0; i < arrGames.length; i++) {
+            //Process result only if team of interest was participating in game
+            if (arrGames[i].contains(toFind)) {
 
-                    ArrayList<String> individualGameResult = new ArrayList<String>();
+                ArrayList<String> individualGameResult = new ArrayList<String>();
 
-                    Pattern pattern = Pattern.compile("[?:A-Za-z0-9 ]*?[0-9.]+\\b");
+                Pattern pattern = Pattern.compile("[?:A-Za-z0-9 ]*?[0-9.]+\\b");
 
-                    Matcher matcher = pattern.matcher(arrGames[i]);
+                Matcher matcher = pattern.matcher(arrGames[i]);
 
-                    while (matcher.find()) {
+                while (matcher.find()) {
 
-                        individualGameResult.add(matcher.group().trim());
+                    individualGameResult.add(matcher.group().trim());
+                }
+
+                System.out.println("These teams were playing:" + individualGameResult);
+
+                //Let's get result for each team
+                int firstPoints = 0; //our team
+                int secondPoints = 0; // opponent points
+                int teamResult = 0;
+
+                for (int j = 0; j < individualGameResult.toArray().length; j++) {
+
+                    String teamRes = individualGameResult.get(j);
+
+                    String teamName = teamRes.substring(0, teamRes.lastIndexOf(" "));
+
+                    try {
+
+                        teamResult = Integer.parseInt(teamRes.substring(teamRes.lastIndexOf(" ")).trim());
+                    } catch(NumberFormatException e) {
+
+                        return "Error(float number):" + arrGames[i];
                     }
 
-                    System.out.println("These teams were playing:" + individualGameResult);
+                    if (teamName.equals(toFind)) {
 
-                    //Let's get result for each team
-                    int firstPoints = 0; //our team
-                    int secondPoints = 0; // opponent points
-                    int teamResult = 0;
+                        firstPoints = teamResult;
+                    } else {
 
-                    for (int j = 0; j < individualGameResult.toArray().length; j++) {
-
-                        String teamRes = individualGameResult.get(j);
-
-                        String teamName = teamRes.substring(0, teamRes.lastIndexOf(" "));
-
-                        try {
-
-                            teamResult = Integer.parseInt(teamRes.substring(teamRes.lastIndexOf(" ")).trim());
-                        } catch(NumberFormatException e) {
-
-                            return "Error(float number):" + arrGames[i];
-                        }
-
-                        if (teamName.equals(toFind)) {
-
-                            firstPoints = teamResult;
-                        } else {
-
-                            secondPoints = teamResult;
-                        }
-                    }
-
-                    if (firstPoints > secondPoints) {
-
-                        teamWins++;
-                        teamScored += firstPoints;
-                        teamConceded += secondPoints;
-                        teamPoints += 3;
-
-                    } else if (secondPoints > firstPoints) {
-
-                        teamLosses++;
-                        teamScored += firstPoints;
-                        teamConceded += secondPoints;
-
-                    } else if (secondPoints == firstPoints) {
-
-                        teamDraws++;
-                        teamPoints += 1;
+                        secondPoints = teamResult;
                     }
                 }
-            }
 
-            return toFind + ":W=" + teamWins + ";D=" + teamDraws + ";L=" + teamLosses
-                    + ";Scored=" + teamScored + ";Conceded=" + teamConceded + ";Points=" + teamPoints + "";
+                if (firstPoints > secondPoints) {
+
+                    teamWins++;
+                    teamScored += firstPoints;
+                    teamConceded += secondPoints;
+                    teamPoints += 3;
+
+                } else if (secondPoints > firstPoints) {
+
+                    teamLosses++;
+                    teamScored += firstPoints;
+                    teamConceded += secondPoints;
+
+                } else if (secondPoints == firstPoints) {
+
+                    teamDraws++;
+                    teamPoints += 1;
+                }
+            }
         }
+
+        return toFind + ":W=" + teamWins + ";D=" + teamDraws + ";L=" + teamLosses
+                + ";Scored=" + teamScored + ";Conceded=" + teamConceded + ";Points=" + teamPoints + "";
+    }
 
     @Override
     public String stockSummary(String[] lstOfArt, String[] lstOf1stLetter) {

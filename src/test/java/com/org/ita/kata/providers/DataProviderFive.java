@@ -243,4 +243,14 @@ public class DataProviderFive {
         };
         return combineDataWithStudent(data);
     }
+
+    @DataProvider(name = "dpTestZeros")
+    public Object[][] dpTestZeros() {
+        Object[][] data = new Object[][]{
+                {0, 0},
+                {6, 1},
+                {14, 2},
+        };
+        return combineDataWithStudent(data);
+    }
 }
