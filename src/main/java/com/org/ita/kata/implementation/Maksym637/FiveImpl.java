@@ -5,6 +5,39 @@ import com.org.ita.kata.Five;
 import java.math.BigInteger;
 
 public class FiveImpl implements Five {
+    public static boolean isPrime(long number) {
+        if (number <= 1) {
+            return false;
+        } else if (number == 2) {
+            return true;
+        } else if (number % 2 == 0) {
+            return false;
+        }
+        for (int i = 3; i <= Math.sqrt(number); i += 2) {
+            if (number % i == 0)
+                return false;
+        }
+        return true;
+    }
+
+    public static long[] deleteZeros(long[] array) {
+        int targetIndex = 0;
+        for (int sourceIndex = 0; sourceIndex < array.length; sourceIndex++) {
+            if (array[sourceIndex] != 0)
+                array[targetIndex++] = array[sourceIndex];
+        }
+        long[] newArray = new long[targetIndex];
+        System.arraycopy(array, 0, newArray, 0, targetIndex);
+        return newArray;
+    }
+
+    public static long convertIntoLongNumber(int i, int j, String number) {
+        String newNumber = number.substring(0, i) + number.substring(i + 1);
+        StringBuilder subString = new StringBuilder(newNumber);
+        subString.insert(j, number.charAt(i));
+        return Long.parseLong(subString.toString());
+    }
+
     @Override
     public long[] gap(int g, long m, long n) {
         int sizePrimeNumbers = (int) (n - m), sizeResultNumbers = 2;
@@ -36,32 +69,6 @@ public class FiveImpl implements Five {
         }
 
         return result;
-    }
-
-    public static boolean isPrime(long number) {
-        if (number <= 1) {
-            return false;
-        } else if (number == 2) {
-            return true;
-        } else if (number % 2 == 0) {
-            return false;
-        }
-        for (int i = 3; i <= Math.sqrt(number); i += 2) {
-            if (number % i == 0)
-                return false;
-        }
-        return true;
-    }
-
-    public static long[] deleteZeros(long[] array) {
-        int targetIndex = 0;
-        for (int sourceIndex = 0; sourceIndex < array.length; sourceIndex++) {
-            if (array[sourceIndex] != 0)
-                array[targetIndex++] = array[sourceIndex];
-        }
-        long[] newArray = new long[targetIndex];
-        System.arraycopy(array, 0, newArray, 0, targetIndex);
-        return newArray;
     }
 
     @Override
@@ -110,13 +117,6 @@ public class FiveImpl implements Five {
 
         double a = m, b = (2 * m + 1), D = 4 * m + 1;
         return (b - Math.sqrt(D)) / (2 * a);
-    }
-
-    public static long convertIntoLongNumber(int i, int j, String number) {
-        String newNumber = number.substring(0, i) + number.substring(i + 1);
-        StringBuilder subString = new StringBuilder(newNumber);
-        subString.insert(j, number.charAt(i));
-        return Long.parseLong(subString.toString());
     }
 
     @Override

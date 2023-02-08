@@ -1,6 +1,7 @@
 package com.org.ita.kata.menus.delegator;
 
-import com.org.ita.kata.students.delegator.StudentRealisationFactory;
+import com.org.ita.kata.students.delegator.Student;
+import com.org.ita.kata.MenuNumber;
 import com.org.ita.kata.menus.*;
 
 import com.org.ita.kata.utils.SystemInput;
@@ -10,42 +11,34 @@ public class MenuNumberFactory {
     public static final String INCORRECT_INPUT = "Incorrect input";
     public static final String EXIT_PROGRAM = "Exit";
 
-    private String katas = "1.) Kata 8\n" + "2.) Kata 7\n" + "3.) Kata 6\n" + "4.) Kata 5\n" + "5.) Kata 4";
+    private final String katas = "1. Eight level kata\n" +
+            "2. Seven level kata\n" +
+            "3. Six level kata\n" +
+            "4. Five level kata\n" +
+            "5. Four level kata";
 
-    private StudentRealisationFactory studentRealisationFactory;
+    private final Student student;
 
-    public MenuNumberFactory(StudentRealisationFactory studentRealisationFactory) {
-        this.studentRealisationFactory = studentRealisationFactory;
+    public MenuNumberFactory(Student student) {
+        this.student = student;
     }
 
     public void runMenu() {
         while (true) {
             System.out.println("[ALL KATAS]\n" + katas);
-            System.out.println("6.) Exit\n");
-            System.out.println("Please enter number of kata : ");
+            System.out.println("0. Exit\n");
+            System.out.println("Please enter name of kata : ");
             String kata = SystemInput.input.nextLine();
-            switch (kata) {
-                case "1":
-                    (new MenuEight(studentRealisationFactory)).getAllTasks();
-                    break;
-                case "2":
-                    (new MenuSeven(studentRealisationFactory)).getAllTasks();
-                    break;
-                case "3":
-                    (new MenuSix(studentRealisationFactory)).getAllTasks();
-                    break;
-                case "4":
-                    (new MenuFive(studentRealisationFactory)).getAllTasks();
-                    break;
-                case "5":
-                    (new MenuFour(studentRealisationFactory)).getAllTasks();
-                    break;
-                case "6":
-                    System.out.println(EXIT_PROGRAM);
-                    return;
-                default:
-                    System.out.println(INCORRECT_INPUT);
-                    break;
+            if (kata.equals("0")) {
+                System.out.println(EXIT_PROGRAM);
+                return;
+            }
+            try {
+                MenuNumber menuNumber = MenuLevel.valueOf(kata.toUpperCase()).getMenuNumber();
+                menuNumber.SetStudent(student);
+                menuNumber.getAllTasks();
+            } catch (Exception e) {
+                System.out.println(INCORRECT_INPUT);
             }
         }
     }

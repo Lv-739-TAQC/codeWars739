@@ -9,15 +9,35 @@ import java.util.Arrays;
 import java.lang.StringBuilder;
 
 public class FiveImpl implements Five {
+    public static boolean isPrime(long number) {
+        if (number <= 1) {
+            return false;
+        }
+        for (long i = 2; i <= number / 2; i++) {
+            if ((number % i) == 0)
+                return false;
+        }
+        return true;
+    }
+
+    public static long making(String s, int i, int j) {
+        StringBuilder sb = new StringBuilder(s);
+        char c = sb.charAt(i);
+        sb.deleteCharAt(i);
+        sb.insert(j, c);
+
+        return Long.valueOf(sb.toString());
+    }
+
     @Override
     public long[] gap(int g, long m, long n) {
         long firstValue = 0;
         long secondValue = 0;
-        for(; m<=n; m++){
-            if(isPrime(m)){
-                if(firstValue < m){
+        for (; m <= n; m++) {
+            if (isPrime(m)) {
+                if (firstValue < m) {
                     secondValue = m;
-                    if(secondValue-firstValue == g){
+                    if (secondValue - firstValue == g) {
                         return new long[]{firstValue, secondValue};
                     }
                 }
@@ -25,17 +45,6 @@ public class FiveImpl implements Five {
             }
         }
         return null;
-    }
-
-    public static boolean isPrime(long number){
-        if(number<=1) {
-            return false;
-        }
-        for(long i=2;i<=number/2;i++) {
-            if((number%i)==0)
-                return  false;
-        }
-        return true;
     }
 
     @Override
@@ -54,7 +63,7 @@ public class FiveImpl implements Five {
         BigInteger c = BigInteger.ONE;
         BigInteger sum = BigInteger.ZERO;
 
-        for(int i = 0; i <= n.intValue(); i++) {
+        for (int i = 0; i <= n.intValue(); i++) {
             a = b;
             b = c;
             c = a.add(b);
@@ -80,9 +89,9 @@ public class FiveImpl implements Five {
         int index1 = 0;
         int index2 = 0;
         String number = String.valueOf(n);
-        for (int i=0; i<number.length(); i++) {
-            for (int j=0; j<number.length(); j++) {
-                if (i!=j && making(number, i, j) < min) {
+        for (int i = 0; i < number.length(); i++) {
+            for (int j = 0; j < number.length(); j++) {
+                if (i != j && making(number, i, j) < min) {
                     min = making(number, i, j);
                     index1 = i;
                     index2 = j;
@@ -90,14 +99,5 @@ public class FiveImpl implements Five {
             }
         }
         return new long[]{min, index1, index2};
-    }
-
-    public static long making(String s, int i, int j) {
-        StringBuilder sb = new StringBuilder(s);
-        char c = sb.charAt(i);
-        sb.deleteCharAt(i);
-        sb.insert(j, c);
-
-        return Long.valueOf(sb.toString());
     }
 }

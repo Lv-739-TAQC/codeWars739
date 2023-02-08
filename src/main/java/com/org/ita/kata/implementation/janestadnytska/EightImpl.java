@@ -4,15 +4,14 @@ import com.org.ita.kata.Eight;
 
 public class EightImpl implements Eight {
     @Override
-    public int Liters(double time) {
+    public int liters(double time) {
         double liters = time * 0.5;
         return (int) liters;
     }
 
     @Override
     public double getVolumeOfCuboid(double length, double width, double height) {
-        double cuboid = length * width * height;
-        return cuboid;
+        return length * width * height;
     }
 
     @Override
@@ -20,8 +19,7 @@ public class EightImpl implements Eight {
         float imperialGallon = 4.54609188f;
         float mile = 1.609344f;
         float kpm = mpg * mile / imperialGallon;
-        float kpmRounded = (float) (Math.round(kpm * 100)) / 100;
-        return kpmRounded;
+        return (float) (Math.round(kpm * 100)) / 100;
     }
 
     @Override
@@ -51,14 +49,12 @@ public class EightImpl implements Eight {
 
     @Override
     public int stringToNumber(String str) {
-        int strNumber = Integer.parseInt(str);
-        return strNumber;
+        return Integer.parseInt(str);
     }
 
     @Override
     public double TwoDecimalPlaces(double number) {
-        double numberRounded = (Math.round(number * 100.00)) / 100.00;
-        return numberRounded;
+        return (Math.round(number * 100.00)) / 100.00;
     }
 
     @Override
@@ -71,9 +67,9 @@ public class EightImpl implements Eight {
         }
         int k = 0;
         int[] numbersDivided = new int[count];
-        for (int i = 0; i < numbers.length; i++) {
-            if (numbers[i] % divider == 0) {
-                numbersDivided[k] = numbers[i];
+        for (int num: numbers) {
+            if (num % divider == 0) {
+                numbersDivided[k] = num;
                 k++;
             }
         }

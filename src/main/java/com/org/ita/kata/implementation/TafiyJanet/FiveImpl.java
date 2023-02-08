@@ -5,6 +5,14 @@ import com.org.ita.kata.Five;
 import java.math.BigInteger;
 
 public class FiveImpl implements Five {
+    private static boolean isPrime(long num) {
+        if (num < 2) return false;
+        for (long i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) return false;
+        }
+        return true;
+    }
+
     @Override
     public long[] gap(int g, long m, long n) {
         boolean primeFound = false;
@@ -22,14 +30,6 @@ public class FiveImpl implements Five {
             }
         }
         return null;
-    }
-
-    private static boolean isPrime(long num) {
-        if (num < 2) return false;
-        for (long i = 2; i <= Math.sqrt(num); i++) {
-            if (num % i == 0) return false;
-        }
-        return true;
     }
 
     @Override
@@ -58,7 +58,7 @@ public class FiveImpl implements Five {
 
     @Override
     public double solve(double m) {
-        return -(-2*m + Math.sqrt(4*m + 1) - 1)/(2*m);
+        return -(-2 * m + Math.sqrt(4 * m + 1) - 1) / (2 * m);
     }
 
     @Override
@@ -74,7 +74,7 @@ public class FiveImpl implements Five {
                     continue;
                 }
                 StringBuilder newNum = new StringBuilder();
-                newNum.append(num.substring(0, i));
+                newNum.append(num, 0, i);
                 newNum.append(num.substring(i + 1));
                 newNum.insert(j, num.charAt(i));
                 long newLong = Long.parseLong(newNum.toString());

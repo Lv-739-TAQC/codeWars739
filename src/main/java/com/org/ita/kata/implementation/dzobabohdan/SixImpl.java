@@ -14,6 +14,25 @@ import java.util.stream.Collectors;
 
 public class SixImpl implements Six {
 
+    private static double[] allDataByTown(String town, String strng) {
+
+        String lineWithTown = Arrays.stream(strng.split("\n")).filter(line -> line.contains(town)).collect(Collectors.joining());
+        String[] parts = lineWithTown.split("[^\\d.-]+");
+        double[] data = new double[parts.length - 1];
+
+        for (int i = 0; i < parts.length - 1; i++) {
+            data[i] = Double.parseDouble(parts[i + 1]);
+        }
+
+        return data;
+    }
+
+    private static String[] towns(String strng) {
+        return Arrays.stream(strng.split("\n"))
+                .map(s -> s.split(":")[0])
+                .toArray(String[]::new);
+    }
+
     // Build a pile of Cubes
     @Override
     public long findNb(long m) {
@@ -22,7 +41,7 @@ public class SixImpl implements Six {
 
         while (result < m) {
             i++;
-            result += i*i*i;
+            result += i * i * i;
         }
         return result == m ? i : -1;
     }
@@ -32,13 +51,13 @@ public class SixImpl implements Six {
     public String balance(String book) {
         String[] lines = book.split("\n");
         for (int i = 0; i < lines.length; i++) {
-            lines[i] = lines[i].replaceAll("[^\\w\\d\\.\\s]", "").replaceAll("  "," ").trim();
+            lines[i] = lines[i].replaceAll("[^\\w\\d\\.\\s]", "").replaceAll("  ", " ").trim();
         }
 
         DecimalFormat df = new DecimalFormat("#.00");
         int i = 1;
         int whitespaceIndex;
-        double[] expense = new double[lines.length-1];
+        double[] expense = new double[lines.length - 1];
         double totalExpense;
         double averageExpense;
         double actualBalance = Double.parseDouble(lines[0]);
@@ -49,8 +68,8 @@ public class SixImpl implements Six {
         while (i < lines.length) {
 
             whitespaceIndex = lines[i].lastIndexOf(" ");
-            expense[i-1] = Double.parseDouble(lines[i].substring(whitespaceIndex));
-            actualBalance = actualBalance - expense[i-1];
+            expense[i - 1] = Double.parseDouble(lines[i].substring(whitespaceIndex));
+            actualBalance = actualBalance - expense[i - 1];
 
             stringBuilder.append("\\r\\n")
                     .append(lines[i])
@@ -60,7 +79,7 @@ public class SixImpl implements Six {
         }
 
         totalExpense = Arrays.stream(expense).sum();
-        averageExpense = totalExpense/expense.length;
+        averageExpense = totalExpense / expense.length;
 
         stringBuilder.append("\\r\\nTotal expense  ")
                 .append(df.format(totalExpense))
@@ -85,7 +104,7 @@ public class SixImpl implements Six {
     public double mean(String town, String strng) {
         boolean isPresent = false;
 
-        for (String oneTown: towns(strng)) {
+        for (String oneTown : towns(strng)) {
             if (oneTown.equals(town)) {
                 isPresent = true;
                 break;
@@ -101,7 +120,7 @@ public class SixImpl implements Six {
     public double variance(String town, String strng) {
         boolean isPresent = false;
 
-        for (String oneTown: towns(strng)) {
+        for (String oneTown : towns(strng)) {
             if (oneTown.equals(town)) {
                 isPresent = true;
                 break;
@@ -112,25 +131,6 @@ public class SixImpl implements Six {
         double[] data = allDataByTown(town, strng);
         double mean = mean(town, strng);
         return Arrays.stream(data).map(x -> x - mean).map(x -> x * x).average().orElse(-1);
-    }
-
-    private static double[] allDataByTown(String town, String strng) {
-
-        String lineWithTown = Arrays.stream(strng.split("\n")).filter(line -> line.contains(town)).collect(Collectors.joining());
-        String[] parts = lineWithTown.split("[^\\d.-]+");
-        double[] data = new double[parts.length - 1];
-
-        for (int i = 0; i < parts.length-1; i++) {
-            data[i] = Double.parseDouble(parts[i+1]);
-        }
-
-        return data;
-    }
-
-    private static String[] towns(String strng) {
-        return Arrays.stream(strng.split("\n"))
-                .map(s -> s.split(":")[0])
-                .toArray(String[]::new);
     }
 
     //Ranking NBA teams
@@ -156,7 +156,7 @@ public class SixImpl implements Six {
         Matcher matcher;
 
         int index;
-        for (String match: matches) {
+        for (String match : matches) {
 
             index = match.indexOf(toFind);
             if (index != 0) matcher = pattern.matcher(match.substring(index));
@@ -189,9 +189,9 @@ public class SixImpl implements Six {
             if (diff > 0) wins++;
         }
 
-        points = wins*3 + draws;
+        points = wins * 3 + draws;
 
-        return toFind + ":W=" + wins + ";D=" + draws +";L=" + loses + ";Scored=" + scored + ";Conceded=" + conceded +";Points=" + points;
+        return toFind + ":W=" + wins + ";D=" + draws + ";L=" + loses + ";Scored=" + scored + ";Conceded=" + conceded + ";Points=" + points;
     }
 
     // Help the bookseller !

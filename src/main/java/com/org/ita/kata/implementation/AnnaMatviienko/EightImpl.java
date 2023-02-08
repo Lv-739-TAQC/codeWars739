@@ -4,18 +4,13 @@ import com.org.ita.kata.Eight;
 
 public class EightImpl implements Eight {
     @Override
-    public int Liters(double time) {
-
-        int waterL = (int) (time * 0.5);
-        return waterL;
-
+    public int liters(double time) {
+        return (int) (time * 0.5);
     }
 
     @Override
     public double getVolumeOfCuboid(double length, double width, double height) {
-
-        final double volume = length * width * height;
-        return volume;
+        return length * width * height;
     }
 
     @Override
@@ -23,8 +18,7 @@ public class EightImpl implements Eight {
         final double gallon = 4.54609188;
         final double mile = 1.609344;
         double res = (mpg * mile) / gallon;
-        float finalRes = (float) Math.round(res * 100) / 100;
-        return finalRes;
+        return (float) Math.round(res * 100) / 100;
     }
 
     @Override
@@ -62,14 +56,12 @@ public class EightImpl implements Eight {
 
     @Override
     public int stringToNumber(String str) {
-        int number = Integer.parseInt(str);
-        return number;
+        return Integer.parseInt(str);
     }
 
     @Override
     public double TwoDecimalPlaces(double number) {
-        double rounded = (double) Math.round(number * 100) / 100;
-        return rounded;
+        return (double) Math.round(number * 100) / 100;
     }
 
     @Override

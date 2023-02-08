@@ -1,0 +1,11 @@
+1327.00
+001 Car ;! 3.20 ?;
+002 Meat ;! 54.00 ?;
+003 Beauty  17.50
+004 Photos  17.50
+005 Car  24.81
+006 Stamps ;! 12.22 ?;
+007 Market  17.00
+008 Hairdresser ;! 110.73 ?;
+009 Photos ;! 17.00 ?;
+010 Gasoline ;! 17.50 ?;
