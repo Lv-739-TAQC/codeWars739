@@ -18,6 +18,16 @@ public class DataProviderSeven extends StudentProvider {
         };
         return combineDataWithStudent(data);
     }
+
+    @DataProvider(name = "dpNthSeriesTest")
+    public Object[][] dpNthSeriesTest() {
+        Object[][] data = new Object[][]{
+                {"1.57", 5},
+                {"1.77", 9},
+                {"1.94", 15}
+        };
+        return combineDataWithStudent(data);
+    }
 }
 
 
