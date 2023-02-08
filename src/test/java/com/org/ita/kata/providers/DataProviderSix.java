@@ -260,6 +260,32 @@ public class DataProviderSix {
             System.out.println("File not found: " + e);
         }
         return filePath;
+
+    }
+
+    @DataProvider(name = "dpStockSummary")
+    public static Object[][] stockSummaryTest() {
+        Object[][] data = new Object[6][3];
+        data[0][0] = new String[]{"ABAR 200", "CDXE 500", "BKWR 250", "BTSQ 890", "DRTY 600"};
+        data[0][1] = new String[]{"A", "B"};
+        data[0][2] = "(A : 200) - (B : 1140)";
+        data[1][0] = new String[]{"BBAR 150", "CDXE 515", "BKWR 250", "BTSQ 890", "DRTY 600"};
+        data[1][1] = new String[]{"A", "B", "C", "D"};
+        data[1][2] = "(A : 0) - (B : 1290) - (C : 515) - (D : 600)";
+        data[2][0] = new String[]{"CBART 20", "CDXEF 50", "BKWRK 25", "BTSQZ 89", "DRTYM 60"};
+        data[2][1] = new String[]{"A", "B", "C", "W"};
+        data[2][2] = "(A : 0) - (B : 114) - (C : 70) - (W : 0)";
+        data[3][0] = new String[]{"ROXANNE 102", "RHODODE 123", "BKWRKAA 125", "BTSQZFG 239", "DRTYMKH 060"};
+        data[3][1] = new String[]{"B", "R", "D", "X"};
+        data[3][2] = "(B : 364) - (R : 225) - (D : 60) - (X : 0)";
+        data[4][0] = new String[]{};
+        data[4][1] = new String[]{"B", "R", "D", "X"};
+        data[4][2] = "";
+        data[5][0] = new String[]{"ROXANNE 102", "RHODODE 123", "BKWRKAA 125", "BTSQZFG 239", "DRTYMKH 060"};
+        data[5][1] = new String[]{};
+        data[5][2] = "";
+
+        return combineDataWithStudent(data);
     }
 }
 

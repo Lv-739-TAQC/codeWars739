@@ -78,4 +78,10 @@ public class SixTest {
         String actual = studentRealisation.implementationSixKata().balance(input);
         Assert.assertEquals(actual, expected);
     }
+
+	@Test (dataProvider = "dpStockSummary", dataProviderClass = DataProviderSix.class)
+	public void dpStockSummary(StudentRealisation studentRealisation, String[] codes,String[] letters, String expected){
+		String actual = studentRealisation.implementationSixKata().stockSummary(codes, letters);
+		Assert.assertEquals(actual, expected);
+	}
 }
