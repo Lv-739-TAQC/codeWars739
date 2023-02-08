@@ -12,7 +12,7 @@ public class SevenTest {
     }
     @Test(dataProvider = "dpTestNewAvgException", dataProviderClass = DataProviderSeven.class, expectedExceptions = IllegalArgumentException.class)
     public void testIllegalArgumentExceptionNewAvg(StudentRealisation studentRealisation, String expectedResult, double[] arr, double nAvg) {
-        long actualResult = studentRealisation.implementationSevenKata().newAvg(arr, nAvg);
+        String actualResult = String.valueOf(studentRealisation.implementationSevenKata().newAvg(arr, nAvg));
         Assert.assertEquals(actualResult, expectedResult);
     }
 

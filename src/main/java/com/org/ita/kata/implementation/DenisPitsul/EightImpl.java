@@ -5,6 +5,7 @@ import com.org.ita.kata.Eight;
 import java.util.Arrays;
 
 public class EightImpl implements Eight {
+
     @Override
     public int liters(double time) {
         return (int) (time * 0.5);

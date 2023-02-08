@@ -1,10 +1,12 @@
 package com.org.ita.kata.providers;
 
 import org.testng.annotations.DataProvider;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Locale;
+
 import static com.org.ita.kata.providers.StudentProvider.combineDataWithStudent;
 
 public class DataProviderSix {
@@ -177,7 +179,7 @@ public class DataProviderSix {
 
     @DataProvider(name = "dpNbaCup")
     public static Object[][] dpNbaCup(){
-    	String resultSheet1 = "Los Angeles Clippers 104 Dallas Mavericks 88,New York Knicks 101 Atlanta Hawks 112,Indiana Pacers 103 Memphis Grizzlies 112,"
+        String resultSheet1 = "Los Angeles Clippers 104 Dallas Mavericks 88,New York Knicks 101 Atlanta Hawks 112,Indiana Pacers 103 Memphis Grizzlies 112,"
                 + "Los Angeles Lakers 111 Minnesota Timberwolves 112,Phoenix Suns 95 Dallas Mavericks 111,Portland Trail Blazers 112 New Orleans Pelicans 94,"
                 + "Sacramento Kings 104 Los Angeles Clippers 111,Houston Rockets 85 Denver Nuggets 105,Memphis Grizzlies 76 Cleveland Cavaliers 106,"
                 + "Milwaukee Bucks 97 New York Knicks 122,Oklahoma City Thunder 112 San Antonio Spurs 106,Boston Celtics 112 Philadelphia 76ers 95,"
@@ -258,6 +260,7 @@ public class DataProviderSix {
             System.out.println("File not found: " + e);
         }
         return filePath;
+
     }
 
     @DataProvider(name = "dpStockSummary")
@@ -285,6 +288,4 @@ public class DataProviderSix {
         return combineDataWithStudent(data);
     }
 }
-
-
 
