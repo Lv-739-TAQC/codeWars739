@@ -8,6 +8,7 @@ import com.org.ita.kata.utils.SystemInput;
 
 import java.util.Arrays;
 import java.math.BigInteger;
+import java.util.Scanner;
 
 public class MenuFive extends MenuNumber {
 
@@ -74,7 +75,9 @@ public class MenuFive extends MenuNumber {
 
     @NameMethod(name = "Which x for that sum?")
     public void getWhichXForThatSumTask() {
-
+        System.out.println("Enter a decimal value:");
+        double m = SystemInput.input.nextDouble();
+        System.out.println("The solution is: " + getStudentFiveKataRealisation().solve(m));
     }
 
     @NameMethod(name = "Find the smallest")

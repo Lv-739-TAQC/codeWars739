@@ -35,6 +35,8 @@ public class MenuSeven extends MenuNumber {
 
     @NameMethod(name = "Sum of the first nth term of Series")
     public void getSumOfTheFirstNthTermOfSeriesTask() {
-
+        System.out.println("Enter the number of terms in the series:");
+        int n = SystemInput.input.nextInt();
+        System.out.println("The sum of the series is: " + getStudentSevenKataRealisation().seriesSum(n));
     }
 }
