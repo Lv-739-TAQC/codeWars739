@@ -6,12 +6,10 @@ import java.util.List;
 
 import org.testng.annotations.DataProvider;
 
-import static com.org.ita.kata.providers.StudentProvider.combineDataWithStudent;
-
-public class DataProviderFour {
+public class DataProviderFour extends StudentProvider {
 
     @DataProvider(name = "dpWarriorFirst")
-    public static Object[][] dpWarriorFirst(Method method) {
+    public Object[][] dpWarriorFirst(Method method) {
         Object[][] data;
         switch (method.getName()) {
             case "testLevel1":
@@ -31,7 +29,7 @@ public class DataProviderFour {
     }
 
     @DataProvider(name = "dpWarriorSecond")
-    public static Object[][] dpWarriorSecond(Method method) {
+    public Object[][] dpWarriorSecond(Method method) {
         Object[][] data;
         switch (method.getName()) {
             case "testLevel2":
@@ -51,7 +49,7 @@ public class DataProviderFour {
     }
 
     @DataProvider(name = "dpWarriorBattle")
-    public static Object[][] dpWarriorBattle() {
+    public Object[][] dpWarriorBattle() {
         Object[][] data = new Object[][]{
                 {"Invalid level", -20},
                 {"Invalid level", 0},
@@ -72,7 +70,7 @@ public class DataProviderFour {
     }
 
     @DataProvider(name = "dpWarriorTraining")
-    public static Object[][] dpWarriorTraining() {
+    public Object[][] dpWarriorTraining() {
         Object[][] data = new Object[][]{
                 {"Defeated Chuck Norris", "Defeated Chuck Norris", 9000, 1},
                 {"Do the Hookie Pookie", "Do the Hookie Pookie", 8500, 1},

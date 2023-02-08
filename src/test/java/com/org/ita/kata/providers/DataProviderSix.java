@@ -7,12 +7,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Locale;
 
-import static com.org.ita.kata.providers.StudentProvider.combineDataWithStudent;
-
-public class DataProviderSix {
+public class DataProviderSix extends StudentProvider {
 
     @DataProvider(name = "dpFloatingPointApproximation")
-    public static Object[][] dpFloatingPointApproximation() {
+    public Object[][] dpFloatingPointApproximation() {
         Object[][] data = new Object[][]{
                 {1.29999999155e-08, 2.6e-08},
                 {6.999999997549999e-10, 1.4e-09},
@@ -39,7 +37,7 @@ public class DataProviderSix {
     }
 
     @DataProvider(name = "dpTestFindNb")
-    public static Object[][] dpTestFindNb() {
+    public Object[][] dpTestFindNb() {
         Object[][] data = new Object[][]{
                 {-1, 108806345136785L},
                 {55100, 2304422822859502500L},
@@ -160,7 +158,7 @@ public class DataProviderSix {
     }
 
     @DataProvider(name = "dpMean")
-    public static Object[][] dpMean() {
+    public Object[][] dpMean() {
         Object[][] data = new Object[][]{
                 {"London", 51.199999999999996},
                 {"Beijing", 52.416666666666664}
@@ -169,7 +167,7 @@ public class DataProviderSix {
     }
 
     @DataProvider(name = "dpVariance")
-    public static Object[][] dpVariance() {
+    public Object[][] dpVariance() {
         Object[][] data = new Object[][]{
                 {"London", 57.42833333333374},
                 {"Beijing", 4808.37138888889}
@@ -178,7 +176,7 @@ public class DataProviderSix {
     }
 
     @DataProvider(name = "dpNbaCup")
-    public static Object[][] dpNbaCup(){
+    public Object[][] dpNbaCup(){
         String resultSheet1 = "Los Angeles Clippers 104 Dallas Mavericks 88,New York Knicks 101 Atlanta Hawks 112,Indiana Pacers 103 Memphis Grizzlies 112,"
                 + "Los Angeles Lakers 111 Minnesota Timberwolves 112,Phoenix Suns 95 Dallas Mavericks 111,Portland Trail Blazers 112 New Orleans Pelicans 94,"
                 + "Sacramento Kings 104 Los Angeles Clippers 111,Houston Rockets 85 Denver Nuggets 105,Memphis Grizzlies 76 Cleveland Cavaliers 106,"
@@ -206,7 +204,7 @@ public class DataProviderSix {
     }
 
     @DataProvider(name = "dpEasyBalance")
-    public static Object[][] dpEasyBalance() {
+    public Object[][] dpEasyBalance() {
         Locale.setDefault(Locale.ENGLISH);
         String filePath1 = "src/main/resources/balance/input1.txt";
         String filePath2 = "src/main/resources/balance/input2.txt";
@@ -252,7 +250,7 @@ public class DataProviderSix {
         return combineDataWithStudent(data);
     }
 
-    public static String getStringFromFile(String filePath) {
+    public String getStringFromFile(String filePath) {
         try {
             Path fileName = Path.of(filePath);
             return Files.readString(fileName);

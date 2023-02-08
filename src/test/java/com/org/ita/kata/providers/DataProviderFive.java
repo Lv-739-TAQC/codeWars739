@@ -3,11 +3,9 @@ package com.org.ita.kata.providers;
 import java.math.BigInteger;
 import org.testng.annotations.DataProvider;
 
-import static com.org.ita.kata.providers.StudentProvider.combineDataWithStudent;
-
-public class DataProviderFive {
+public class DataProviderFive extends StudentProvider {
     @DataProvider(name = "dpTestPerimeter")
-    public static Object[][] dpTestPerimeter() {
+    public Object[][] dpTestPerimeter() {
         Object[][] data = new Object[][]{
                 {new BigInteger("80"), new BigInteger("5")},
                 {new BigInteger("216"), new BigInteger("7")},
@@ -22,7 +20,7 @@ public class DataProviderFive {
     }
 
     @DataProvider(name = "dpTestSmallest")
-    public static Object[][] dpTestSmallest() {
+    public Object[][] dpTestSmallest() {
         Object[][] data = new Object[][]{
                 {"[126235, 2, 0]", 261235},
                 {"[29917, 0, 1]", 209917},
@@ -233,7 +231,7 @@ public class DataProviderFive {
         return combineDataWithStudent(data);
     }
     @DataProvider(name = "dpTestGap")
-    public static Object[][] dpTestGap() {
+    public Object[][] dpTestGap() {
         Object[][] data = new Object[][]{
                 {"[101, 103]", 2, 100, 110},
                 {"[103, 107]", 4, 100, 110},
