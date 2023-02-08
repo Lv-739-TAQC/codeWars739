@@ -2,12 +2,10 @@ package com.org.ita.kata.providers;
 
 import org.testng.annotations.DataProvider;
 
-import static com.org.ita.kata.providers.StudentProvider.combineDataWithStudent;
-
-public class DataProviderEight {
+public class DataProviderEight extends StudentProvider{
 
     @DataProvider(name = "dpTestLiters")
-    public static Object[][] dpTestLiters() {
+    public Object[][] dpTestLiters() {
         Object[][] data = new Object[][]{
                 {1, 2},
                 {0, 0.97},
@@ -31,7 +29,7 @@ public class DataProviderEight {
     }
 
     @DataProvider(name = "dpTestTwoDecimalPlaces")
-    public static Object[][] dpTestTwoDecimalPlaces() {
+    public Object[][] dpTestTwoDecimalPlaces() {
         Object[][] data = new Object[][]{
                 {4.66, 4.659725356},
                 {173735326.38, 173735326.3783732637948948},
@@ -41,7 +39,7 @@ public class DataProviderEight {
     }
 
     @DataProvider(name = "dpSquareOrSquareRoot")
-    public static Object[][] dpSquareOrSquareRoot() {
+    public Object[][] dpSquareOrSquareRoot() {
         Object[][] data = new Object[][]{
                 {new int[]{2, 9, 3, 49, 4, 1}, new int[]{4, 3, 9, 7, 2, 1}},
                 {new int[]{10, 10201, 25, 25, 1, 1}, new int[]{100, 101, 5, 5, 1, 1}},
@@ -51,7 +49,7 @@ public class DataProviderEight {
     }
 
     @DataProvider(name = "dpCountPositivesSumNegatives")
-    public static Object[][] dpCountPositivesSumNegatives(){
+    public Object[][] dpCountPositivesSumNegatives(){
     	Object[][] data = {
     			{new int[] {10, -65}, new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15}},
     			{new int[] {8, -50}, new int[] {0, 2, 3, 0, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14}}};
@@ -59,7 +57,7 @@ public class DataProviderEight {
     }
 
     @DataProvider (name = "dpTestStringToNumber")
-    public static Object [] [] dpTestStringToNumber () {
+    public Object [] [] dpTestStringToNumber () {
         Object[][] data = new Object[][]{
                 {1234, "1234"},
                 {605, "605"},
@@ -70,7 +68,7 @@ public class DataProviderEight {
     }
 
     @DataProvider(name = "dpTestVolumeOfCuboid")
-    public static Object[][] dpTestVolumeOfCuboid() {
+    public Object[][] dpTestVolumeOfCuboid() {
         Object[][] data = new Object[][]{
                 {4, 1, 2, 2},
                 {60.0, 2.0, 5.0, 6.0},
@@ -87,7 +85,7 @@ public class DataProviderEight {
     }
 
     @DataProvider(name = "dpTestMpgToKPM")
-    public static Object[][] dpTestMpgToKPM() {
+    public Object[][] dpTestMpgToKPM() {
         Object[][] data = new Object[][]{
                 {3.54f, 10},
                 {7.08f, 20},
@@ -99,6 +97,16 @@ public class DataProviderEight {
                 {792.27f, 2238.0f},
                 {578.8f, 1635.0f},
                 {1317.96f, 3723.0f}
+        };
+        return combineDataWithStudent(data);
+    }
+
+    @DataProvider (name = "dpTestDivisibleBy")
+    public Object[][] dpTestDivisibleBy() {
+        Object[][] data = new Object[][]{
+                {new int[]{2,4,6}, new int[]{1,2,3,4,5,6}, 2},
+                {new int[]{3,6}, new int[]{1,2,3,4,5,6}, 3},
+                {new int[]{0,4}, new int[]{0,1,2,3,4,5,6}, 4},
         };
         return combineDataWithStudent(data);
     }

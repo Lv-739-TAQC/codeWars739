@@ -25,4 +25,11 @@ public class FiveTest {
         BigInteger actual = studentRealisation.implementationFiveKata().perimeter(input);
         Assert.assertEquals(actual, expected);
     }
+
+
+    @Test(dataProvider = "dpTestZeros", dataProviderClass = DataProviderFive.class)
+    public void testZeros(StudentRealisation studentRealisation, int expected, int input) {
+        int actual = studentRealisation.implementationFiveKata().zeros(input);
+        Assert.assertEquals(actual, expected);
+    }
 }
