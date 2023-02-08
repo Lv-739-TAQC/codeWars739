@@ -264,7 +264,7 @@ public class DataProviderSix {
     }
 
     @DataProvider(name = "dpStockSummary")
-    public static Object[][] stockSummaryTest() {
+    public Object[][] stockSummaryTest() {
         Object[][] data = new Object[6][3];
         data[0][0] = new String[]{"ABAR 200", "CDXE 500", "BKWR 250", "BTSQ 890", "DRTY 600"};
         data[0][1] = new String[]{"A", "B"};
