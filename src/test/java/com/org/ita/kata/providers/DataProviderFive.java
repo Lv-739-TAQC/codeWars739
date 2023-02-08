@@ -253,7 +253,7 @@ public class DataProviderFive extends StudentProvider {
     }
 
     @DataProvider(name = "dpSolveTest")
-    public static Object[][] dpSolveTest() {
+    public Object[][] dpSolveTest() {
         Object[][] data = new Object[][]{
                 {2.00, 5.000000000000e-01},
                 {4.00, 6.096117967978e-01},
