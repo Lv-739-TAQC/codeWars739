@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StudentProvider {
-    public static Object[][] combineDataWithStudent(Object[][] testData) {
+    public Object[][] combineDataWithStudent(Object[][] testData) {
         List<Object[]> rowsStudentImplementation = new ArrayList<>();
         for (Student student : Student.values()) {
             for (Object[] row : testData) {

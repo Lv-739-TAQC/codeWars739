@@ -55,6 +55,11 @@ public class MenuFive extends MenuNumber {
     @NameMethod(name = "Trailing zeros in factorial")
     public void getTrailingZerosInFactorialTask() {
 
+        System.out.println("Enter the number for calculating the number of trailing zeros in a factorial: ");
+        int n = SystemInput.inputIntNumber();
+        System.out.println("The number of trailing zeros in a factorial of a given number: "
+                + getStudentFiveKataRealisation().zeros(n));
+
     }
 
     @NameMethod(name = "Perimeter of squares in a rectangle")

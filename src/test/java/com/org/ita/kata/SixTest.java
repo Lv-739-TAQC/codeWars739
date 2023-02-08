@@ -4,7 +4,7 @@ import com.org.ita.kata.providers.DataProviderSix;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class SixTest {
+public class SixTest extends DataProviderSix {
 
     private final String data = "Rome:Jan 81.2,Feb 63.2,Mar 70.3,Apr 55.7,May 53.0,Jun 36.4,Jul 17.5,Aug 27.5,Sep 60.9,Oct 117.7,Nov 111.0,Dec 97.9" +
             "\n" +
@@ -41,7 +41,7 @@ public class SixTest {
         Assert.assertTrue(inRange);
     }
 
-    @Test(dataProvider = "dpFloatingPointApproximation", dataProviderClass = DataProviderSix.class)
+    @Test(dataProvider = "dpFloatingPointApproximation")
     public void testFloatingPointApproximation(StudentRealisation studentRealisation,
                                                double expectedResult,
                                                double x) {
@@ -49,21 +49,39 @@ public class SixTest {
         assertFunctionEquals(actualResult, expectedResult);
     }
 
-    @Test(dataProvider = "dpMean", dataProviderClass = DataProviderSix.class)
+    @Test(dataProvider = "dpMean")
     public void testMean(StudentRealisation studentRealisation, String town, double expected) {
         double actual = studentRealisation.implementationSixKata().mean(town, data);
         Assert.assertEquals(actual, expected, 1e-2);
     }
 
-    @Test(dataProvider = "dpVariance", dataProviderClass = DataProviderSix.class)
+    @Test(dataProvider = "dpVariance")
     public void testVariance(StudentRealisation studentRealisation, String town, double expected) {
         double actual = studentRealisation.implementationSixKata().variance(town, data);
         Assert.assertEquals(actual, expected, 1e-2);
     }
 
-    @Test(dataProvider = "dpTestFindNb", dataProviderClass = DataProviderSix.class)
+    @Test(dataProvider = "dpTestFindNb")
     public void testFindNb(StudentRealisation studentRealisation, long expected, long input) {
         long actual = studentRealisation.implementationSixKata().findNb(input);
         assertFunctionEquals(actual, expected);
     }
+
+    @Test(dataProvider = "dpNbaCup")
+    public void testNbaCup(StudentRealisation studentRealisation, String expected, String resultSheet, String toFind) {
+        String actual = studentRealisation.implementationSixKata().nbaCup(resultSheet, toFind);
+        Assert.assertEquals(actual, expected);
+    }
+
+    @Test(dataProvider = "dpEasyBalance")
+    public void testEasyBalance(StudentRealisation studentRealisation, String expected, String input) {
+        String actual = studentRealisation.implementationSixKata().balance(input);
+        Assert.assertEquals(actual, expected);
+    }
+
+	@Test (dataProvider = "dpStockSummary", dataProviderClass = DataProviderSix.class)
+	public void dpStockSummary(StudentRealisation studentRealisation, String[] codes,String[] letters, String expected){
+		String actual = studentRealisation.implementationSixKata().stockSummary(codes, letters);
+		Assert.assertEquals(actual, expected);
+	}
 }

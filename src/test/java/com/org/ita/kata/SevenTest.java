@@ -4,15 +4,15 @@ import com.org.ita.kata.providers.DataProviderSeven;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class SevenTest {
-    @Test(dataProvider = "dpTestNewAvg", dataProviderClass = DataProviderSeven.class)
+public class SevenTest extends DataProviderSeven {
+    @Test(dataProvider = "dpTestNewAvg")
     public void testNewAvg(StudentRealisation studentRealisation, long expectedResult, double[] arr, double nAvg) {
         long actualResult = studentRealisation.implementationSevenKata().newAvg(arr, nAvg);
         Assert.assertEquals(actualResult, expectedResult);
     }
-    @Test(dataProvider = "dpTestNewAvgException", dataProviderClass = DataProviderSeven.class, expectedExceptions = IllegalArgumentException.class)
+    @Test(dataProvider = "dpTestNewAvgException", expectedExceptions = IllegalArgumentException.class)
     public void testIllegalArgumentExceptionNewAvg(StudentRealisation studentRealisation, String expectedResult, double[] arr, double nAvg) {
-        long actualResult = studentRealisation.implementationSevenKata().newAvg(arr, nAvg);
+        String actualResult = String.valueOf(studentRealisation.implementationSevenKata().newAvg(arr, nAvg));
         Assert.assertEquals(actualResult, expectedResult);
     }
     @Test(dataProvider = "dpNthSeriesTest", dataProviderClass = DataProviderSeven.class)

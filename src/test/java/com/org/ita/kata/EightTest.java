@@ -1,32 +1,32 @@
 package com.org.ita.kata;
 
 import com.org.ita.kata.providers.DataProviderEight;
-import com.org.ita.kata.students.delegator.Student;
+
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
-import java.util.List;
+public class EightTest extends DataProviderEight {
 
-public class EightTest {
-
-    @Test(dataProvider = "dpTestLiters", dataProviderClass = DataProviderEight.class)
+    @Test(dataProvider = "dpTestLiters")
     public void testLiters(StudentRealisation studentRealisation, int expected, double input) {
         int actual = studentRealisation.implementationEightKata().liters(input);
         Assert.assertEquals(actual, expected);
     }
 
 
-    @Test
-    public void testGetVolumeOfCuboid() {
+    @Test(dataProvider = "dpTestVolumeOfCuboid")
+    public void testGetVolumeOfCuboid(StudentRealisation studentRealisation, double expected, double length, double width, double height) {
+        double actual = studentRealisation.implementationEightKata().getVolumeOfCuboid(length, width, height);
+        Assert.assertEquals(actual, expected);
     }
 
-    @Test
-    public void testMpgToKPM() {
+    @Test(dataProvider = "dpTestMpgToKPM")
+    public void testMpgToKPM(StudentRealisation studentRealisation, float expected, float mpg) {
+        float actual = studentRealisation.implementationEightKata().mpgToKPM(mpg);
+        Assert.assertEquals(actual, expected);
     }
 
-    @Test(dataProvider = "dpSquareOrSquareRoot", dataProviderClass = DataProviderEight.class)
+    @Test(dataProvider = "dpSquareOrSquareRoot")
     public void testSquareOrSquareRoot(StudentRealisation studentRealisation, int[] expected, int[] input) {
         int[] copiedInput = new int[input.length];
         System.arraycopy(input, 0, copiedInput, 0, copiedInput.length);
@@ -34,21 +34,27 @@ public class EightTest {
         Assert.assertEquals(actual, expected);
     }
 
-    @Test
-    public void testCountPositivesSumNegatives() {
+    @Test(dataProvider = "dpCountPositivesSumNegatives")
+    public void testCountPositivesSumNegatives(StudentRealisation studentRealisation, int[] expected, int[] input) {
+        int[] actual = studentRealisation.implementationEightKata().countPositivesSumNegatives(input);
+        Assert.assertEquals(actual, expected);
     }
 
-    @Test
-    public void testStringToNumber() {
+    @Test(dataProvider = "dpTestStringToNumber")
+    public void testStringToNumber(StudentRealisation studentRealisation, int expected, String input) {
+        Integer actual = studentRealisation.implementationEightKata().stringToNumber(input);
+        Assert.assertEquals(actual, expected);
     }
 
-    @Test(dataProvider = "dpTestTwoDecimalPlaces", dataProviderClass = DataProviderEight.class)
+    @Test(dataProvider = "dpTestTwoDecimalPlaces")
     public void testTwoDecimalPlaces(StudentRealisation studentRealisation, double expected, double input) {
         double actual = studentRealisation.implementationEightKata().TwoDecimalPlaces(input);
         Assert.assertEquals(actual, expected);
     }
 
-    @Test
-    public void testDivisibleBy() {
+    @Test(dataProvider = "dpTestDivisibleBy")
+    public void testDivisibleBy(StudentRealisation studentRealisation, int[] expected, int[] input, int divider) {
+        int[] actual = studentRealisation.implementationEightKata().divisibleBy(input, divider);
+        Assert.assertEquals(actual, expected);
     }
 }

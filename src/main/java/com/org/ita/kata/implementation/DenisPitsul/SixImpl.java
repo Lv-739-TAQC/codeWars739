@@ -68,11 +68,11 @@ public class SixImpl implements Six {
                 scored = scored + result.getLocalResultTeam();
                 conceded = conceded + result.getVisitorResultTeam();
 
-            } else if (result.winLocal() && result.isVisitor(toFind)) { // Soy visitante y gana visitante
+            } else if (result.winLocal() && result.isVisitor(toFind)) {
                 losses++;
                 scored = scored + result.getVisitorResultTeam();
                 conceded = conceded + result.getLocalResultTeam();
-            } else if (result.winVisitor() && result.isVisitor(toFind)) { // Soy visitante y pierde visitante
+            } else if (result.winVisitor() && result.isVisitor(toFind)) {
                 winners++;
                 scored = scored + result.getVisitorResultTeam();
                 conceded = conceded + result.getLocalResultTeam();
@@ -139,13 +139,13 @@ public class SixImpl implements Six {
             String[] line = lines[i].split("[ ]+");
             if (i == 0) {
                 balance = Double.parseDouble(line[0]);
-                sb.append("Original Balance: ").append(line[0]).append("\\r\\n");
+                sb.append("Original Balance: ").append(df.format(Double.parseDouble(line[0]))).append("\\r\\n");
             } else {
                 balance -= Double.parseDouble(line[2]);
                 totalExpense += Double.parseDouble(line[2]);
                 balanceDecreaseCount++;
                 String strBalance = df.format(balance).replace(",", ".");
-                sb.append(line[0]).append(" ").append(line[1]).append(" ").append(line[2])
+                sb.append(line[0]).append(" ").append(line[1]).append(" ").append(df.format(Double.parseDouble(line[2])))
                         .append(" Balance ").append(strBalance).append("\\r\\n");
             }
         }
@@ -184,10 +184,9 @@ public class SixImpl implements Six {
             return -1d;
         }
         double average = Arrays.stream(townTemp).average().getAsDouble();
-        double variance = Arrays.stream(townTemp)
+        return Arrays.stream(townTemp)
                 .map(p -> Math.pow(p - average, 2))
                 .sum() / townTemp.length;
-        return variance;
     }
 
     @Override

@@ -30,7 +30,7 @@ public class SixImpl implements Six {
             double amount = Double.parseDouble(line.substring(line.lastIndexOf(' ') + 1));
             total += amount;
             balance -= amount;
-            bookNew = bookNew+ String.format("\\r\\n%s Balance %.2f", line, balance);
+            bookNew +=  String.format("\\r\\n%s Balance %.2f", line, balance);
         }
         return bookNew + String.format("\\r\\nTotal expense  %.2f\\r\\nAverage expense  %.2f", total,
                 total / (lines.length - 1));
@@ -88,7 +88,7 @@ public class SixImpl implements Six {
         if (toFind.equals("")) return "";
         if (!resultSheet.contains(toFind + " ")) return toFind + ":This team didn't play!";
         String res = toFind + ":";
-        int wons = 0;
+        int victories = 0;
         int draws = 0;
         int lost = 0;
         int scored = 0;
@@ -116,7 +116,7 @@ public class SixImpl implements Six {
                 scored += score;
                 conceded += concede;
                 if (score > concede) {
-                    wons++;
+                    victories++;
                     points += 3;
                 } else if (score == concede) {
                     draws++;
@@ -126,7 +126,7 @@ public class SixImpl implements Six {
                 }
             }
         }
-        return res + "W=" + wons + ";D=" + draws + ";L=" + lost + ";Scored=" + scored + ";Conceded=" + conceded + ";Points=" + points;
+        return res + "W=" + victories + ";D=" + draws + ";L=" + lost + ";Scored=" + scored + ";Conceded=" + conceded + ";Points=" + points;
     }
 
     @Override

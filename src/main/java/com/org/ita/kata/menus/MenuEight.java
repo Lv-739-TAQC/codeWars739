@@ -85,6 +85,12 @@ public class MenuEight extends MenuNumber {
 
     @NameMethod(name = "Find numbers which are divisible by given number")
     public void getFindNumbersWhichAreDivisibleByGivenNumberTask() {
+        System.out.println("Enter the numbers you want to check, separated by commas: ");
+        int[] numbers = SystemInput.inputIntArray();
+        System.out.println("Enter the number by which the numbers to be checked must be divided: ");
+        int divider = SystemInput.inputIntNumber();
+        System.out.println("Numbers that are evenly divisible by the given divisor: "
+                + getStudentEightKataRealisation().divisibleBy(numbers, divider));
 
     }
 }
