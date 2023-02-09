@@ -209,7 +209,7 @@ public class MenuSix extends MenuNumber {
                         "\nChoose which one to use:" +
                         "\n-> L" +
                         "\n-> N");
-                String yourCode = SystemInput.input.nextLine();
+                String yourCode = systemInput.input.nextLine();
                 switch (yourCode) {
                     case "L":
                         code = L;

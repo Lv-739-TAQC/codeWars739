@@ -57,7 +57,7 @@ public class MenuFive extends MenuNumber {
     public void getTrailingZerosInFactorialTask() {
 
         System.out.println("Enter the number for calculating the number of trailing zeros in a factorial: ");
-        int n = SystemInput.inputIntNumber();
+        int n = systemInput.inputIntNumber();
         System.out.println("The number of trailing zeros in a factorial of a given number: "
                 + getStudentFiveKataRealisation().zeros(n));
 
@@ -76,7 +76,7 @@ public class MenuFive extends MenuNumber {
     @NameMethod(name = "Which x for that sum?")
     public void getWhichXForThatSumTask() {
         System.out.println("Enter a decimal value:");
-        double m = SystemInput.input.nextDouble();
+        double m = systemInput.input.nextDouble();
         System.out.println("The solution is: " + getStudentFiveKataRealisation().solve(m));
     }
 
