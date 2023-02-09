@@ -1,24 +1,21 @@
 package com.org.ita.kata.menus.delegator;
 
-import com.org.ita.kata.students.delegator.Student;
 import com.org.ita.kata.MenuNumber;
-import com.org.ita.kata.menus.*;
-
+import com.org.ita.kata.menus.MenuLevel;
+import com.org.ita.kata.students.delegator.Student;
 import com.org.ita.kata.utils.SystemInput;
 
 public class MenuNumberFactory {
 
     public static final String INCORRECT_INPUT = "Incorrect input";
     public static final String EXIT_PROGRAM = "Exit";
-    public SystemInput systemInput;
-
     private final String katas = "1. Eight level kata\n" +
             "2. Seven level kata\n" +
             "3. Six level kata\n" +
             "4. Five level kata\n" +
             "5. Four level kata";
-
     private final Student student;
+    public SystemInput systemInput;
 
     public MenuNumberFactory(Student student) {
         this.student = student;

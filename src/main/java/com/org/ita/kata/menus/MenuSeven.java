@@ -3,7 +3,6 @@ package com.org.ita.kata.menus;
 import com.org.ita.kata.MenuNumber;
 import com.org.ita.kata.students.delegator.Student;
 import com.org.ita.kata.utils.NameMethod;
-import com.org.ita.kata.utils.SystemInput;
 
 public class MenuSeven extends MenuNumber {
 
@@ -25,7 +24,7 @@ public class MenuSeven extends MenuNumber {
             try {
                 getStudentSevenKataRealisation().newAvg(arr, nAvg);
             } catch (IllegalArgumentException e) {
-                System.out.println(e+" : Your  expectations are not great enough. Please enter other donation.");
+                System.out.println(e + " : Your  expectations are not great enough. Please enter other donation.");
                 continue;
             }
             break;

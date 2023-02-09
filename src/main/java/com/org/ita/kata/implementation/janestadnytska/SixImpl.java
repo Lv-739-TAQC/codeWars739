@@ -30,7 +30,7 @@ public class SixImpl implements Six {
             double amount = Double.parseDouble(line.substring(line.lastIndexOf(' ') + 1));
             total += amount;
             balance -= amount;
-            bookNew +=  String.format("\\r\\n%s Balance %.2f", line, balance);
+            bookNew += String.format("\\r\\n%s Balance %.2f", line, balance);
         }
         return bookNew + String.format("\\r\\nTotal expense  %.2f\\r\\nAverage expense  %.2f", total,
                 total / (lines.length - 1));
@@ -98,15 +98,15 @@ public class SixImpl implements Six {
         String[] teams = resultSheet.split(",");
         int score;
         int concede;
-        for(String team: teams){
-            if(team.contains(toFind)){
+        for (String team : teams) {
+            if (team.contains(toFind)) {
                 int j = team.indexOf(toFind);
                 try {
                     String[] splitTeams = team.split(" ");
-                    if(j == 0){
+                    if (j == 0) {
                         score = Integer.parseInt(splitTeams[toFind.split(" ").length]);
                         concede = Integer.parseInt(splitTeams[splitTeams.length - 1]);
-                    }else{
+                    } else {
                         concede = Integer.parseInt(splitTeams[splitTeams.length - toFind.split(" ").length - 2]);
                         score = Integer.parseInt(splitTeams[splitTeams.length - 1]);
                     }
@@ -142,7 +142,7 @@ public class SixImpl implements Six {
                     quantity += Integer.parseInt(stockLetter.replaceAll("[^0-9]", ""));
                 } else quantity += 0;
             }
-            report = report+ " - (" + letter + " : " + quantity + ")";
+            report = report + " - (" + letter + " : " + quantity + ")";
         }
         return report.substring(3);
     }

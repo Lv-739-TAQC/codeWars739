@@ -1,10 +1,10 @@
 package com.org.ita.kata.providers;
 
+import org.testng.annotations.DataProvider;
+
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.testng.annotations.DataProvider;
 
 public class DataProviderFour extends StudentProvider {
 

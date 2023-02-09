@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FourImpl implements Four {
-    private int experience = 100;
     private final List<String> achievements = new ArrayList<>();
+    private int experience = 100;
 
     public int level() {
         return experience / 100;

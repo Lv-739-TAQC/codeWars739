@@ -1,20 +1,20 @@
 package com.org.ita.kata;
 
-import java.lang.reflect.Method;
-import java.util.Map;
-import java.util.TreeMap;
-
 import com.org.ita.kata.students.delegator.Student;
 import com.org.ita.kata.utils.NameMethod;
 import com.org.ita.kata.utils.SystemInput;
+
+import java.lang.reflect.Method;
+import java.util.Map;
+import java.util.TreeMap;
 
 public abstract class MenuNumber {
 
     public final String INCORRECT_INPUT = "Incorrect input";
     public final String GO_BACK = "Back";
-
-    private Student student;
     protected SystemInput systemInput;
+    private Student student;
+
     public MenuNumber() {
         this.systemInput = new SystemInput();
     }

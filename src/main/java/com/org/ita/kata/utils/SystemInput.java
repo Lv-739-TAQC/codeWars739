@@ -2,12 +2,12 @@ package com.org.ita.kata.utils;
 
 import com.org.ita.kata.students.delegator.Student;
 
-import java.util.Objects;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.util.InputMismatchException;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class SystemInput {
@@ -30,10 +30,10 @@ public class SystemInput {
     }
 
     public Student inputStudent() {
-        while(true) {
+        while (true) {
             System.out.println("Enter student's name : ");
             String name = input.nextLine();
-            if(Objects.nonNull(Student.getStudentByName(name))){
+            if (Objects.nonNull(Student.getStudentByName(name))) {
                 return Student.getStudentByName(name);
             } else {
                 System.out.println(STUDENT_NOT_FOUND);
@@ -86,9 +86,9 @@ public class SystemInput {
     }
 
     public double inputNearZeroNumber() {
-        while(true) {
+        while (true) {
             double number = inputDoubleNumber();
-            if(number > 0 && number < 1) {
+            if (number > 0 && number < 1) {
                 return number;
             } else {
                 System.out.println(INCORRECT_NUMBER_INPUT);
@@ -97,9 +97,9 @@ public class SystemInput {
     }
 
     public int inputCorrectData() {
-        while(true) {
+        while (true) {
             int level = inputIntNumber();
-            if(level >= 1) {
+            if (level >= 1) {
                 return level;
             } else {
                 System.out.println(INCORRECT_WARRIOR_INPUT);
@@ -132,7 +132,7 @@ public class SystemInput {
     public String readFromFile() {
         while (true) {
             System.out.println("Enter path to file:");
-            try (BufferedReader br = new BufferedReader(new FileReader(input.nextLine()));) {
+            try (BufferedReader br = new BufferedReader(new FileReader(input.nextLine()))) {
                 StringBuilder sb = new StringBuilder();
                 String line = br.readLine();
                 while (line != null) {
@@ -170,6 +170,7 @@ public class SystemInput {
         }
         return str;
     }
+
     public String[] inputString() {
         return input.nextLine().split("\\s");
     }
