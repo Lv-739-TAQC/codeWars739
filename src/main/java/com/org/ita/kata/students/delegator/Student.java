@@ -7,9 +7,12 @@ public enum Student {
 
     ANNA(1, "Anna", "AnnaMatviienko", new AnnaRealisation()),
     BOHDAN(2, "Bohdan", "dzobabohdan", new BohdanRealisation()),
-    DENYS(3, "Denys", "DenisPitsul", new DenysRealisation()), DMYTRO(4, "Dmytro", "savaxn04", new DmytroRealisation()),
-    ILYA(5, "Ilya", "kapustin-ilya", new IlyaRealisation()), IRA(6, "Ira", "IrenZh", new IraRealisation()),
-    JANET(7, "Janet", "Tafiy-Janet", new JanetRealisation()), MAKSYM(8, "Maksym", "Maksym637", new MaksymRealisation()),
+    DENYS(3, "Denys", "DenisPitsul", new DenysRealisation()),
+    DMYTRO(4, "Dmytro", "savaxn04", new DmytroRealisation()),
+    ILYA(5, "Ilya", "kapustin-ilya", new IlyaRealisation()),
+    IRA(6, "Ira", "IrenZh", new IraRealisation()),
+    JANET(7, "Janet", "Tafiy-Janet", new JanetRealisation()),
+    MAKSYM(8, "Maksym", "Maksym637", new MaksymRealisation()),
     TETIANA(9, "Tetiana", "TetianaFilatova", new TetianaRealisation()),
     ZHANNA(10, "Zhanna", "janestadnytska", new ZhannaRealisation());
 
@@ -26,17 +29,7 @@ public enum Student {
     }
 
     public static Student getStudentByName(String name) {
-
         return Student.valueOf(Student.class, name.toUpperCase());
-
-//		Student student = null;
-//		for (Student st : values()) {
-//			if (st.name.equals(name)) {
-//				student = st;
-//			}
-//		}
-//		return student;
-
     }
 
     public static void printAllStudents() {

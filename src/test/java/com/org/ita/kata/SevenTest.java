@@ -15,13 +15,9 @@ public class SevenTest extends DataProviderSeven {
         String actualResult = String.valueOf(studentRealisation.implementationSevenKata().newAvg(arr, nAvg));
         Assert.assertEquals(actualResult, expectedResult);
     }
-    @Test(dataProvider = "dpNthSeriesTest", dataProviderClass = DataProviderSeven.class)
+    @Test(dataProvider = "dpNthSeriesTest")
     public void nthSeriesTest(StudentRealisation studentRealisation, String expectedResult, int input){
         String actualResult = studentRealisation.implementationSevenKata().seriesSum(input);
         Assert.assertEquals(actualResult, expectedResult);
     }
-
 }
-
-
-

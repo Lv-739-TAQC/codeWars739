@@ -6,10 +6,6 @@ import com.org.ita.kata.MenuNumber;
 import com.org.ita.kata.students.delegator.Student;
 import com.org.ita.kata.utils.NameMethod;
 import com.org.ita.kata.utils.SystemInput;
-import com.sun.jdi.FloatValue;
-
-import java.util.InputMismatchException;
-import java.util.Scanner;
 
 public class MenuEight extends MenuNumber {
 
