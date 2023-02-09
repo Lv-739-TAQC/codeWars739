@@ -7,8 +7,6 @@ import static java.util.stream.Collectors.averagingDouble;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Arrays;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class SixImpl implements Six {
     private static List<Double> parseTemp(String town, String strng) {
@@ -44,7 +42,7 @@ public class SixImpl implements Six {
         double total = 0;
         int count = 0;
         StringBuilder result = new StringBuilder();
-        result.append("Original Balance: " + arr[0]);
+        result.append("Original Balance: ").append(arr[0]);
         for (int i = 1; i < arr.length; i++) {
             count++;
             String[] line = arr[i].split("[ ]+");

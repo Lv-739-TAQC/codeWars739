@@ -5,7 +5,6 @@ import com.org.ita.kata.Four;
 import java.util.List;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class FourImpl implements Four {
     final static private int      MAX_LVL        = 100,
@@ -21,13 +20,13 @@ public class FourImpl implements Four {
 
 
     private int          xps    = LVL_XP_RATIO;
-    private List<String> achiev = new ArrayList<>();
+    private final List<String> achiev = new ArrayList<>();
 
 
     public int          experience()   { return xps; }
     public int          level()        { return xps / LVL_XP_RATIO; }
     public String       rank()         { return RANKS[ getRank(xps) ]; }
-    public List<String> achievements() { return achiev.stream().collect(Collectors.toList()); }
+    public List<String> achievements() { return new ArrayList<>(achiev); }
 
     private int  getRank(int xp)       { return xp/1000 + 1; }
     private void updateXps(int xp)     { xps = Math.min(xps+xp, MAX_XPS); }
