@@ -6,10 +6,6 @@ import com.org.ita.kata.MenuNumber;
 import com.org.ita.kata.students.delegator.Student;
 import com.org.ita.kata.utils.NameMethod;
 import com.org.ita.kata.utils.SystemInput;
-import com.sun.jdi.FloatValue;
-
-import java.util.InputMismatchException;
-import java.util.Scanner;
 
 public class MenuEight extends MenuNumber {
 
@@ -23,25 +19,25 @@ public class MenuEight extends MenuNumber {
     @NameMethod(name = "Keep Hydrated!")
     public void getKeepHydratedTask() {
         System.out.println("Enter time number : ");
-        double time = SystemInput.inputDoubleNumber();
+        double time = systemInput.inputDoubleNumber();
         System.out.println("Liters = " + getStudentEightKataRealisation().liters(time));
     }
 
     @NameMethod(name = "Volume of a Cuboid")
     public void getVolumeOfACuboidTask() {
         System.out.println("Enter length number : ");
-        double length = SystemInput.inputDoubleNumber();
+        double length = systemInput.inputDoubleNumber();
         System.out.println("Enter width number : ");
-        double width = SystemInput.inputDoubleNumber();
+        double width = systemInput.inputDoubleNumber();
         System.out.println("Enter height number : ");
-        double height = SystemInput.inputDoubleNumber();
+        double height = systemInput.inputDoubleNumber();
         System.out.println("V = " + getStudentEightKataRealisation().getVolumeOfCuboid(length, width, height));
     }
 
     @NameMethod(name = "Miles per gallon to kilometers per liter")
     public void getMilesPerGallonToKilometersPerLiterTask() {
         System.out.println("To convert miles per imperial gallon into kilometers per liter, please, enter the number of miles per imperial gallon to be converted:");
-        float mpg = SystemInput.inputFloatNumber();
+        float mpg = systemInput.inputFloatNumber();
         System.out.println();
         System.out.println(mpg + " miles per imperial gallon = " + getStudentEightKataRealisation().mpgToKPM(mpg) + " kilometers per liter.");
         System.out.println();
@@ -49,7 +45,7 @@ public class MenuEight extends MenuNumber {
 
     @NameMethod(name = "To square root or no to square")
     public void getToSquareRootOrNoToSquareTask() {
-        int[] numbers = SystemInput.inputIntArray();
+        int[] numbers = systemInput.inputIntArray();
         System.out.print("Entered numbers: ");
         for (int number : numbers) {
             System.out.print(number + " ");
@@ -64,7 +60,7 @@ public class MenuEight extends MenuNumber {
 
     @NameMethod(name = "Count of positives / sum of negatives")
     public void getCountOfPositivesSumOfNegativesTask() {
-        int[] array = SystemInput.inputIntArray();
+        int[] array = systemInput.inputIntArray();
         int[] result = getStudentEightKataRealisation().countPositivesSumNegatives(array);
         System.out.println(Arrays.toString(result));
     }
@@ -72,23 +68,23 @@ public class MenuEight extends MenuNumber {
     @NameMethod(name = "Convert a String to a Number")
     public void getConvertAStringToANumberTask() {
         System.out.println("Enter  string: ");
-        String str = SystemInput.inputNumber();
+        String str = systemInput.inputNumber();
         System.out.println("Now it's a number : " + getStudentEightKataRealisation().stringToNumber(str));
     }
 
     @NameMethod(name = "Formatting decimal places")
     public void getFormattingDecimalPlacesTask() {
         System.out.println("Enter double number with several decimal places : ");
-        double doubleNumber = SystemInput.inputDoubleNumber();
+        double doubleNumber = systemInput.inputDoubleNumber();
         System.out.println("Rounded number to two decimal place = " + getStudentEightKataRealisation().TwoDecimalPlaces(doubleNumber));
     }
 
     @NameMethod(name = "Find numbers which are divisible by given number")
     public void getFindNumbersWhichAreDivisibleByGivenNumberTask() {
         System.out.println("Enter the numbers you want to check, separated by commas: ");
-        int[] numbers = SystemInput.inputIntArray();
+        int[] numbers = systemInput.inputIntArray();
         System.out.println("Enter the number by which the numbers to be checked must be divided: ");
-        int divider = SystemInput.inputIntNumber();
+        int divider = systemInput.inputIntNumber();
         System.out.println("Numbers that are evenly divisible by the given divisor: "
                 + getStudentEightKataRealisation().divisibleBy(numbers, divider));
 

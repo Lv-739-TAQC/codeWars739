@@ -8,7 +8,8 @@ public class Main {
     public static void main(String[] args) {
         Student.printAllStudents();
 
-        Student student = SystemInput.inputStudent();
+        SystemInput systemInput = new SystemInput();
+        Student student = systemInput.inputStudent();
         System.out.println(student);
 
         MenuNumberFactory menuNumberFactory = new MenuNumberFactory(student);

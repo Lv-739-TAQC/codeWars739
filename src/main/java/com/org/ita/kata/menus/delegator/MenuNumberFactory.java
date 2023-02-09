@@ -10,6 +10,7 @@ public class MenuNumberFactory {
 
     public static final String INCORRECT_INPUT = "Incorrect input";
     public static final String EXIT_PROGRAM = "Exit";
+    public SystemInput systemInput;
 
     private final String katas = "1. Eight level kata\n" +
             "2. Seven level kata\n" +
@@ -21,6 +22,7 @@ public class MenuNumberFactory {
 
     public MenuNumberFactory(Student student) {
         this.student = student;
+        this.systemInput = new SystemInput();
     }
 
     public void runMenu() {
@@ -28,7 +30,7 @@ public class MenuNumberFactory {
             System.out.println("[ALL KATAS]\n" + katas);
             System.out.println("0. Exit\n");
             System.out.println("Please enter name of kata : ");
-            String kata = SystemInput.input.nextLine();
+            String kata = systemInput.input.nextLine();
             if (kata.equals("0")) {
                 System.out.println(EXIT_PROGRAM);
                 return;
