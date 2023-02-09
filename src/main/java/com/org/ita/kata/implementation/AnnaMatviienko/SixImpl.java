@@ -140,7 +140,50 @@ public class SixImpl implements Six {
 
     @Override
     public String nbaCup(String resultSheet, String toFind) {
-        return null;
+        if (toFind == "") {
+            return "";
+        }
+        if (!resultSheet.contains(toFind + " ")) {
+            return toFind + ":This team didn't play!";
+        }
+        String[] nba = resultSheet.split(",");
+        int win = 0;
+        int draws = 0;
+        int lost = 0;
+        int scored = 0;
+        int conceded = 0;
+        for (int i = 0; i < nba.length; i++) {
+            if (nba[i].contains(toFind)) {
+                String[] temp = nba[i].replaceAll(toFind, "team").split(" ");
+                String team1;
+                String team2;
+                if (temp[0].equals("team")) {
+                    team1 = temp[1];
+                    team2 = temp[temp.length - 1];
+                } else {
+                    team1 = temp[temp.length - 1];
+                    team2 = temp[temp.length - 3];
+                }
+                int point1, point2;
+                try {
+                    point1 = Integer.parseInt(team1);
+                    point2 = Integer.parseInt(team2);
+                } catch (Exception e) {
+                    return "Error(float number):" + nba[i];
+                }
+                if (point1 > point2) {
+                    win++;
+                } else if (point1 < point2) {
+                    lost++;
+                } else if (point1 == point2) {
+                    draws++;
+                }
+                scored += point1;
+                conceded += point2;
+            }
+        }
+        int points = win * 3 + draws;
+        return toFind + ":W=" + win + ";D=" + draws + ";L=" + lost + ";Scored=" + scored + ";Conceded=" + conceded + ";Points=" + points + "";
     }
 
     @Override
