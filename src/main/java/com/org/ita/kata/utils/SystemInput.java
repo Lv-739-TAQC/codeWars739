@@ -33,9 +33,9 @@ public class SystemInput {
         while (true) {
             System.out.println("Enter student's name : ");
             String name = input.nextLine();
-            if (Objects.nonNull(Student.getStudentByName(name))) {
+            try {
                 return Student.getStudentByName(name);
-            } else {
+            } catch (Exception exception){
                 System.out.println(STUDENT_NOT_FOUND);
             }
         }
