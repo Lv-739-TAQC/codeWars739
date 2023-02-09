@@ -79,7 +79,7 @@ public class SixTest extends DataProviderSix {
         Assert.assertEquals(actual, expected);
     }
 
-	@Test (dataProvider = "dpStockSummary", dataProviderClass = DataProviderSix.class)
+	@Test (dataProvider = "dpStockSummary")
 	public void dpStockSummary(StudentRealisation studentRealisation, String[] codes,String[] letters, String expected){
 		String actual = studentRealisation.implementationSixKata().stockSummary(codes, letters);
 		Assert.assertEquals(actual, expected);

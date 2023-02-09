@@ -1,11 +1,7 @@
 package com.org.ita.kata.implementation.IrenZh;
 
 import com.org.ita.kata.Five;
-
-import com.org.ita.kata.Five;
-
 import java.math.BigInteger;
-import java.util.Arrays;
 import java.lang.StringBuilder;
 
 public class FiveImpl implements Five {
