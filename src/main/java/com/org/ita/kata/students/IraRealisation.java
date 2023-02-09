@@ -3,7 +3,7 @@ package com.org.ita.kata.students;
 import com.org.ita.kata.StudentRealisation;
 import com.org.ita.kata.implementation.IrenZh.*;
 
-public class IraRealisation implements StudentRealisation {
+public class IraRealisation  extends Base  implements StudentRealisation {
 
     public EightImpl implementationEightKata() {
         return new EightImpl();
