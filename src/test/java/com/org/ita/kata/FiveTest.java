@@ -7,8 +7,6 @@ import org.testng.annotations.Test;
 import java.math.BigInteger;
 import java.util.Arrays;
 
-import static org.testng.Assert.assertTrue;
-
 public class FiveTest extends DataProviderFive {
 
     @Test(dataProvider = "dpTestGap")
@@ -40,7 +38,7 @@ public class FiveTest extends DataProviderFive {
         double merr = 1e-12;
         double actual = studentRealisation.implementationFiveKata().solve(input);
         boolean inrange = Math.abs(actual - expected) <= merr;
-        assertTrue(inrange);
+        Assert.assertTrue(inrange);
     }
 
 }
