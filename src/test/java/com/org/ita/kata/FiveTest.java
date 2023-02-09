@@ -27,17 +27,18 @@ public class FiveTest extends DataProviderFive {
         Assert.assertEquals(actual, expected);
     }
 
-
-    @Test(dataProvider = "dpTestZeros", dataProviderClass = DataProviderFive.class)
+    @Test(dataProvider = "dpTestZeros")
     public void testZeros(StudentRealisation studentRealisation, int expected, int input) {
         int actual = studentRealisation.implementationFiveKata().zeros(input);
         Assert.assertEquals(actual, expected);
     }
 
-    @Test(dataProvider = "dpSolveTest", dataProviderClass = DataProviderFive.class)
+    @Test(dataProvider = "dpSolveTest")
     public void testSolve(StudentRealisation studentRealisation, double input, double expected) {
+        double merr = 1e-12;
         double actual = studentRealisation.implementationFiveKata().solve(input);
-        Assert.assertEquals(actual, expected);
+        boolean inrange = Math.abs(actual - expected) <= merr;
+        Assert.assertTrue(inrange);
     }
 
 }

@@ -248,11 +248,12 @@ public class DataProviderFive extends StudentProvider {
     public Object[][] dpTestZeros() {
         Object[][] data = new Object[][]{
                 {0, 0},
-                {6, 1},
-                {14, 2},
+                {1, 6},
+                {2, 14}
         };
         return combineDataWithStudent(data);
     }
+
 
     @DataProvider(name = "dpSolveTest")
     public Object[][] dpSolveTest() {

@@ -24,10 +24,6 @@ public class SevenImpl implements Seven {
         for (int i = 1; i < n; i++) {
             result += 1.0 / (3.0 * i + 1.0);
         }
-        String string = String.valueOf(Math.round(result * 100.0) / 100.0);
-        if (string.length() == 3) {
-            return string + "0";
-        }
-        return string;
+        return String.valueOf(Math.round(result * 100.0) / 100.0);
     }
 }
