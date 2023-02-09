@@ -38,17 +38,17 @@ public class MenuFour extends MenuNumber {
 
         System.out.println("> Train your warrior !");
         System.out.println("Enter description : ");
-        String description = SystemInput.input.nextLine();
+        String description = systemInput.input.nextLine();
         System.out.println("Enter training experience : ");
-        int trainingExperience = SystemInput.inputCorrectData();
+        int trainingExperience = systemInput.inputCorrectData();
         System.out.println("Enter training level : ");
-        int trainingLevel = SystemInput.inputCorrectData();
+        int trainingLevel = systemInput.inputCorrectData();
         System.out.println("Training result : " + warrior.training(description, trainingExperience, trainingLevel));
         System.out.println(getCharacteristics(warrior));
 
         System.out.println("> Have a battle !");
         System.out.println("Enter enemy's level : ");
-        int enemyLevel = SystemInput.inputCorrectData();
+        int enemyLevel = systemInput.inputCorrectData();
         System.out.println("Battle result : " + warrior.battle(enemyLevel));
         System.out.println(getCharacteristics(warrior));
 

@@ -21,7 +21,7 @@ public class MenuSix extends MenuNumber {
     @NameMethod(name = "Build a pile of Cubes")
     public void getBuildAPileOfCubesTask() {
         System.out.println("Enter the total volume of the building : ");
-        long volume = SystemInput.inputLongNumber();
+        long volume = systemInput.inputLongNumber();
         System.out.println("Number of cubes = " + getStudentSixKataRealisation().findNb(volume));
     }
 
@@ -97,7 +97,7 @@ public class MenuSix extends MenuNumber {
     @NameMethod(name = "Floating-point Approximation (I)")
     public void getFloatingPointApproximationITask() {
         System.out.println("Enter x near zero for f(x) function : ");
-        double x = SystemInput.inputNearZeroNumber();
+        double x = systemInput.inputNearZeroNumber();
         System.out.println("Good approximation of f(x) is : " + getStudentSixKataRealisation().f(x));
     }
 
@@ -149,7 +149,7 @@ public class MenuSix extends MenuNumber {
                     "\n1) data1" +
                     "\n2) data2" +
                     "\n3) data1 + data2");
-            String ans = SystemInput.input.nextLine();
+            String ans = systemInput.input.nextLine();
             switch (ans) {
                 case "1":
                     data = data1;
@@ -171,7 +171,7 @@ public class MenuSix extends MenuNumber {
 
         System.out.println("Towns: Rome, London, Paris, NY, Vancouver, Sydney, Bangkok, Tokyo, Beijing, Lima" +
                 "\nEnter name of town: ");
-        String town = SystemInput.input.nextLine();
+        String town = systemInput.input.nextLine();
         double result = getStudentSixKataRealisation().mean(town, data);
 
         if (result < 0) {
@@ -186,13 +186,13 @@ public class MenuSix extends MenuNumber {
     public void getRankingNBATask() {
         System.out.print("Enter results of NBA teams in format \"team goal team goal, ... , team goal team goal\"" +
                 " or \"file path_file\": ");
-        String games = SystemInput.input.nextLine();
+        String games = systemInput.input.nextLine();
         if (games.subSequence(0, 4).equals("file")) {
-            games = SystemInput.readFromFile();
+            games = systemInput.readFromFile();
         }
-        games = SystemInput.readFromFile();
+        games = systemInput.readFromFile();
         System.out.print("Enter team: ");
-        String team = SystemInput.readFromFile();
+        String team = systemInput.readFromFile();
         getStudentSixKataRealisation().nbaCup(games, team);
     }
 
@@ -223,10 +223,10 @@ public class MenuSix extends MenuNumber {
                         System.out.println(INCORRECT_INPUT);
                         break;
                 }
-                System.out.println("Enter the first letter of category : ");
-                String[] category = SystemInput.inputString();
-                System.out.println("Your report " + getStudentSixKataRealisation().stockSummary(code, category));
             }
+            System.out.println("Enter the first letter of category : ");
+            String category[] = systemInput.inputString();
+            System.out.println("Your report " + getStudentSixKataRealisation().stockSummary(code, category));
         }
     }
 }

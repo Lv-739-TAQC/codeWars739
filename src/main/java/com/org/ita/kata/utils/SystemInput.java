@@ -23,13 +23,16 @@ public class SystemInput {
     public static final String INCORRECT_BIGINTEGER_INPUT = "The required type is [BigInteger]";
 
 
-    public static final Scanner input = new Scanner(System.in);
+    public Scanner input;
 
+    public SystemInput() {
+        this.input = new Scanner(System.in);
+    }
 
-    public static Student inputStudent() {
+    public Student inputStudent() {
         while(true) {
             System.out.println("Enter student's name : ");
-            String name = SystemInput.input.nextLine();
+            String name = input.nextLine();
             if(Objects.nonNull(Student.getStudentByName(name))){
                 return Student.getStudentByName(name);
             } else {
@@ -38,7 +41,7 @@ public class SystemInput {
         }
     }
 
-    public static int inputIntNumber() {
+    public int inputIntNumber() {
         int value = 0;
         try {
             value = Integer.parseInt(input.nextLine());
@@ -49,7 +52,7 @@ public class SystemInput {
         return value;
     }
 
-    public static long inputLongNumber() {
+    public long inputLongNumber() {
         long value = 0;
         try {
             value = Long.parseLong(input.nextLine());
@@ -60,7 +63,7 @@ public class SystemInput {
         return value;
     }
 
-    public static float inputFloatNumber() {
+    public float inputFloatNumber() {
         float value = 0;
         try {
             value = Float.parseFloat(input.nextLine());
@@ -71,7 +74,7 @@ public class SystemInput {
         return value;
     }
 
-    public static double inputDoubleNumber() {
+    public double inputDoubleNumber() {
         double value = 0;
         try {
             value = Double.parseDouble(input.nextLine());
@@ -82,7 +85,7 @@ public class SystemInput {
         return value;
     }
 
-    public static double inputNearZeroNumber() {
+    public double inputNearZeroNumber() {
         while(true) {
             double number = inputDoubleNumber();
             if(number > 0 && number < 1) {
@@ -93,7 +96,7 @@ public class SystemInput {
         }
     }
 
-    public static int inputCorrectData() {
+    public int inputCorrectData() {
         while(true) {
             int level = inputIntNumber();
             if(level >= 1) {
@@ -104,7 +107,7 @@ public class SystemInput {
         }
     }
 
-    public static int[] inputIntArray() {
+    public int[] inputIntArray() {
         System.out.println("Enter array length: ");
         int arrayLength = inputIntNumber();
         int[] array = new int[arrayLength];
@@ -115,7 +118,7 @@ public class SystemInput {
         return array;
     }
 
-    public static double[] inputDoubleArray() {
+    public double[] inputDoubleArray() {
         System.out.println("Enter array length: ");
         int arrayLength = inputIntNumber();
         double[] array = new double[arrayLength];
@@ -126,7 +129,7 @@ public class SystemInput {
         return array;
     }
 
-    public static String readFromFile() {
+    public String readFromFile() {
         while (true) {
             System.out.println("Enter path to file:");
             try (BufferedReader br = new BufferedReader(new FileReader(input.nextLine()));) {
@@ -144,7 +147,7 @@ public class SystemInput {
         }
     }
 
-    public static BigInteger inputBigInteger() {
+    public BigInteger inputBigInteger() {
         BigInteger value;
         try {
             value = BigInteger.valueOf(Long.parseLong(input.nextLine()));
@@ -156,7 +159,7 @@ public class SystemInput {
     }
 
 
-    public static String inputNumber() {
+    public String inputNumber() {
         String str;
         try {
             str = input.nextLine();
@@ -167,7 +170,7 @@ public class SystemInput {
         }
         return str;
     }
-    public static String[] inputString() {
+    public String[] inputString() {
         return input.nextLine().split("\\s");
     }
 }

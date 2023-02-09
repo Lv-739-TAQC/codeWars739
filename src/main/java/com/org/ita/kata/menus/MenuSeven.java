@@ -17,11 +17,11 @@ public class MenuSeven extends MenuNumber {
     @NameMethod(name = "Looking for a benefactor")
     public void getLookingForABenefactorTask() {
         System.out.println("Enter financial donations from benefactors : ");
-        double[] arr = SystemInput.inputDoubleArray();
+        double[] arr = systemInput.inputDoubleArray();
         System.out.println("Enter the desired average donation : ");
         double nAvg;
         while (true) {
-            nAvg = SystemInput.inputDoubleNumber();
+            nAvg = systemInput.inputDoubleNumber();
             try {
                 getStudentSevenKataRealisation().newAvg(arr, nAvg);
             } catch (IllegalArgumentException e) {

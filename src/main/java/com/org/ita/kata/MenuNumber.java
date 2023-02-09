@@ -14,12 +14,14 @@ public abstract class MenuNumber {
     public final String GO_BACK = "Back";
 
     private Student student;
-
+    protected SystemInput systemInput;
     public MenuNumber() {
+        this.systemInput = new SystemInput();
     }
 
     public MenuNumber(Student student) {
         this.student = student;
+        this.systemInput = new SystemInput();
     }
 
     public void SetStudent(Student student) {
@@ -71,7 +73,7 @@ public abstract class MenuNumber {
             System.out.print(sb);
 
             try {
-                int taskNumber = Integer.parseInt(SystemInput.input.nextLine());
+                int taskNumber = Integer.parseInt(systemInput.input.nextLine());
                 if (taskNumber == 0) {
                     return;
                 }
@@ -82,7 +84,7 @@ public abstract class MenuNumber {
             }
 
             System.out.print("Put Enter");
-            SystemInput.input.nextLine();
+            systemInput.input.nextLine();
         }
     }
 }

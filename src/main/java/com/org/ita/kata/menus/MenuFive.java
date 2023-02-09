@@ -25,7 +25,7 @@ public class MenuFive extends MenuNumber {
         int g;
         while (true) {
             System.out.println("Enter the start number of the search (m > 2) : ");
-            m = SystemInput.inputLongNumber();
+            m = systemInput.inputLongNumber();
             if (m > 2) {
                 break;
             } else {
@@ -34,7 +34,7 @@ public class MenuFive extends MenuNumber {
         }
         while (true) {
             System.out.println("Enter the end number of the search (n >= " + m + ") : ");
-            n = SystemInput.inputLongNumber();
+            n = systemInput.inputLongNumber();
             if (n >= m) {
                 break;
             } else {
@@ -43,7 +43,7 @@ public class MenuFive extends MenuNumber {
         }
         while (true) {
             System.out.println("Enter the gap we are looking for between " + m + " and " + n + " (g >= 2) : ");
-            g = SystemInput.inputIntNumber();
+            g = systemInput.inputIntNumber();
             if (g >= 2) {
                 break;
             } else {
@@ -68,7 +68,7 @@ public class MenuFive extends MenuNumber {
         BigInteger n= BigInteger.ZERO;
         while (n.intValue()<=0) {
             System.out.println("Enter the quantity of squares : ");
-            n= SystemInput.inputBigInteger();
+            n= systemInput.inputBigInteger();
         }
         System.out.println("The total perimeter of all squares in a rectangle when there are n + 1 squares will be : " + getStudentFiveKataRealisation().perimeter(n));
     }
@@ -85,7 +85,7 @@ public class MenuFive extends MenuNumber {
         long m = 0;
         while (m <= 0) {
             System.out.println("Enter a positive number consisting of digits : ");
-            m = SystemInput.inputLongNumber();
+            m = systemInput.inputLongNumber();
         }
         System.out.println("The smallest number = " + Arrays.toString(getStudentFiveKataRealisation().smallest(m)));
     }
