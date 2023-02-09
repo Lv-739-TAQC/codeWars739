@@ -5,14 +5,13 @@ import com.org.ita.kata.MenuNumber;
 import com.org.ita.kata.students.delegator.Student;
 import com.org.ita.kata.utils.NameMethod;
 
-import com.org.ita.kata.utils.SystemInput;
-
 import java.util.HashMap;
 import java.util.Map;
 
 public class MenuFour extends MenuNumber {
 
-    public MenuFour() {}
+    public MenuFour() {
+    }
 
     public MenuFour(Student student) {
         super(student);

@@ -1,13 +1,14 @@
 package com.org.ita.kata.implementation.TetianaFilatova;
 
 import com.org.ita.kata.Eight;
+
 import java.util.ArrayList;
 
 public class EightImpl implements Eight {
     @Override
     public int liters(double time) {
         double liters = time / 2;
-        int rLiters = (int)liters;
+        int rLiters = (int) liters;
 
         return rLiters;
     }
@@ -25,19 +26,19 @@ public class EightImpl implements Eight {
 
         float igToLiter = 4.54609188f;
         float mToKm = 1.609344f;
-        float result = mpg * mToKm/igToLiter;
+        float result = mpg * mToKm / igToLiter;
 
-        return Math.round(result*100) / 100.00f;
+        return Math.round(result * 100) / 100.00f;
     }
 
     @Override
     public int[] squareOrSquareRoot(int[] array) {
 
-        for(int i = 0; i < array.length; i++){
+        for (int i = 0; i < array.length; i++) {
             double sqrt = Math.sqrt(array[i]);
-            int intSqrt = (int)Math.round(sqrt);
+            int intSqrt = (int) Math.round(sqrt);
 
-            if(sqrt == intSqrt ){
+            if (sqrt == intSqrt) {
                 array[i] = intSqrt;
             } else {
                 array[i] = array[i] * array[i];
@@ -52,18 +53,18 @@ public class EightImpl implements Eight {
         int p = 0;
         int n = 0;
 
-        if (input == null){
+        if (input == null) {
             int[] emptyArray = {};
             return emptyArray;
-        } else if(input.length == 0){
+        } else if (input.length == 0) {
             int[] emptyArray = {};
             return emptyArray;
         }
 
-        for(int i = 0; i < input.length; i++){
-            if(input[i] > 0){
+        for (int i = 0; i < input.length; i++) {
+            if (input[i] > 0) {
                 p++;
-            } else if(input[i] < 0) {
+            } else if (input[i] < 0) {
                 n += input[i];
             }
         }
@@ -93,7 +94,7 @@ public class EightImpl implements Eight {
 
         ArrayList<Integer> num = new ArrayList<Integer>();
 
-        for (int i = 0; i < numbers.length; i++){
+        for (int i = 0; i < numbers.length; i++) {
             if (numbers[i] % divider == 0) {
                 num.add(numbers[i]);
             }

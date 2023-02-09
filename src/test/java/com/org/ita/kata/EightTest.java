@@ -1,7 +1,6 @@
 package com.org.ita.kata;
 
 import com.org.ita.kata.providers.DataProviderEight;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

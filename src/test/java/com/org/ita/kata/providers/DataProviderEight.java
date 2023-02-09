@@ -2,7 +2,7 @@ package com.org.ita.kata.providers;
 
 import org.testng.annotations.DataProvider;
 
-public class DataProviderEight extends StudentProvider{
+public class DataProviderEight extends StudentProvider {
 
     @DataProvider(name = "dpTestLiters")
     public Object[][] dpTestLiters() {
@@ -49,15 +49,15 @@ public class DataProviderEight extends StudentProvider{
     }
 
     @DataProvider(name = "dpCountPositivesSumNegatives")
-    public Object[][] dpCountPositivesSumNegatives(){
-    	Object[][] data = {
-    			{new int[] {10, -65}, new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15}},
-    			{new int[] {8, -50}, new int[] {0, 2, 3, 0, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14}}};
-    	return combineDataWithStudent(data);
+    public Object[][] dpCountPositivesSumNegatives() {
+        Object[][] data = {
+                {new int[]{10, -65}, new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15}},
+                {new int[]{8, -50}, new int[]{0, 2, 3, 0, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14}}};
+        return combineDataWithStudent(data);
     }
 
-    @DataProvider (name = "dpTestStringToNumber")
-    public Object [] [] dpTestStringToNumber () {
+    @DataProvider(name = "dpTestStringToNumber")
+    public Object[][] dpTestStringToNumber() {
         Object[][] data = new Object[][]{
                 {1234, "1234"},
                 {605, "605"},
@@ -101,12 +101,12 @@ public class DataProviderEight extends StudentProvider{
         return combineDataWithStudent(data);
     }
 
-    @DataProvider (name = "dpTestDivisibleBy")
+    @DataProvider(name = "dpTestDivisibleBy")
     public Object[][] dpTestDivisibleBy() {
         Object[][] data = new Object[][]{
-                {new int[]{2,4,6}, new int[]{1,2,3,4,5,6}, 2},
-                {new int[]{3,6}, new int[]{1,2,3,4,5,6}, 3},
-                {new int[]{0,4}, new int[]{0,1,2,3,4,5,6}, 4},
+                {new int[]{2, 4, 6}, new int[]{1, 2, 3, 4, 5, 6}, 2},
+                {new int[]{3, 6}, new int[]{1, 2, 3, 4, 5, 6}, 3},
+                {new int[]{0, 4}, new int[]{0, 1, 2, 3, 4, 5, 6}, 4},
         };
         return combineDataWithStudent(data);
     }

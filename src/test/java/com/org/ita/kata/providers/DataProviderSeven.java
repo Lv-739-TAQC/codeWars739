@@ -1,4 +1,5 @@
 package com.org.ita.kata.providers;
+
 import org.testng.annotations.DataProvider;
 
 public class DataProviderSeven extends StudentProvider {

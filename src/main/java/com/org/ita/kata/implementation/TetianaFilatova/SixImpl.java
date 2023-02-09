@@ -9,22 +9,22 @@ import java.util.regex.Pattern;
 public class SixImpl implements Six {
     @Override
     public long findNb(long m) {
-            long i = 1;
-            long sum = 0;
-            long n = 0;
+        long i = 1;
+        long sum = 0;
+        long n = 0;
 
-            do{
-                sum += (long)Math.pow(i, 3);
-                i++;
-            } while (sum < m);
+        do {
+            sum += (long) Math.pow(i, 3);
+            i++;
+        } while (sum < m);
 
-            if (sum == m){
-                n = i - 1;
-            } else if (sum > m){
-                n = -1;
-            }
+        if (sum == m) {
+            n = i - 1;
+        } else if (sum > m) {
+            n = -1;
+        }
 
-            return n;
+        return n;
     }
 
     @Override
@@ -36,13 +36,13 @@ public class SixImpl implements Six {
         String newLine = String.format("Original Balance: %.2f", origBalance);
         double totalEx = 0d;
 
-        for(int i = 1; i < rows.length; i++){
+        for (int i = 1; i < rows.length; i++) {
             String row = rows[i].trim();
-            double expense = Double.parseDouble(row.substring(row.lastIndexOf(' ')+1));
+            double expense = Double.parseDouble(row.substring(row.lastIndexOf(' ') + 1));
             totalEx += expense;
             origBalance -= expense;
             newLine += String.format("\\r\\n%s Balance %.2f", row, origBalance);
-            
+
         }
         return newLine + String.format("\\r\\nTotal expense  %.2f\\r\\nAverage expense  %.2f", totalEx, totalEx / (rows.length - 1));
     }
@@ -100,19 +100,19 @@ public class SixImpl implements Six {
 
     @Override
     public String nbaCup(String resultSheet, String toFind) {
-        if (toFind == ""){
+        if (toFind == "") {
 
             return "";
         }
 
-        if (!resultSheet.contains(toFind + " ")){
+        if (!resultSheet.contains(toFind + " ")) {
 
             return toFind + ":This team didn't play!";
         }
 
         //Splitting input by commas resulting in games array
 
-        String arrGames[] = resultSheet.split(",");
+        String[] arrGames = resultSheet.split(",");
         int teamWins = 0;
         int teamDraws = 0;
         int teamLosses = 0;
@@ -152,7 +152,7 @@ public class SixImpl implements Six {
                     try {
 
                         teamResult = Integer.parseInt(teamRes.substring(teamRes.lastIndexOf(" ")).trim());
-                    } catch(NumberFormatException e) {
+                    } catch (NumberFormatException e) {
 
                         return "Error(float number):" + arrGames[i];
                     }
@@ -193,19 +193,19 @@ public class SixImpl implements Six {
 
     @Override
     public String stockSummary(String[] lstOfArt, String[] lstOf1stLetter) {
-            String report = "";
-            if ((lstOfArt.length == 0) || (lstOf1stLetter.length == 0)) {
-                return report;
+        String report = "";
+        if ((lstOfArt.length == 0) || (lstOf1stLetter.length == 0)) {
+            return report;
+        }
+        for (String letter : lstOf1stLetter) {
+            int quantity = 0;
+            for (String stockLetter : lstOfArt) {
+                if (stockLetter.substring(0, 1).equals(letter)) {
+                    quantity += Integer.parseInt(stockLetter.replaceAll("[^0-9]", ""));
+                } else quantity += 0;
             }
-            for (String letter : lstOf1stLetter) {
-                int quantity = 0;
-                for (String stockLetter : lstOfArt) {
-                    if (stockLetter.substring(0, 1).equals(letter)) {
-                        quantity += Integer.parseInt(stockLetter.replaceAll("[^0-9]", ""));
-                    } else quantity += 0;
-                }
-                report += " - (" + letter + " : " + quantity + ")";
-            }
-            return report.substring(3);
+            report += " - (" + letter + " : " + quantity + ")";
+        }
+        return report.substring(3);
     }
 }

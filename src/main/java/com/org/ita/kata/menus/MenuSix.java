@@ -3,13 +3,14 @@ package com.org.ita.kata.menus;
 import com.org.ita.kata.MenuNumber;
 import com.org.ita.kata.students.delegator.Student;
 import com.org.ita.kata.utils.NameMethod;
-import com.org.ita.kata.utils.SystemInput;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class MenuSix extends MenuNumber {
+
+    public boolean exitMenu;
 
     public MenuSix() {
     }
@@ -24,9 +25,6 @@ public class MenuSix extends MenuNumber {
         long volume = systemInput.inputLongNumber();
         System.out.println("Number of cubes = " + getStudentSixKataRealisation().findNb(volume));
     }
-
-
-    public boolean exitMenu;
 
     @NameMethod(name = "Easy balance checking")
     public void getEasyBalanceCheckingTask() {
@@ -201,7 +199,7 @@ public class MenuSix extends MenuNumber {
         {
             System.out.println("Enter the code of books : ");
             String[] L = {"ABAR 200", "CDXE 500", "BKWR 250", "BTSQ 890", "DRTY 600"};
-            String [] N = {"BBAR 150", "CDXE 515", "BKWR 250", "BTSQ 890", "DRTY 600"};
+            String[] N = {"BBAR 150", "CDXE 515", "BKWR 250", "BTSQ 890", "DRTY 600"};
             String[] code = {""};
             boolean isNotChosen = true;
             while (isNotChosen) {
@@ -225,7 +223,7 @@ public class MenuSix extends MenuNumber {
                 }
             }
             System.out.println("Enter the first letter of category : ");
-            String category[] = systemInput.inputString();
+            String[] category = systemInput.inputString();
             System.out.println("Your report " + getStudentSixKataRealisation().stockSummary(code, category));
         }
     }

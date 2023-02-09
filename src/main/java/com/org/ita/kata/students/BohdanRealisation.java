@@ -3,7 +3,7 @@ package com.org.ita.kata.students;
 import com.org.ita.kata.StudentRealisation;
 import com.org.ita.kata.implementation.dzobabohdan.*;
 
-public class BohdanRealisation implements StudentRealisation {
+public class BohdanRealisation extends Base implements StudentRealisation {
 
     public EightImpl implementationEightKata() {
         return new EightImpl();

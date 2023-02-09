@@ -6,23 +6,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FourImpl implements Four {
+    private static final String[] FEEDBACKABOUTFIGHT = new String[]{"Easy fight", "A good fight", "An intense fight"};
     private final String[] RANKINGS = {"Pushover", "Novice", "Fighter", "Warrior", "Veteran", "Sage", "Elite", "Conqueror", "Champion", "Master", "Greatest"};
-    private static final String[] FEEDBACKABOUTFIGHT = new String[] { "Easy fight", "A good fight", "An intense fight" };
     private int currentLevel = 1;
     private int currentExperience = 100;
-    private ArrayList<String> achievement = new ArrayList<>();
+    private final ArrayList<String> achievement = new ArrayList<>();
+
     public int level() {
         return currentLevel;
     }
+
     public int experience() {
         return currentExperience;
     }
+
     public String rank() {
         return RANKINGS[currentLevel / 10];
     }
+
     public List<String> achievements() {
         return achievement;
     }
+
     public String training(String description, int trainingExperience, int trainingLevel) {
         if (currentLevel >= trainingLevel) {
             currentExperience += trainingExperience;
@@ -35,6 +40,7 @@ public class FourImpl implements Four {
             return "Not strong enough";
         }
     }
+
     public String battle(int opponentLevel) {
         if (opponentLevel < 1 || opponentLevel > 100)
             return "Invalid level";

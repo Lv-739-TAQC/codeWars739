@@ -1,7 +1,7 @@
 package com.org.ita;
 
-import com.org.ita.kata.students.delegator.Student;
 import com.org.ita.kata.menus.delegator.MenuNumberFactory;
+import com.org.ita.kata.students.delegator.Student;
 import com.org.ita.kata.utils.SystemInput;
 
 public class Main {

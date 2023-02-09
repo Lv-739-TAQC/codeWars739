@@ -3,7 +3,7 @@ package com.org.ita.kata.students;
 import com.org.ita.kata.StudentRealisation;
 import com.org.ita.kata.implementation.Maksym637.*;
 
-public class MaksymRealisation implements StudentRealisation {
+public class MaksymRealisation extends Base implements StudentRealisation {
 
     public EightImpl implementationEightKata() {
         return new EightImpl();

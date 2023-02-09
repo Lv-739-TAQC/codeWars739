@@ -1,8 +1,8 @@
 package com.org.ita.kata.implementation.IrenZh;
 
 import com.org.ita.kata.Five;
+
 import java.math.BigInteger;
-import java.lang.StringBuilder;
 
 public class FiveImpl implements Five {
     public static boolean isPrime(long number) {

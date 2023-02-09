@@ -67,7 +67,7 @@ public class EightImpl implements Eight {
         }
         int k = 0;
         int[] numbersDivided = new int[count];
-        for (int num: numbers) {
+        for (int num : numbers) {
             if (num % divider == 0) {
                 numbersDivided[k] = num;
                 k++;

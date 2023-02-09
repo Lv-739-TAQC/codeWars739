@@ -3,7 +3,7 @@ package com.org.ita.kata;
 public interface Eight {
     int liters(double time);
 
-    double getVolumeOfCuboid(final double length,final double width,final double height);
+    double getVolumeOfCuboid(final double length, final double width, final double height);
 
     float mpgToKPM(final float mpg);
 
