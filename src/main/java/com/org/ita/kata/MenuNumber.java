@@ -61,17 +61,15 @@ public abstract class MenuNumber {
             try {
                 NameMethod nameMethod = method.getAnnotation(NameMethod.class);
                 String name = nameMethod.name();
-                sb.append(count + ". " + name + "\n");
+                sb.append(count).append(". ").append(name).append("\n");
                 methods.put(count, method);
                 count++;
-            } catch (Exception e) {
+            } catch (Exception ignored) {
             }
         }
         sb.append("0. Go back\n").append("Enter number of task : ");
-
         while (true) {
             System.out.print(sb);
-
             try {
                 int taskNumber = Integer.parseInt(systemInput.input.nextLine());
                 if (taskNumber == 0) {
@@ -82,7 +80,6 @@ public abstract class MenuNumber {
             } catch (Exception e) {
                 System.out.println(INCORRECT_INPUT);
             }
-
             System.out.print("Put Enter");
             systemInput.input.nextLine();
         }
